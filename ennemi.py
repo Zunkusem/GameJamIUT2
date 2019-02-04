@@ -1,10 +1,11 @@
-import array
+class ennemi: # Définition de notre classe Personne
 
-class Personnage: # Définition de notre classe Personne
-
-    def __init__(self): # Notre méthode constructeur
-        self.positionX = 10
-        self.positionY = 10
+    def __init__(self, vie, poids, x, y): # Notre méthode constructeur
+        self.vie= vie
+        self.mort = False
+        self.poids = poids
+        self.positionX = x
+        self.positionY = y
         self.largeur = 10
         self.hauteur = 10
         self.vulnerabilite = False
