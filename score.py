@@ -16,5 +16,3 @@ class score: # Définition de notre classe Personne
 
     def getMultiplicateur(self):
         return self.multiplicateur
-
-    
