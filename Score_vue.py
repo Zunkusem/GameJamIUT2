@@ -25,7 +25,7 @@ while running:
         if event.type==pygame.QUIT:
             running=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 50 and event.pos[1] > 0:
-            import Accueil.py
+            import Accueil_vue.py
 
     screen.blit(font_return, (0,0))
     screen.blit(font_titre, ((screen_width+screen_width+left-120)/2, screen_height-550))
