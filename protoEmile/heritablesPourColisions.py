@@ -28,7 +28,7 @@ class Rectangle(Objet):
     def getLargeur(self):
         return self.largeur
 
-    def getHauteurX(self):
+    def getHauteur(self):
         return self.hauteur
 
 
@@ -70,13 +70,19 @@ class Cercle(Objet):
 
 
 def Collision(a, b):
-    if a.getForme == "Rectangle" and b.getForme == "Rectangle":
-        if ((b.getX() >= a.getX()+a.getLargeur())or(b.getX()+b.getLargeur() <= a.getX())or((b.getY() >= a.getY() + a.getHauteur())or (b.getY() + b.h <= a.getY)) :
-            print("collision")
+    if a.getForme() == "Rectangle" and b.getForme() == "Rectangle":
+        if ((b.getX() >= a.getX()+a.getLargeur())or(b.getX()+b.getLargeur() <= a.getX())or((b.getY() >= a.getY() + a.getHauteur())or (b.getY() + b.getHauteur() <= a.getY()))) :
+            print("pas collision entre Rectangle")
         else:
-
-
-
+            print("collision entre Rectangle")
+    elif a.getForme() == "Cercle" and b.getForme() == "Cercle":
+        d2 = (a.getX()-b.getX())*(a.getX()-b.getX()) + (a.getY()-b.getY())*(a.getY()-b.getY())
+        if (d2 > ((a.getRayon() + b.getRayon())*(a.getRayon() + b.getRayon()))):
+            print("Pas collision Cercle")
+        else:
+            print("collision cercle")
+    else:
+        print("erreur")
 
 
 
@@ -85,8 +91,15 @@ def Collision(a, b):
 running = True
 
 perso = Personnage()
+Rec1 = Rectangle(1,1,1,1)
+Rec2 = Rectangle(1,1,1,1)
+#Rec2 = Rectangle(10,10,1,1)
 
+cer1 = Cercle(1,1,1)
+cer2 = Cercle(1,1,1)
+#cer2 = Cercle(10,10,1)
 while running:
-    print(perso.getForme())
+    #Collision(Rec1,Rec2)
+    Collision(cer1,cer2)
     continue
 
