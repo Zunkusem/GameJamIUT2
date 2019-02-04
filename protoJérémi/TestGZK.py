@@ -11,10 +11,10 @@ class Block(pygame.sprite.Sprite):
         lenght = 100
         height = 50
         self.screen = screen
-        self.image = self.image = pygame.Surface((lenght, height), pygame.SRCALPHA)
-        pygame.draw.rect(self.image, (255, 255, 255), pygame.rect.Rect((0, 0, 100, 50)))
+        self.image = self.image = pygame.Surface((lenght, 50), pygame.SRCALPHA)
+        pygame.draw.rect(self.image, (255, 255, 255), pygame.rect.Rect((0, 0, lenght, height)))
         self.rect = self.image.get_rect(center=pos)
-        self.hittop = [pos[0],pos[1],pos[0]+lenght,pos[1]]
+        self.hittop = [pos[0]-(lenght/2)-30,pos[1]-(lenght/2),(pos[0]+lenght)-(lenght/2),pos[1]]
 
 
 
@@ -53,8 +53,16 @@ class Circle(pygame.sprite.Sprite):
             self.speed_y = 0
             self.speed_y -= 0.2
 
-        for value in variable:
-            pass
+        for bloc in block:
+            if self.pos_x > bloc.hittop[0] and self.pos_x < bloc.hittop[2] and self.pos_y > bloc.hittop[1]-5:
+                if self.pos_y >= bloc.hittop[1]+5:
+                    self.speed_y = 0
+                    self.speed_y -= 5
+                else:
+                    self.speed_y = 0
+                    self.speed_y -= 0.2
+
+        pass
 
         if self.pos_y > self.screen.get_height():
             self.kill()  # Remove off-screen circles.
@@ -68,10 +76,10 @@ class Circle(pygame.sprite.Sprite):
         self.speed_y = -5
 
     def movex(self):
-        self.speed_x = 5
+        self.speed_x = 2
 
     def movexmin(self):
-        self.speed_x = -5
+        self.speed_x = -2
 
 def run_game():
     pygame.init()
@@ -79,7 +87,7 @@ def run_game():
     clock = pygame.time.Clock()
     running = True
     circles = pygame.sprite.Group(Circle((600, 0), screen))
-    blocks = pygame.sprite.Group(Block((0,600), screen))
+    blocks = pygame.sprite.Group(Block((600,600), screen))
 
     while running:
         pressed = pygame.key.get_pressed()
