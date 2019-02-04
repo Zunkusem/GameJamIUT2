@@ -1,39 +1,33 @@
 import pygame
 
-pygame.init()
-clock = pygame.time.Clock()
 
-CIEL = 0, 200, 255
-WHITE = 255, 255, 255
-GREEN = 0, 255, 0
-RED = 255, 0, 0
+screen=pygame.display.set_mode([1280, 720])
+screen.fill([255, 255, 255])
+left=400
+top=100
+screen_width = (1280/2)-(left/2)
+screen_height = (720/2)+200
 
-def main():
-    fenetre = pygame.display.set_mode((640,480),RESIZABLE)
-    green_color = GREEN
-    white_color = WHITE
-    red_color = RED
-    loop = True
+start = pygame.draw.rect(screen, [255, 0, 0], [screen_width, screen_height, left, top], 0)
+score = pygame.draw.rect(screen, [255, 125, 0], [screen_width, screen_height-125, left, top], 0)
+credit = pygame.draw.rect(screen, [0, 255, 125], [screen_width, screen_height-250, left, top], 0)
+quit = pygame.draw.rect(screen, [125, 0, 255], [screen_width, screen_height-375, left, top], 0)
 
-    while loop:
-        #récupération et affichage du fond
-    background = pygame.image.load("start.jpg").convert()
-    fenetre.blit(background, (0,0))
-        #affichage des boutons du jeu
-    rect_white = pygame.draw.rect(fenetre, white_color, [75, 10, 100, 50])
-    rect_green = pygame.draw.rect(fenetre, green_color, [250, 10, 100, 50])
-    rect_red = pygame.draw.rect(fenetre, red_color, [250, 10, 100, 50])
+mouse_xy = pygame.mouse.get_pos()
+over_quit = quit.collidepoint(mouse_xy)
 
-        # retourne 1 si le curseur est au dessus du rectangle
-    mouse_xy = pygame.mouse.get_pos()
-    over_white = rect_white.collidepoint(mouse_xy)
-    over_green = rect_green.collidepoint(mouse_xy)
-    over_red = rect_red.collidepoint(mouse_xy)
-
-        # Actualisation de l'affichage
-    pygame.display.flip()
-        # 10 fps
-    clock.tick(10)
-
-if __name__ == '__main__':
-    main()
+pygame.display.flip()
+running=True
+while running:
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            running=False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top and event.pos[1] > screen_height:
+            running=False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-125 and event.pos[1] > screen_height-125:
+            print("Crédit")
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-250 and event.pos[1] > screen_height-250:
+            print("Score")
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-375 and event.pos[1] > screen_height-375:
+            print("Jouer")
+pygame.quit()
