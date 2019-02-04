@@ -34,7 +34,7 @@ def run_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            elif pressed == pygame.MOUSEBUTTONDOW:
                 circles.add(Circle(event.pos, screen))
 
         circles.update()
