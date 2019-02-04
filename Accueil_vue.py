@@ -5,6 +5,7 @@ pygame.init()
 
 screen=pygame.display.set_mode([1280, 720])
 screen.fill([255, 255, 255])
+background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1280, 720], 0)
 left=400
 top=100
 screen_width = (1280/2)-(left/2)
@@ -24,13 +25,13 @@ font_score = font_a.render("SCORE", 1, (255,255,255))
 font_credit = font_a.render("CREDITS", 1, (255,255,255))
 font_quit = font_a.render("QUITTER", 1, (255,255,255))
 
-running=True
-while running:
+run=True
+while run:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
-            running=False
+            run=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top and event.pos[1] > screen_height:
-            running=False
+            run=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-125 and event.pos[1] > screen_height-125:
             import Credit_vue.py
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-250 and event.pos[1] > screen_height-250:
