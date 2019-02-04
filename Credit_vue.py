@@ -30,3 +30,4 @@ while running:
     credit.blit(font_titre, ((credit_width+credit_width+left-120)/2, credit_height-550))
 
     pygame.display.flip()
+pygame.quit()

@@ -44,3 +44,4 @@ while run:
     screen.blit(font_credit, ((screen_width+screen_width+left-135)/2, screen_height-100))
     screen.blit(font_quit, ((screen_width+screen_width+left-135)/2, screen_height+25))
     pygame.display.flip()
+pygame.quit()
