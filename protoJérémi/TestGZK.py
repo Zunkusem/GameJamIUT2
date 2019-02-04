@@ -14,7 +14,10 @@ class Block(pygame.sprite.Sprite):
         self.image = self.image = pygame.Surface((lenght, 50), pygame.SRCALPHA)
         pygame.draw.rect(self.image, (255, 255, 255), pygame.rect.Rect((0, 0, lenght, height)))
         self.rect = self.image.get_rect(center=pos)
-        self.hittop = [pos[0]-(lenght/2)-30,pos[1]-(lenght/2),(pos[0]+lenght)-(lenght/2),pos[1]]
+        self.hittop = [pos[0]-(lenght/2)-25,pos[1]-(lenght/2)+5,(pos[0]+lenght)-(lenght/2),pos[1]]
+        self.hitleft = [pos[0]-(lenght/2)-25,pos[1]-(lenght/2)+10,pos[0]-(lenght/2)-25,(pos[1]+height)-(height/2)]
+        self.hitright = [(pos[0]+lenght)-(lenght/2),pos[1],(pos[0]+lenght)-(lenght/2),(pos[1]+height)-(height/2)]
+        self.hitbottom = [pos[0]-(lenght/2)-25,(pos[1]+height)-(height/2),(pos[0]+lenght)-(lenght/2),(pos[1]+height)-(height/2)]
 
 
 
@@ -54,15 +57,43 @@ class Circle(pygame.sprite.Sprite):
             self.speed_y -= 0.2
 
         for bloc in block:
-            if self.pos_x > bloc.hittop[0] and self.pos_x < bloc.hittop[2] and self.pos_y > bloc.hittop[1]-5:
-                if self.pos_y >= bloc.hittop[1]+5:
+            if self.pos_x > bloc.hittop[0]+2 and self.pos_x < bloc.hittop[2]-2.5 and self.pos_y > bloc.hittop[1]-5 and self.pos_y < bloc.hitbottom[1]-5 :
+                if self.pos_y >= bloc.hittop[1]+1.2:
                     self.speed_y = 0
                     self.speed_y -= 5
                 else:
                     self.speed_y = 0
                     self.speed_y -= 0.2
+            if self.pos_x > bloc.hitleft[0] and self.pos_x < bloc.hitleft[2]+5 and self.pos_y > bloc.hittop[1] and self.pos_y < bloc.hitbottom[1]-5 :
+                if self.pos_x < bloc.hitleft[0]+1.2:
+                    self.speed_x = 0
+                    self.speed_x -= 5
+                else:
+                    self.speed_x = 0
+                    self.speed_x -= 0.2
+
+            if self.pos_x < bloc.hitright[0] and self.pos_x > bloc.hitright[2]-5 and self.pos_y > bloc.hittop[1] and self.pos_y < bloc.hitbottom[1]-5:
+                if self.pos_x < bloc.hitright[0]-1.2:
+                    self.speed_x = 0
+                    self.speed_x += 5
+                else:
+                    self.speed_x = 0
+                    self.speed_x += 0.2
+            if self.pos_x > bloc.hitbottom[0]+2 and self.pos_x < bloc.hitbottom[2]-2.5 and self.pos_y > bloc.hittop[1]+5 and self.pos_y < bloc.hitbottom[1]-5:
+                if self.pos_x > bloc.hitbottom[0]+1.2:
+                    self.speed_y = +0.5
+                else:
+                    self.speed_y = 0
+                    self.speed_y += 0.2
 
         pass
+
+        if self.speed_x>3:
+            self.speed_x= 3
+        elif self.speed_x< -3:
+            self.speed_x= -3
+        pass
+
 
         if self.pos_y > self.screen.get_height():
             self.kill()  # Remove off-screen circles.
@@ -70,16 +101,16 @@ class Circle(pygame.sprite.Sprite):
             self.kill()  # Remove off-screen circles.
 
     def moveymin(self):
-        self.speed_y = 5
+        self.speed_y += 0.5
 
     def movey(self):
         self.speed_y = -5
 
     def movex(self):
-        self.speed_x = 2
+        self.speed_x += 0.5
 
     def movexmin(self):
-        self.speed_x = -2
+        self.speed_x -= 0.5
 
 def run_game():
     pygame.init()
@@ -88,6 +119,10 @@ def run_game():
     running = True
     circles = pygame.sprite.Group(Circle((600, 0), screen))
     blocks = pygame.sprite.Group(Block((600,600), screen))
+    blocks.add(Block((690,600), screen))
+    blocks.add(Block((690,200), screen))
+    blocks.add(Block((780,620), screen))
+    blocks.add(Block((510,620), screen))
 
     while running:
         pressed = pygame.key.get_pressed()
@@ -96,22 +131,23 @@ def run_game():
                 return
             if event.type == pygame.MOUSEBUTTONDOWN:
                 circles.add(Circle(event.pos, screen))
-            if pressed[pygame.K_d]:
-                for i in range(0,len(listeB)):
-                    listeB[i].movex()
-                pass
-            if pressed[pygame.K_a]:
-                for i in range(0,len(listeB)):
-                    listeB[i].movexmin()
-                pass
-            if pressed[pygame.K_w]:
-                for i in range(0,len(listeB)):
-                    listeB[i].movey()
-                pass
-            if pressed[pygame.K_s]:
-                for i in range(0,len(listeB)):
-                    listeB[i].moveymin()
-                pass
+        pass
+        if pressed[pygame.K_d]:
+            for i in range(0,len(listeB)):
+                listeB[i].movex()
+            pass
+        if pressed[pygame.K_a]:
+            for i in range(0,len(listeB)):
+                listeB[i].movexmin()
+            pass
+        if pressed[pygame.K_w]:
+            for i in range(0,len(listeB)):
+                listeB[i].movey()
+            pass
+        if pressed[pygame.K_s]:
+            for i in range(0,len(listeB)):
+                listeB[i].moveymin()
+            pass
 
         circles.update(blocks)
 
