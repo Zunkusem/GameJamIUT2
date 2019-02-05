@@ -8,13 +8,14 @@ from map import *
 
 def run_game():
     pygame.init()
+    world = pygame.Surface((1000,1000))
     screen = pygame.display.set_mode((1270, 670))
     pygame.display.set_caption("Scrolling Camera")
     clock = pygame.time.Clock()
     running = True
     map = Map()
     circles = pygame.sprite.Group(Player((600, 0), screen))
-    blocks = pygame.sprite.Group(Block((600,600), screen))
+    blocks = pygame.sprite.Group()
     map.creeMap(screen,blocks)
 
     while running:
@@ -43,6 +44,8 @@ def run_game():
         screen.fill((10, 10, 30))
         circles.draw(screen)
         blocks.draw(screen)
+        camera_pos = (192,192)
+        # screen.blit(world,camera_pos)
 
         pygame.display.flip()
         clock.tick(60)

@@ -1,6 +1,6 @@
 import pygame
 GRAVITY = 0.2  # Pretty low gravity.
-XS = .1
+XS = .2
 class Player(pygame.sprite.Sprite):
 
     def __init__(self, pos, screen):
@@ -67,12 +67,14 @@ class Player(pygame.sprite.Sprite):
                     self.speed_y += 0.2
         pass
 
-        if self.speed_x>3:
-            self.speed_x= 3
-        elif self.speed_x< -3:
-            self.speed_x= -3
+        if self.speed_x>6:
+            self.speed_x= 6
+        elif self.speed_x< -6:
+            self.speed_x= -6
         pass
 
+        if self.speed_x<0.2 and self.speed_x>-0.2:
+            self.speed_x = 0
 
         if self.pos_y > self.screen.get_height():
             self.kill()  # Remove off-screen circles.
