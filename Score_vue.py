@@ -16,17 +16,17 @@ retour = pygame.draw.rect(score, [255, 0, 0], [0, 670, 125, 50], 0)
 font.init()
 font_a = pygame.font.SysFont('arial', 50)
 font_b = pygame.font.SysFont('arial', 30)
-font_c = pygame.font.SysFont('arial', 30)
-font_d = pygame.font.SysFont('arial', 30)
-font_e = pygame.font.SysFont('arial', 30)
+font_c = pygame.font.SysFont('arial', 45)
+font_d = pygame.font.SysFont('arial', 35)
+font_e = pygame.font.SysFont('arial', 25)
+
 font_titre = font_a.render("Meilleurs Scores", 1, (255,255,255))
 font_return = font_b.render("RETOUR", 1, (134,210,48))
-nb = "1"
-txt = nb
+
 
 font_un = font_c.render("1er : ", 1, (255, 255, 255))
 font_deux = font_d.render("2ème : ", 1, (255, 255, 255))
-font_trois = font_e.render("3ème : ", 1, (255, 255, 255))
+font_trois = font_d.render("3ème : ", 1, (255, 255, 255))
 font_quatre = font_e.render("4ème : ", 1, (255, 255, 255))
 font_cinque = font_e.render("5ème : ", 1, (255, 255, 255))
 font_six = font_e.render("6ème : ", 1, (255, 255, 255))
@@ -34,9 +34,6 @@ font_sept = font_e.render("7ème : ", 1, (255, 255, 255))
 font_huit = font_e.render("8ème : ", 1, (255, 255, 255))
 font_neuf = font_e.render("9ème : ", 1, (255, 255, 255))
 font_dix = font_e.render("10ème : ", 1, (255, 255, 255))
-
-
-
 
 running=True
 while running:
@@ -47,8 +44,15 @@ while running:
             import Accueil_vue.py
     score.blit(font_return, (10,680))
     score.blit(font_titre, ((score_width+score_width+left-175)/2, score_height-550))
-    score.blit(font_trsm, (640,360))
-    score.blit(font_scnd, (640,260))
-    score.blit(font_premier, (640,160))
+    score.blit(font_un, ((score_width+score_width+left-325)/2,100))
+    score.blit(font_deux, ((score_width+score_width+left-350)/2,165))
+    score.blit(font_trois, ((score_width+score_width+left-350)/2,230))
+    score.blit(font_quatre, ((score_width+score_width+left-300)/2,295))
+    score.blit(font_cinque, ((score_width+score_width+left-300)/2,360))
+    score.blit(font_six, ((score_width+score_width+left-300)/2,425))
+    score.blit(font_sept, ((score_width+score_width+left-300)/2,490))
+    score.blit(font_huit, ((score_width+score_width+left-300)/2,555))
+    score.blit(font_neuf, ((score_width+score_width+left-300)/2,620))
+    score.blit(font_dix, ((score_width+score_width+left-325)/2,685))
     pygame.display.flip()
 pygame.quit()
