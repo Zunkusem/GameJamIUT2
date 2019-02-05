@@ -21,19 +21,10 @@ font_d = pygame.font.SysFont('arial', 30)
 font_e = pygame.font.SysFont('arial', 30)
 font_titre = font_a.render("Meilleurs Scores", 1, (255,255,255))
 font_return = font_b.render("RETOUR", 1, (134,210,48))
-nb = "1"
-txt = nb
-
-font_un = font_c.render("1er : ", 1, (255, 255, 255))
-font_deux = font_d.render("2ème : ", 1, (255, 255, 255))
-font_trois = font_e.render("3ème : ", 1, (255, 255, 255))
-font_quatre = font_e.render("4ème : ", 1, (255, 255, 255))
-font_cinque = font_e.render("5ème : ", 1, (255, 255, 255))
-font_six = font_e.render("6ème : ", 1, (255, 255, 255))
-font_sept = font_e.render("7ème : ", 1, (255, 255, 255))
-font_huit = font_e.render("8ème : ", 1, (255, 255, 255))
-font_neuf = font_e.render("9ème : ", 1, (255, 255, 255))
-font_dix = font_e.render("10ème : ", 1, (255, 255, 255))
+font_premier = font_c.render("1er : ", 1, (255, 255, 255))
+font_premier = font_c.render("1er : ", 1, (255, 255, 255))
+font_scnd = font_d.render("2ème : ", 1, (255, 255, 255))
+font_trsm = font_e.render("3ème : ", 1, (255, 255, 255))
 
 
 
