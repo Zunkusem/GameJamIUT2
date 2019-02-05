@@ -1,27 +1,7 @@
 import pygame
-
 GRAVITY = 0.2  # Pretty low gravity.
 XS = .1
-listeB = []
-
-class Block(pygame.sprite.Sprite):
-
-    def __init__(self, pos, screen):
-        super().__init__()
-        lenght = 100
-        height = 50
-        self.screen = screen
-        self.image = self.image = pygame.Surface((lenght, 50), pygame.SRCALPHA)
-        pygame.draw.rect(self.image, (255, 255, 255), pygame.rect.Rect((0, 0, lenght, height)))
-        self.rect = self.image.get_rect(center=pos)
-        self.hittop = [pos[0]-(lenght/2)-25,pos[1]-(lenght/2)+5,(pos[0]+lenght)-(lenght/2),pos[1]]
-        self.hitleft = [pos[0]-(lenght/2)-25,pos[1]-(lenght/2)+10,pos[0]-(lenght/2)-25,(pos[1]+height)-(height/2)]
-        self.hitright = [(pos[0]+lenght)-(lenght/2),pos[1],(pos[0]+lenght)-(lenght/2),(pos[1]+height)-(height/2)]
-        self.hitbottom = [pos[0]-(lenght/2)-25,(pos[1]+height)-(height/2),(pos[0]+lenght)-(lenght/2),(pos[1]+height)-(height/2)]
-
-
-
-class Circle(pygame.sprite.Sprite):
+class Player(pygame.sprite.Sprite):
 
     def __init__(self, pos, screen):
         super().__init__()
@@ -34,7 +14,6 @@ class Circle(pygame.sprite.Sprite):
         self.speed_x = 0
         self.speed_y = 0
         self.xs = 0
-        listeB.append(self)
 
     def update(self,block):
         self.speed_y += GRAVITY
@@ -102,63 +81,9 @@ class Circle(pygame.sprite.Sprite):
 
     def moveymin(self):
         self.speed_y += 0.5
-
     def movey(self):
         self.speed_y = -5
-
     def movex(self):
         self.speed_x += 0.5
-
     def movexmin(self):
         self.speed_x -= 0.5
-
-def run_game():
-    pygame.init()
-    screen = pygame.display.set_mode((1270, 670))
-    pygame.display.set_caption("Scrolling Camera")
-    clock = pygame.time.Clock()
-    running = True
-    circles = pygame.sprite.Group(Circle((600, 0), screen))
-    blocks = pygame.sprite.Group(Block((600,600), screen))
-    blocks.add(Block((690,600), screen))
-    blocks.add(Block((690,200), screen))
-    blocks.add(Block((780,620), screen))
-    blocks.add(Block((510,620), screen))
-
-    while running:
-        pressed = pygame.key.get_pressed()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                circles.add(Circle(event.pos, screen))
-        pass
-        if pressed[pygame.K_d]:
-            for i in range(0,len(listeB)):
-                listeB[i].movex()
-            pass
-        if pressed[pygame.K_a]:
-            for i in range(0,len(listeB)):
-                listeB[i].movexmin()
-            pass
-        if pressed[pygame.K_w]:
-            for i in range(0,len(listeB)):
-                listeB[i].movey()
-            pass
-        if pressed[pygame.K_s]:
-            for i in range(0,len(listeB)):
-                listeB[i].moveymin()
-            pass
-
-        circles.update(blocks)
-
-        screen.fill((10, 10, 30))
-        circles.draw(screen)
-        blocks.draw(screen)
-
-        pygame.display.flip()
-        clock.tick(60)
-
-
-run_game()
-pygame.quit()
