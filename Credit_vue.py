@@ -26,6 +26,8 @@ while running:
             running=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 720 and event.pos[1] > 680:
             import Accueil_vue.py
+            running=False
+            
     credit.blit(font_return, (10,680))
     credit.blit(font_titre, ((credit_width+credit_width+left-120)/2, credit_height-550))
 

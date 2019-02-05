@@ -1,14 +1,15 @@
 import pygame
 from pygame import *
 
+
 pygame.init()
 
 score=pygame.display.set_mode([1280, 720])
 score.fill([255, 255, 255])
 background = pygame.draw.rect(score, [25, 6, 45], [0, 0, 1280, 720], 0)
-left=500
-top=600
-score_width = (1280/2)-(left/2)
+left_s=500
+top_s=600
+score_width = (1280/2)-(left_s/2)
 score_height = (720/2)+200
 
 retour = pygame.draw.rect(score, [255, 0, 0], [0, 670, 125, 50], 0)
@@ -25,8 +26,12 @@ while running:
         if event.type==pygame.QUIT:
             running=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 720 and event.pos[1] > 670:
-            import Accueil_vue.py
+            running=False
+            #run=True
+            #import Accueil_vue.py
+            from Accueil_vue.py import *
+
     score.blit(font_return, (10,680))
-    score.blit(font_titre, ((score_width+score_width+left-175)/2, score_height-550))
+    score.blit(font_titre, ((score_width+score_width+left_s-175)/2, score_height-550))
     pygame.display.flip()
 pygame.quit()
