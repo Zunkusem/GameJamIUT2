@@ -37,12 +37,15 @@ class Player(pygame.sprite.Sprite):
 
         for bloc in block:
             if self.pos_x > bloc.hittop[0]+2 and self.pos_x < bloc.hittop[2]-2.5 and self.pos_y > bloc.hittop[1]-5 and self.pos_y < bloc.hitbottom[1]-5 :
-                if self.pos_y >= bloc.hittop[1]+2:
+                if self.pos_y >= bloc.hittop[1]-2:
+                    self.speed_y = 0
+                    self.speed_y =-1
+                elif self.pos_y >= bloc.hittop[1]+2:
                     self.speed_y = 0
                     self.speed_y -= 5
                 else:
                     self.speed_y = 0
-                    self.speed_y -= 0.2
+                    self.speed_y -= 0.3
 
             if self.pos_x > bloc.hitleft[0] and self.pos_x < bloc.hitleft[2]+5 and self.pos_y > bloc.hittop[1] and self.pos_y < bloc.hitbottom[1]-5 :
                 if self.pos_x < bloc.hitleft[0]-1.2:
