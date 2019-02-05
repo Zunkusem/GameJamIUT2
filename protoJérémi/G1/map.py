@@ -1,7 +1,7 @@
 import pygame
 from block import *
 
-class Map():
+class Map:
     def creeMap(screenx,screeny,blocks):
         screen = (screenx,screeny)
         blocks.add(Block((690,600), screen))

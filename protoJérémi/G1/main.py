@@ -8,13 +8,12 @@ from map import *
 
 def run_game():
     pygame.init()
-    world = pygame.Surface((1000,1000))
     screen = pygame.display.set_mode((1270, 670))
     pygame.display.set_caption("Scrolling Camera")
     clock = pygame.time.Clock()
     running = True
     map = Map()
-    circles = pygame.sprite.Group(Player((600, 0), screen))
+    players = pygame.sprite.Group(Player((600, 0), screen))
     blocks = pygame.sprite.Group()
     map.creeMap(screen,blocks)
 
@@ -24,30 +23,32 @@ def run_game():
             if event.type == pygame.QUIT:
                 return
             if event.type == pygame.MOUSEBUTTONDOWN:
-                circles.add(Player(event.pos, screen))
+                players.add(Player(event.pos, screen))
         pass
         if pressed[pygame.K_d]:
-            for i in circles:
+            for i in players:
                 i.movex()
             pass
         if pressed[pygame.K_a]:
-            for i in circles:
+            for i in players:
                 i.movexmin()
             pass
         if pressed[pygame.K_w]:
-            for i in circles:
+            for i in players:
                 i.movey()
             pass
 
-        circles.update(blocks)
+
+
+        players.update(blocks)
 
         screen.fill((10, 10, 30))
-        circles.draw(screen)
+        players.draw(screen)
         blocks.draw(screen)
         camera_pos = (192,192)
-        # screen.blit(world,camera_pos)
 
         pygame.display.flip()
+        world = pygame.Surface((1000,1000))
         clock.tick(60)
 
 
