@@ -38,10 +38,6 @@ def run_game():
             for i in circles:
                 i.movey()
             pass
-        if pressed[pygame.K_s]:
-            for i in circles:
-                i.moveymin()
-            pass
 
         circles.update(blocks)
 
