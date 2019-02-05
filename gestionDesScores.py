@@ -5,6 +5,7 @@ def estPair(i):
         return False
 
 def separeScoreDuNom(liste):
+    #peut permettre a recuperer les scores pour les afficher dans le jeu
     nom=[]
     score=[]
     for i in range(0,len(liste)):
