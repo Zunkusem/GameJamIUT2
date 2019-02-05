@@ -21,3 +21,12 @@ def changeScore(score):
         f = open('score.txt', 'w')
         f.write(triTxt)
         f.close()
+
+def getScore(fichier):
+    f = open(fichier, 'r')
+    txt = f.read()
+    if f == null
+        print("pas de score")
+        f.close
+    else
+        ....

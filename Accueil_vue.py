@@ -1,7 +1,7 @@
 import pygame
 from pygame import *
 
-def accueil():
+
 pygame.init()
 
 screen=pygame.display.set_mode([1280, 720])
