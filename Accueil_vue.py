@@ -1,8 +1,11 @@
 import pygame
+from pygame import *
 
+pygame.init()
 
 screen=pygame.display.set_mode([1280, 720])
 screen.fill([255, 255, 255])
+background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1280, 720], 0)
 left=400
 top=100
 screen_width = (1280/2)-(left/2)
@@ -13,21 +16,32 @@ score = pygame.draw.rect(screen, [255, 125, 0], [screen_width, screen_height-125
 credit = pygame.draw.rect(screen, [0, 255, 125], [screen_width, screen_height-250, left, top], 0)
 quit = pygame.draw.rect(screen, [125, 0, 255], [screen_width, screen_height-375, left, top], 0)
 
-mouse_xy = pygame.mouse.get_pos()
-over_quit = quit.collidepoint(mouse_xy)
+font.init()
+font_a = pygame.font.SysFont('arial', 40)
+font_b = pygame.font.SysFont('arial', 70)
+font_titre = font_b.render("OCTOGONE SANS REGLE", 1, (0,0,0))
+font_start = font_a.render("START", 1, (255,255,255))
+font_score = font_a.render("SCORE", 1, (255,255,255))
+font_credit = font_a.render("CREDITS", 1, (255,255,255))
+font_quit = font_a.render("QUITTER", 1, (255,255,255))
 
-pygame.display.flip()
-running=True
-while running:
+run=True
+while run:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
-            running=False
+            run=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top and event.pos[1] > screen_height:
-            running=False
+            run=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-125 and event.pos[1] > screen_height-125:
-            print("Crédit")
+            import Credit_vue.py
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-250 and event.pos[1] > screen_height-250:
-            print("Score")
+            import Score_vue.py
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-375 and event.pos[1] > screen_height-375:
-            print("Jouer")
+            import Start_vue.py
+    screen.blit(font_titre, ((screen_width+screen_width-275)/2, screen_height-500))
+    screen.blit(font_start, ((screen_width+screen_width+left-120)/2, screen_height-350))
+    screen.blit(font_score, ((screen_width+screen_width+left-125)/2, screen_height-225))
+    screen.blit(font_credit, ((screen_width+screen_width+left-135)/2, screen_height-100))
+    screen.blit(font_quit, ((screen_width+screen_width+left-135)/2, screen_height+25))
+    pygame.display.flip()
 pygame.quit()
