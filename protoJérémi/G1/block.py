@@ -30,5 +30,3 @@ class Block2(pygame.sprite.Sprite):
         self.hitleft = [pos[0]-(lenght/2)-25,pos[1]-(height/2)-20,pos[0]-(lenght/2)-5,(pos[1]+height)-(height/2)-10]
         self.hitright = [(pos[0]+lenght)-(lenght/2),pos[1]-(height/2)-20,(pos[0]+lenght)-(lenght/2),(pos[1]+height)-(height/2)-10]
         self.hitbottom = [pos[0]-(lenght/2)-5,(pos[1]+height)-(height/2)-10,(pos[0]+lenght)-(lenght/2),(pos[1]+height)-(height/2)-10]
-
-# class Block3(pygame.sprite.Sprite):
