@@ -14,7 +14,7 @@ def run_game():
     running = True
     map = Map()
     circles = pygame.sprite.Group(Player((600, 0), screen))
-    blocks = pygame.sprite.Group(Block((600,600), screen))
+    blocks = pygame.sprite.Group()
     map.creeMap(screen,blocks)
 
     while running:

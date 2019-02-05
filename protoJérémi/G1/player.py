@@ -67,10 +67,10 @@ class Player(pygame.sprite.Sprite):
                     self.speed_y += 0.2
         pass
 
-        if self.speed_x>3:
-            self.speed_x= 3
-        elif self.speed_x< -3:
-            self.speed_x= -3
+        if self.speed_x>6:
+            self.speed_x= 6
+        elif self.speed_x< -6:
+            self.speed_x= -6
         pass
 
 
