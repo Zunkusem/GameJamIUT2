@@ -16,3 +16,19 @@ class score: # Définition de notre classe Personne
 
     def getMultiplicateur(self):
         return self.multiplicateur
+
+    def addScore(score, fichier):
+        f = open(fichier, 'w')
+        f.write(score + "\n")
+        f.close()
+
+    def getScoreFromTexte(fichier):
+f = open('score', 'r')
+if f == null:
+    print("pas de score")
+    f.close()
+else:
+    for i in f:
+        a = f.readlines()
+        print(a)
+    f.close()
