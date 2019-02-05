@@ -1,5 +1,5 @@
 import self as self
-
+import math
 class Objet:
     def __init__(self, nom):
         self.forme=nom
@@ -14,7 +14,7 @@ class Rectangle(Objet):
         self.y = y
         self.largeur = larg
         self.hauteur=hauteur
-                
+
     def setPosition(self, x=0, y=0):
         self.x=x
         self.y=y
@@ -33,7 +33,7 @@ class Rectangle(Objet):
 
 
 
-        
+
 
 class Personnage(Rectangle):
 
@@ -68,6 +68,42 @@ class Cercle(Objet):
     def getRayon(self):
         return self.rayon
 
+class Triangle(Objet):
+    def __init__(self,x=0,y=0,z=0):
+        super().__init__("Triangle")
+        self.x=x
+        self.y=y
+        self.z=z
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def getZ(self):
+        return self.z
+
+
+def intersection(cercle, rect):
+    cercleDistanceX= abs(cercle.getX() - rect.getX())
+    cercleDistanceY= abs(cercle.getY() - rect.getY())
+
+    if (cercleDistanceX > (rect.getLargeur()/2 + cercle.getRayon())):
+        print("pas collision cercle rect")
+        return False
+    if (cercleDistanceY > (rect.getHauteur()/2 + cercle.getRayon())):
+        print("pas collision cercle rect")
+        return False
+    if (cercleDistanceX <= (rect.getLargeur()/2)):
+        print("collision cercle rect")
+        return True
+    if (cercleDistanceY <= (rect.getHauteur()/2)):
+        print("collision cercle rect")
+        return True
+
+    cornerDistance = math.sqrt(cercleDistanceX - rect.getLargeur()/2) + math.sqrt(cercleDistanceY - rect.getHauteur()/2)
+    return (cornerDistance <= math.sqrt(cercle.getRayon()))
 
 def Collision(a, b):
     if a.getForme() == "Rectangle" and b.getForme() == "Rectangle":
@@ -81,11 +117,12 @@ def Collision(a, b):
             print("Pas collision Cercle")
         else:
             print("collision cercle")
+    elif a.getForme() == "Cercle" and b.getForme() == "Rectangle":
+        intersection(a, b)
+    elif a.getForme() == "Rectangle" and b.getForme() == "Cercle":
+        intersection(b, a)
     else:
         print("erreur")
-
-
-
 
 
 running = True
@@ -93,13 +130,15 @@ running = True
 perso = Personnage()
 Rec1 = Rectangle(1,1,1,1)
 Rec2 = Rectangle(1,1,1,1)
-#Rec2 = Rectangle(10,10,1,1)
+Rec3 = Rectangle(10,10,1,1)
 
 cer1 = Cercle(1,1,1)
 cer2 = Cercle(1,1,1)
 #cer2 = Cercle(10,10,1)
 while running:
     #Collision(Rec1,Rec2)
-    Collision(cer1,cer2)
+    #Collision(cer1,cer2)
+    #Collision(cer1, Rec1)
+    #Collision(Rec1,cer1)
+    #Collision(cer1,Rec3)
     continue
-
