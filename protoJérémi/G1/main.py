@@ -4,6 +4,7 @@ XS = .1
 
 from player import *
 from block import *
+from map import *
 
 def run_game():
     pygame.init()
@@ -11,12 +12,10 @@ def run_game():
     pygame.display.set_caption("Scrolling Camera")
     clock = pygame.time.Clock()
     running = True
+    map = Map()
     circles = pygame.sprite.Group(Player((600, 0), screen))
     blocks = pygame.sprite.Group(Block((600,600), screen))
-    blocks.add(Block((690,600), screen))
-    blocks.add(Block((690,200), screen))
-    blocks.add(Block((780,620), screen))
-    blocks.add(Block((510,620), screen))
+    map.creeMap(screen,blocks)
 
     while running:
         pressed = pygame.key.get_pressed()
