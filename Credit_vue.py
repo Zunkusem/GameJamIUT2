@@ -28,7 +28,7 @@ while running:
         if event.type==pygame.QUIT:
             running=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 720 and event.pos[1] > 680:
-            import Accueil_vue.py
+            import Accueil_vue
             running=False
 
     credit.blit(font_return, (10,680))

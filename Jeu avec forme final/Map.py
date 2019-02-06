@@ -1,6 +1,7 @@
 import pygame
 from Bloc import *
 from Player import *
+from Ennemi import *
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -137,6 +138,9 @@ class Level_01(Level):
         levelPlatformRetourArriere = [[1400, 40, 800, 758],
                                       [750, 40, 2750, -798],
                                       ]
+                                      
+        Ennemy= [[10,200,200]
+                ]
 
         # Go through the array above and add platforms
         for platform in level:
@@ -159,6 +163,13 @@ class Level_01(Level):
             block.rect.y = PlatformRetourArr[3]
             block.player = self.player
             self.platformRetourArriere_list.add(block)
+
+        for ennemy in Ennemy:
+            block = Cible(ennemy[0])
+            block.rect.x = ennemy[1]
+            block.rect.y = ennemy[2]
+            block.player = self.player
+            self.enemy_list.add(block)
 
 
 

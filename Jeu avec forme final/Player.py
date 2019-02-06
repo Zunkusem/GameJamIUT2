@@ -104,7 +104,7 @@ class Player(pygame.sprite.Sprite):
             # Stop our vertical movement
             self.change_y = 0
             self.change_x= -15
-            
+
 
 
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
@@ -128,20 +128,6 @@ class Player(pygame.sprite.Sprite):
                 self.change_y = 10;
             self.invG();
 
-            # Stop our vertical movement
-
-        # if self.posP < self.TZone:
-        #     if self.Gstat == 1:
-        #         self.Gmult = 1
-        #         self.invG()
-        # elif self.posP > self.BZone :
-        #     if self.Gstat == -1:
-        #         self.Gmult = 1
-        #         self.invG()
-        # else:
-        #     if self.Gmult != 0:
-        #         self.Gmult = 0
-
         self.posP += self.change_y
 
 
@@ -160,18 +146,14 @@ class Player(pygame.sprite.Sprite):
     def jump(self):
         """ Called when user hits 'jump' button. """
 
-        # move down a bit and see if there is a platform below us.
-        # Move down 2 pixels because it doesn't work well if we only move down 1
-        # when working with a platform moving down.
         self.rect.y += self.J1
         platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         self.rect.y -= self.J1
 
-        # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.change_y = self.J2
 
-    # Player-controlled movement:
+
     def go_left(self):
         """ Called when the user hits the left arrow. """
         self.change_x = -6
