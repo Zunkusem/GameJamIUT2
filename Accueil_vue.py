@@ -5,15 +5,17 @@ from pygame import *
 pygame.init()
 
 screen=pygame.display.set_mode([1024, 768])
-screen.fill([255, 255, 255])
-background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1280, 720], 0)
+#screen.fill([255, 255, 255])
+img = pygame.image.load("start.jpg").convert()
+background = pygame.transform.scale(img, (1024,768))
+#background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1024, 768], 0)
 left=400
 top=100
 screen_width = (1024/2)-(left/2)
 screen_height = (768/2)+200
 
-mid_x = pygame.draw.rect(screen, [255, 0, 0], [1024/2, 0, 2, 768], 0)
-mid_y = pygame.draw.rect(screen, [255, 0, 0], [0, 768/2, 1024, 2], 0)
+#mid_x = pygame.draw.rect(screen, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+#mid_y = pygame.draw.rect(screen, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
 start = pygame.draw.rect(screen, [255, 0, 0], [screen_width, screen_height, left, top], 0)
 score = pygame.draw.rect(screen, [255, 125, 0], [screen_width, screen_height-125, left, top], 0)
@@ -23,7 +25,7 @@ quit = pygame.draw.rect(screen, [125, 0, 255], [screen_width, screen_height-375,
 font.init()
 font_a = pygame.font.SysFont('arial', 40)
 font_b = pygame.font.SysFont('arial', 70)
-font_titre = font_b.render("CybeRush180 by KotProd", 1, (0,0,0))
+#font_titre = font_b.render("CybeRush180 by KotProd", 1, (0,0,0))
 font_start = font_a.render("START", 1, (255,255,255))
 font_score = font_a.render("SCORE", 1, (255,255,255))
 font_credit = font_a.render("CREDITS", 1, (255,255,255))
@@ -31,7 +33,8 @@ font_quit = font_a.render("QUITTER", 1, (255,255,255))
 
 run=True
 while run:
-    screen.blit(font_titre, ((screen_width+screen_width-275)/2, screen_height-500))
+    screen.blit(background, (0,0))
+    #screen.blit(font_titre, ((screen_width+screen_width-275)/2, screen_height-500))
     screen.blit(font_start, ((screen_width+screen_width+left-120)/2, screen_height-350))
     screen.blit(font_score, ((screen_width+screen_width+left-125)/2, screen_height-225))
     screen.blit(font_credit, ((screen_width+screen_width+left-135)/2, screen_height-100))
