@@ -119,6 +119,17 @@ class Player(pygame.sprite.Sprite):
             # Stop our vertical movement
             self.change_y = 0
 
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.bumper_list, False)
+        for block in block_hit_list:
+
+            if self.change_y > 0:
+                self.change_y = -10;
+            elif self.change_y < 0:
+                self.change_y = 10;
+            self.invG();
+
+            # Stop our vertical movement
+
         # if self.posP < self.TZone:
         #     if self.Gstat == 1:
         #         self.Gmult = 1
