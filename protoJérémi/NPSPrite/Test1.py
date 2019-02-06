@@ -31,8 +31,8 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
 # Screen dimensions
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
 
 
 class Player(pygame.sprite.Sprite):
@@ -65,14 +65,16 @@ class Player(pygame.sprite.Sprite):
         self.change_y = 0
 
         # List of sprites we can bump against
-        self.Gstate = 1;
+        self.Gstate = 1
+        self.Gmult =1
         self.level = None
         self.G = 0.2
         self.Gstat = 1
         self.J1 = 2
         self.J2 = -10
-        self.BZone = 250
-        self.TZone = 250
+        # self.BZone = -150
+        # self.TZone = -800
+        self.posP = 0
 
     def invG(self):
         self.G = self.G*(-1)
@@ -95,10 +97,15 @@ class Player(pygame.sprite.Sprite):
             # If we are moving right,
             # set our right side to the left side of the item we hit
             if self.change_x > 0:
+                self.Gmult == 1
                 self.rect.right = block.rect.left
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
+                self.Gmult == 1
                 self.rect.left = block.rect.right
+            else:
+                self.Gmult == 0
+
 
         # Move up/down
         self.rect.y += self.change_y
@@ -116,20 +123,27 @@ class Player(pygame.sprite.Sprite):
             # Stop our vertical movement
             self.change_y = 0
 
-        if self.rect.y < self.TZone:
-            if self.Gstat == 1:
-                self.invG()
-        elif self.rect.y > self.BZone :
-            if self.Gstat == -1:
-                self.invG()
+        # if self.posP < self.TZone:
+        #     if self.Gstat == 1:
+        #         self.Gmult = 1
+        #         self.invG()
+        # elif self.posP > self.BZone :
+        #     if self.Gstat == -1:
+        #         self.Gmult = 1
+        #         self.invG()
+        # else:
+        #     if self.Gmult != 0:
+        #         self.Gmult = 0
+
+        self.posP += self.change_y
 
 
     def calc_grav(self):
         """ Calculate effect of gravity. """
         if self.change_y == 0:
-            self.change_y = self.Gstat
+            self.change_y = self.Gstat*self.Gmult
         else:
-            self.change_y += self.G
+            self.change_y += self.G*self.Gmult
 
         # See if we are on the ground.
         if self.rect.y >= SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
@@ -192,7 +206,8 @@ class Level():
         self.player = player
 
         # How far this world has been scrolled left/right
-        self.world_shift = 0
+        self.world_shiftx = 0
+        self.world_shifty = 0
 
     # Update everythign on this level
     def update(self):
@@ -210,12 +225,13 @@ class Level():
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
 
-    def shift_world(self, shift_x):
+    def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
         everything: """
 
         # Keep track of the shift amount
-        self.world_shift += shift_x
+        self.world_shiftx += shift_x
+
 
         # Go through all the sprite lists and shift
         for platform in self.platform_list:
@@ -223,6 +239,77 @@ class Level():
 
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
+
+    def shift_worldy(self, shift_y, player):
+        """ When the user moves left/right and we need to scroll
+        everything: """
+
+        # Keep track of the shift amount
+        camspeed = abs(shift_y);
+
+        # for platform in self.platform_list:
+        #     platform.rect.y -= shift_y
+        # for enemy in self.enemy_list:
+        #     enemy.rect.y -= shift_y
+        #
+        # player.rect.top = 400
+        # player.posP += shift_y
+
+        self.world_shiftx += shift_y
+
+        # Go through all the sprite lists and shift
+        for platform in self.platform_list:
+            platform.rect.y += shift_y
+
+        for enemy in self.enemy_list:
+            enemy.rect.y += shift_y
+
+        # player.BZone += shift_y
+        # player.TZone += shift_y
+
+
+
+        # if player.rect.top  < 100 :
+        #     self.world_shifty -= camspeed
+        #     player.BZone += camspeed
+        #     player.TZone += camspeed
+        #     # if player.change_y > 0:
+        #     #     player.change_y += camspeed
+        #
+        #     for platform in self.platform_list:
+        #         platform.rect.y += camspeed
+        #     for enemy in self.enemy_list:
+        #         enemy.rect.y += camspeed
+        #     player.rect.y += camspeed
+        #     player.posP += camspeed
+        #
+        #
+        # elif player.rect.bottom > 500:
+        #     self.world_shifty -= camspeed
+        #     player.BZone -= camspeed
+        #     player.TZone -= camspeed
+        #     # if player.change_y < 0:
+        #     #     player.change_y += camspeed
+        #
+        #     for platform in self.platform_list:
+        #         platform.rect.y -= camspeed
+        #     for enemy in self.enemy_list:
+        #         enemy.rect.y -= camspeed
+        #
+        #     player.posP -= camspeed
+        #     player.rect.y -= camspeed
+
+
+
+        # player.BZone += shift_y
+        # player.TZone += shift_y
+        #
+        # # Go through all the sprite lists and shift
+        # for platform in self.platform_list:
+        #     platform.rect.y += shift_y
+        #
+        # for enemy in self.enemy_list:
+        #     enemy.rect.y += shift_y
 
 
 # Create platforms for the level
@@ -244,6 +331,8 @@ class Level_01(Level):
                  [210, 70, 1120, 280],
                  [210, 70, 500, 0],
                  [210, 70, 400, 0],
+                 [210, 70, 0, -600],
+                 [210, 70, 0, 600],
                  [210, 70, 400, 300]
                  ]
 
@@ -285,7 +374,7 @@ def main():
     player.level = current_level
 
     player.rect.x = 0
-    player.rect.y = SCREEN_HEIGHT - player.rect.height
+    player.rect.y = SCREEN_HEIGHT - player.rect.height -100
     active_sprite_list.add(player)
 
     # Loop until the user clicks the close button.
@@ -296,8 +385,13 @@ def main():
 
     # -------- Main Program Loop -----------
     while not done:
-        # print(player.Gstat)
-        print(player.rect.y)
+        # print("rectTop:" + str(player.rect.top))
+        # print("rectBot:" + str(player.rect.bottom))
+        # print("posP:" + str(player.posP))
+        # print("BZone:" + str(player.BZone))
+        # print("TZone:" + str(player.TZone))
+        # print("Gmult:" + str(player.Gmult))
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
@@ -309,6 +403,9 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
+                if event.key == pygame.K_w:
+                    player.invG()
+
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
@@ -321,21 +418,32 @@ def main():
 
         # Update items in the level
         current_level.update()
+        # current_level.shift_worldy(player.change_y,player)
 
         # If the player gets near the right side, shift the world left (-x)
         if player.rect.right >= 200:
             diff = player.rect.right - 200
             player.rect.right = 200
-            current_level.shift_world(-diff)
+            current_level.shift_worldx(-diff)
+
+        if player.rect.top < 100:
+             diff = 100 - player.rect.top
+             player.rect.top = 100
+             current_level.shift_worldy(diff,player)
+
+        if player.rect.bottom > 700 :
+            diff = player.rect.bottom - 700
+            player.rect.bottom = 700
+            current_level.shift_worldy(-diff,player)
 
         # If the player gets near the left side, shift the world right (+x)
         if player.rect.left <= 120:
             diff = 120 - player.rect.left
             player.rect.left = 120
-            current_level.shift_world(diff)
+            current_level.shift_worldx(diff)
 
         # If the player gets to the end of the level, go to the next level
-        current_position = player.rect.x + current_level.world_shift
+        current_position = player.rect.x + current_level.world_shiftx
         if current_position < current_level.level_limit:
             player.rect.x = 120
             if current_level_no < len(level_list)-1:

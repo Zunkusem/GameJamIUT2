@@ -1,15 +1,16 @@
-from Ressort import *
-from BlocDeCollision import *
+import pygame
+from Param import *
 
-class Bloc(pygame.sprite.Sprite):
-    """Classe <Jeu>"""
-    def __init__(self,map):
-        self.map=map
-        ressort = pygame.sprite.Group()
-        blocDeCollision = pygame.sprite.Group()
+class Platform(pygame.sprite.Sprite):
+    """ Platform the user can jump on """
 
-    def addBlockH(pos,screen):
-        blocDeCollision.add(BlocH((pos),screen))
+    def __init__(self, width, height):
+        """ Platform constructor. Assumes constructed with user passing in
+            an array of 5 numbers like what's defined at the top of this code.
+            """
+        super().__init__()
 
-    def addBlockV(pos,screen):
-        blocDeCollision.add(BlocV((pos),screen))
+        self.image = pygame.Surface([width, height])
+        self.image.fill(GREEN)
+
+        self.rect = self.image.get_rect()

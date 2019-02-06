@@ -26,10 +26,10 @@ def run_game():
                 return 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 players.add(Player(event.pos, screen))
-                #if pygame.mixer.get_busy == true:
-                   # pygame.mixer.music.paused()
-               # else:
-                   # pygame.mixer.music.unpaused()
+                if pygame.mixer.get_busy == true:
+                   pygame.mixer.music.paused()
+                else:
+                   pygame.mixer.music.unpaused()
                 
         pass
         if pressed[pygame.K_d]:
