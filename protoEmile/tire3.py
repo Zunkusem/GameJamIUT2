@@ -16,7 +16,10 @@ def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) 
     #print("norme")
     #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
     #print(degrees(angle))
-    return (vitesseX,vitesseY)
+    if x>0:
+        return (vitesseX,vitesseY)
+    else :
+        return (-vitesseX,-vitesseY)
 
     
 
