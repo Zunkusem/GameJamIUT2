@@ -31,8 +31,8 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
 # Screen dimensions
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
 
 
 class Player(pygame.sprite.Sprite):
@@ -141,6 +141,8 @@ class Player(pygame.sprite.Sprite):
     def shoot(self,bullets, xSouris, ySouris):
         bullets.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
 
+#class Turret(pygame.sprite.Sprite):
+#    def
 
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
@@ -290,6 +292,8 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.x += self.speedx*20
         if self.rect.bottom < 0:
             self.kill()
+        if self.rect.top > 1100:
+            self.kill()
 
 
 def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
@@ -366,17 +370,17 @@ def main():
                 player.shoot(bullets,vitesseX,vitesseY)
 
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_a:
                     player.go_left()
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_d:
                     player.go_right()
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_w:
                     player.jump()
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT and player.change_x < 0:
+                if event.key == pygame.K_a and player.change_x < 0:
                     player.stop()
-                if event.key == pygame.K_RIGHT and player.change_x > 0:
+                if event.key == pygame.K_d and player.change_x > 0:
                     player.stop()
 
 
