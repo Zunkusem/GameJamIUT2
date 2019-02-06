@@ -1,7 +1,7 @@
 def estPair(i):
     if i%2 == 0:
         return True
-    else:    
+    else:
         return False
 
 def separeScoreDuNom(liste):
@@ -43,15 +43,15 @@ def ajouteScore(nom,score,listeNom,listeScore):
         nouvListeScore.pop()
         nouvListeNom.pop()
     return (nouvListeNom,nouvListeScore)
-    
+
 def enregistrerNouvelleListe(nom,score,nomFichier):
     fichier=open(nomFichier,'w')#pour un fichier texte, sinon, mettre 'wb' au lieu de "w"
     #le fichier a été vidé ci-dessus
     for i in range(0,len(score)):
         fichier.write(nom[i]+":"+score[i]+",")#on peut maintenant écrire
-    
+
     fichier.close()#ne pas oublier pour libérer l'accès.
-    
+
 
 def recupereLaListe(fichier):
     f = open(fichier,'r') #ouvre le fichier
@@ -77,12 +77,3 @@ print("nouvelle liste:")
 print(nom)
 print(score)
 enregistrerNouvelleListe(nom,transformeListeIntEnListeString(score),"score.txt")#ecrit le resultat dans le fichier desiré
-
-
-
-    
-    
-
-    
-    
-    

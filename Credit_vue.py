@@ -3,13 +3,16 @@ from pygame import *
 
 pygame.init()
 
-credit=pygame.display.set_mode([1280, 720])
+credit=pygame.display.set_mode([1024, 768])
 credit.fill([255, 255, 255])
 background = pygame.draw.rect(credit, [25, 6, 45], [0, 0, 1280, 720], 0)
 left=500
 top=600
-credit_width = (1280/2)-(left/2)
-credit_height = (720/2)+200
+credit_width = (1024/2)-(left/2)
+credit_height = (768/2)+200
+
+mid_x = pygame.draw.rect(credit, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+mid_y = pygame.draw.rect(credit, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
 retour = pygame.draw.rect(credit, [255, 0, 0], [0, 670, 125, 50], 0)
 
@@ -27,7 +30,7 @@ while running:
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 720 and event.pos[1] > 680:
             import Accueil_vue.py
             running=False
-            
+
     credit.blit(font_return, (10,680))
     credit.blit(font_titre, ((credit_width+credit_width+left-120)/2, credit_height-550))
 

@@ -4,13 +4,16 @@ from pygame import *
 
 pygame.init()
 
-screen=pygame.display.set_mode([1280, 720])
+screen=pygame.display.set_mode([1024, 768])
 screen.fill([255, 255, 255])
 background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1280, 720], 0)
 left=400
 top=100
-screen_width = (1280/2)-(left/2)
-screen_height = (720/2)+200
+screen_width = (1024/2)-(left/2)
+screen_height = (768/2)+200
+
+mid_x = pygame.draw.rect(screen, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+mid_y = pygame.draw.rect(screen, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
 start = pygame.draw.rect(screen, [255, 0, 0], [screen_width, screen_height, left, top], 0)
 score = pygame.draw.rect(screen, [255, 125, 0], [screen_width, screen_height-125, left, top], 0)
@@ -20,7 +23,7 @@ quit = pygame.draw.rect(screen, [125, 0, 255], [screen_width, screen_height-375,
 font.init()
 font_a = pygame.font.SysFont('arial', 40)
 font_b = pygame.font.SysFont('arial', 70)
-font_titre = font_b.render("OCTOGONE SANS REGLE", 1, (0,0,0))
+font_titre = font_b.render("CybeRush180 by KotProd", 1, (0,0,0))
 font_start = font_a.render("START", 1, (255,255,255))
 font_score = font_a.render("SCORE", 1, (255,255,255))
 font_credit = font_a.render("CREDITS", 1, (255,255,255))
