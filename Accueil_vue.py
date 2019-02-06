@@ -31,27 +31,20 @@ font_quit = font_a.render("QUITTER", 1, (255,255,255))
 
 run=True
 while run:
-    for event in pygame.event.get():
-        if event.type==pygame.QUIT:
-            run=False
-        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top and event.pos[1] > screen_height:
-            run=False
-        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-125 and event.pos[1] > screen_height-125:
-            import Credit_vue.py
-            from Credit_vue.py import *
-        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-250 and event.pos[1] > screen_height-250:
-            pygame.display.flip()
-            #run=False
-            #import Score_vue.py
-            from Score_vue.py import *
-        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-375 and event.pos[1] > screen_height-375:
-            import Start_vue.py
-            from Start_vue.py import *
-
     screen.blit(font_titre, ((screen_width+screen_width-275)/2, screen_height-500))
     screen.blit(font_start, ((screen_width+screen_width+left-120)/2, screen_height-350))
     screen.blit(font_score, ((screen_width+screen_width+left-125)/2, screen_height-225))
     screen.blit(font_credit, ((screen_width+screen_width+left-135)/2, screen_height-100))
     screen.blit(font_quit, ((screen_width+screen_width+left-135)/2, screen_height+25))
     pygame.display.flip()
-pygame.quit()
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            run=False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top and event.pos[1] > screen_height:
+            run=False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-125 and event.pos[1] > screen_height-125:
+            import Credit_vue
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-250 and event.pos[1] > screen_height-250:
+            import Score_vue
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-375 and event.pos[1] > screen_height-375:
+            import Start_vue
