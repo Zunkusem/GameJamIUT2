@@ -2,7 +2,6 @@ import pygame
 from pygame import *
 from ClassGestionFichierScore import *
 
-print(result[0][0])
 pygame.init()
 
 score=pygame.display.set_mode([1024, 768])
@@ -15,8 +14,8 @@ score_height = (768/2)+200
 
 retour = pygame.draw.rect(score, [255, 0, 0], [0, 720, 125, 50], 0)
 
-mid_x = pygame.draw.rect(score, [255, 0, 0], [1024/2, 0, 2, 768], 0)
-mid_y = pygame.draw.rect(score, [255, 0, 0], [0, 768/2, 1024, 2], 0)
+#mid_x = pygame.draw.rect(score, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+#mid_y = pygame.draw.rect(score, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
 font.init()
 font_a = pygame.font.SysFont('arial', 70)
@@ -55,32 +54,32 @@ font_dix = font_e.render("10ème : ", 1, (255, 255, 255))
 
 running=True
 while running:
+    score.blit(font_return, (10,720))
+    score.blit(font_titre, ((score_width+score_width+left-350)/2, score_height-550))
+    score.blit(font_un, ((score_width+score_width+left-250)/2,150))
+    score.blit(score_un, ((score_width+score_width+left-100)/2,150))
+    score.blit(font_deux, ((score_width+score_width+left-300)/2,208))
+    score.blit(score_deux, ((score_width+score_width+left-100)/2,208))
+    score.blit(font_trois, ((score_width+score_width+left-300)/2,266))
+    score.blit(score_trois, ((score_width+score_width+left-100)/2,266))
+    score.blit(font_quatre, ((score_width+score_width+left-250)/2,324))
+    score.blit(score_quatre, ((score_width+score_width+left-100)/2,314))
+    score.blit(font_cinque, ((score_width+score_width+left-250)/2,382))
+    score.blit(score_cinque, ((score_width+score_width+left-100)/2,372))
+    score.blit(font_six, ((score_width+score_width+left-250)/2,440))
+    score.blit(score_six, ((score_width+score_width+left-100)/2,430))
+    score.blit(font_sept, ((score_width+score_width+left-250)/2,498))
+    score.blit(score_sept, ((score_width+score_width+left-100)/2,488))
+    score.blit(font_huit, ((score_width+score_width+left-250)/2,556))
+    score.blit(score_huit, ((score_width+score_width+left-100)/2,546))
+    score.blit(font_neuf, ((score_width+score_width+left-250)/2,614))
+    score.blit(score_neuf, ((score_width+score_width+left-100)/2,604))
+    score.blit(font_dix, ((score_width+score_width+left-275)/2,672))
+    score.blit(score_dix, ((score_width+score_width+left-100)/2,662))
+    pygame.display.flip()
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             running=False
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
-            import Accueil_vue.py
-    score.blit(font_return, (10,720))
-    score.blit(font_titre, ((score_width+score_width+left-350)/2, score_height-550))
-    score.blit(font_un, ((score_width+score_width+left-250)/2,110))
-    score.blit(score_un, ((score_width+score_width+left-100)/2,110))
-    score.blit(font_deux, ((score_width+score_width+left-300)/2,168))
-    score.blit(score_deux, ((score_width+score_width+left-100)/2,168))
-    score.blit(font_trois, ((score_width+score_width+left-300)/2,226))
-    score.blit(score_trois, ((score_width+score_width+left-100)/2,226))
-    score.blit(font_quatre, ((score_width+score_width+left-250)/2,284))
-    score.blit(score_quatre, ((score_width+score_width+left-100)/2,284))
-    score.blit(font_cinque, ((score_width+score_width+left-250)/2,342))
-    score.blit(score_cinque, ((score_width+score_width+left-100)/2,342))
-    score.blit(font_six, ((score_width+score_width+left-250)/2,400))
-    score.blit(score_six, ((score_width+score_width+left-100)/2,400))
-    score.blit(font_sept, ((score_width+score_width+left-250)/2,458))
-    score.blit(score_sept, ((score_width+score_width+left-100)/2,458))
-    score.blit(font_huit, ((score_width+score_width+left-250)/2,516))
-    score.blit(score_huit, ((score_width+score_width+left-100)/2,516))
-    score.blit(font_neuf, ((score_width+score_width+left-250)/2,574))
-    score.blit(score_neuf, ((score_width+score_width+left-100)/2,574))
-    score.blit(font_dix, ((score_width+score_width+left-275)/2,632))
-    score.blit(score_dix, ((score_width+score_width+left-100)/2,632))
-    pygame.display.flip()
-pygame.quit()
+            running = False
+            import Accueil_vue

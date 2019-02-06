@@ -1,8 +1,11 @@
 import pygame
+from pygame import *
+from Time import *
 from math import *
 from Player import *
 from Map import *
 from Param import *
+from Score import *
 
 
 def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
@@ -38,9 +41,19 @@ def main():
 
     # Create the player
     player = Player()
-
+    score = Score()
+    time = Time()
+    
     bullets = pygame.sprite.Group()
 
+    #pour l'affichage du score
+    
+    font.init()
+    font_a = pygame.font.SysFont('arial', 40)
+    font_b = pygame.font.SysFont('arial', 70)
+    
+    
+    
     # Create all the levels
     level_list = []
     level_list.append(Level_01(player))
@@ -92,9 +105,9 @@ def main():
                     player.go_left()
                 if event.key == pygame.K_d:
                     player.go_right()
-                if event.key == pygame.K_SPACE:
-                    player.jump()
                 if event.key == pygame.K_w:
+                    player.jump()
+                if event.key == pygame.K_SPACE:
                     player.invG()
 
 
@@ -156,6 +169,14 @@ def main():
         # Limit to 60 frames per second
         clock.tick(60)
 
+        #affichage score/mult/temps
+        time.incremente()
+        font_score = font_a.render(score.getScore(), 1, (YELLOW))
+        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
+        font_temps = font_a.render(time.get(), 1, (255,255,255))
+        screen.blit(font_score, (750,10))
+        screen.blit(font_multiplicateur, (900,10))
+        screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
 
