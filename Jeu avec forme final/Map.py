@@ -11,6 +11,7 @@ class Level():
         """ Constructor. Pass in a handle to player. Needed for when moving
             platforms collide with the player. """
         self.platform_list = pygame.sprite.Group()
+        self.bumper_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
 
@@ -73,58 +74,6 @@ class Level():
         for enemy in self.enemy_list:
             enemy.rect.y += shift_y
 
-        # player.BZone += shift_y
-        # player.TZone += shift_y
-
-
-
-        # if player.rect.top  < 100 :
-        #     self.world_shifty -= camspeed
-        #     player.BZone += camspeed
-        #     player.TZone += camspeed
-        #     # if player.change_y > 0:
-        #     #     player.change_y += camspeed
-        #
-        #     for platform in self.platform_list:
-        #         platform.rect.y += camspeed
-        #     for enemy in self.enemy_list:
-        #         enemy.rect.y += camspeed
-        #     player.rect.y += camspeed
-        #     player.posP += camspeed
-        #
-        #
-        # elif player.rect.bottom > 500:
-        #     self.world_shifty -= camspeed
-        #     player.BZone -= camspeed
-        #     player.TZone -= camspeed
-        #     # if player.change_y < 0:
-        #     #     player.change_y += camspeed
-        #
-        #     for platform in self.platform_list:
-        #         platform.rect.y -= camspeed
-        #     for enemy in self.enemy_list:
-        #         enemy.rect.y -= camspeed
-        #
-        #     player.posP -= camspeed
-        #     player.rect.y -= camspeed
-
-
-
-        # player.BZone += shift_y
-        # player.TZone += shift_y
-        #
-        # # Go through all the sprite lists and shift
-        # for platform in self.platform_list:
-        #     platform.rect.y += shift_y
-        #
-        # for enemy in self.enemy_list:
-        #     enemy.rect.y += shift_y
-
-
-# Create platforms for the level
-
-
-# Create platforms for the level
 class Level_01(Level):
     """ Definition for level 1. """
 
@@ -148,6 +97,9 @@ class Level_01(Level):
                  [210, 70, 400, 300]
                  ]
 
+        levelBump = [[210, 70, 400, 300]
+                 ]
+
         # Go through the array above and add platforms
         for platform in level:
             block = Platform(platform[0], platform[1])
@@ -155,6 +107,14 @@ class Level_01(Level):
             block.rect.y = platform[3]
             block.player = self.player
             self.platform_list.add(block)
+
+        for bumper in levelBump:
+            block = Bumper(platform[0], platform[1])
+            block.rect.x = platform[2]
+            block.rect.y = platform[3]
+            block.player = self.player
+            self.bumper_list.add(block)
+
 
 
 # Create platforms for the level
