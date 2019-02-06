@@ -1,5 +1,6 @@
 import pygame
 from pygame import *
+from Time import *
 from math import *
 from Player import *
 from Map import *
@@ -41,6 +42,7 @@ def main():
     # Create the player
     player = Player()
     score = Score()
+    time = Time()
     
     bullets = pygame.sprite.Group()
 
@@ -167,14 +169,14 @@ def main():
         # Limit to 60 frames per second
         clock.tick(60)
 
-        #affichage score
-        score.incrementeScoreDeUn()
+        #affichage score/mult/temps
+        time.incremente()
         font_score = font_a.render(score.getScore(), 1, (YELLOW))
-        font_multiplicateur = font_a.render(score.getMultiplicateur(), 1, (ORANGE))
-        font_temps = font_a.render("00:00", 1, (255,255,255))
-        screen.blit(font_score, (900,10))
-        screen.blit(font_multiplicateur, (950,10))
-        screen.blit(font_temps, (500,10))
+        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
+        font_temps = font_a.render(time.get(), 1, (255,255,255))
+        screen.blit(font_score, (750,10))
+        screen.blit(font_multiplicateur, (900,10))
+        screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
 

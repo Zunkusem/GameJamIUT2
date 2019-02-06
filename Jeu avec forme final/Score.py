@@ -4,7 +4,6 @@ class Score():
         self.nombre=0
         self.multiplicateur=1
 
-    # Update everythign on this level
     def incrementeScoreDeUn(self):
         self.nombre=self.nombre+1*self.multiplicateur
 
