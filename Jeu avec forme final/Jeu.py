@@ -52,8 +52,8 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    player.rect.x = 0
-    player.rect.y = SCREEN_HEIGHT - player.rect.height -100
+    player.rect.x = 100
+    player.rect.y = 758
     active_sprite_list.add(player)
 
     # Loop until the user clicks the close button.
@@ -88,20 +88,20 @@ def main():
                 player.shoot(bullets,vitesseX,vitesseY)
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_a:
                     player.go_left()
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_d:
                     player.go_right()
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_SPACE:
                     player.jump()
                 if event.key == pygame.K_w:
                     player.invG()
 
 
             if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT and player.change_x < 0:
+                if event.key == pygame.K_a and player.change_x < 0:
                     player.stop()
-                if event.key == pygame.K_RIGHT and player.change_x > 0:
+                if event.key == pygame.K_d and player.change_x > 0:
                     player.stop()
 
         # Update the player.
