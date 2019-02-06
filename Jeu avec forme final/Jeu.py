@@ -65,7 +65,7 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    player.rect.x = 3400
+    player.rect.x = 100
     player.rect.y = 758
     active_sprite_list.add(player)
 
