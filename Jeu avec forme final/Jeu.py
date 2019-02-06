@@ -92,9 +92,9 @@ def main():
                     player.go_left()
                 if event.key == pygame.K_d:
                     player.go_right()
-                if event.key == pygame.K_SPACE:
-                    player.jump()
                 if event.key == pygame.K_w:
+                    player.jump()
+                if event.key == pygame.K_SPACE:
                     player.invG()
 
 

@@ -103,22 +103,33 @@ class Level_01(Level):
 
         # Array with width, height, x, and y of platform
         level = [#bords de la map
-                 [150, 768, -140, 0],
-                 [10000, 10, 0, 758],
-                 [150, 768, -140, -788],
-                 [10000, 10, 0, -758],
-                 #blocs
+                 [150, 968, -140, -100],
+                 [10000, 100, 0, 758],
+                 [150, 968, -140, -988],
+                 [10000, 100, 0, -858],
+                 #blocs 1ere partie en bas
                  [160, 30, 500, 630],
                  [160, 30, 800, 500],
-                 [50, 618, 2200, 150],
                  [160, 30, 600, 380],
-                 [30, 30, 1000, 250],
-                 [30, 30, 1300, 250],
-                 [30, 30, 1600, 250],
-                 [30, 30, 1900, 450],
-                 [30, 30, 2100, 350],
-                 [30, 30, 2000, 220],
-                 [160, 30, 800, 500]]
+                 [50, 30, 1000, 250],
+                 [50, 30, 1300, 250],
+                 [50, 30, 1600, 250],
+                 [50, 30, 1900, 450],
+                 [50, 30, 2100, 350],
+                 [50, 30, 2050, 220],
+                 [50, 618, 2200, 150],
+                 [50, 900, 2350 , 100],
+                 #blocs 2eme partie en haut
+                 [100, 30, 2500, -700],
+                 [100, 30, 2700, -650],
+                 [10, 150, 2900, -680],
+                 [100, 30, 3000, -650],
+                 [10, 150, 3200, -680],
+                 [100, 30, 3300, -650],
+                 [200, 250, 3500, -758],
+                 [50, 900, 3800, -778],
+                 ]
+
 
         Bump = [[100, 70, 400, 500],
                 [100, 70, 200, 400]
@@ -127,7 +138,7 @@ class Level_01(Level):
         levelPlatformRetourArriere = [[100, 10, 800, 300]
                  ]
 
-        Ennemy= [[200,200]
+        Ennemy= [[10,200,200]
                 ]
 
         # Go through the array above and add platforms
@@ -153,12 +164,13 @@ class Level_01(Level):
             self.platformRetourArriere_list.add(block)
 
         for ennemy in Ennemy:
-            block = Cible()
-            block.rect.x = ennemy[0]
-            block.rect.y = ennemy[1]
+            block = Cible(ennemy[0])
+            block.rect.x = ennemy[1]
+            block.rect.y = ennemy[2]
             block.player = self.player
             self.enemy_list.add(block)
 
 
 
-# Create platforms for the level
+# reate platforms for the level
+#"

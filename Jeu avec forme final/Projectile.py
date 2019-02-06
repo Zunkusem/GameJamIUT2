@@ -25,6 +25,6 @@ class Bullet(pygame.sprite.Sprite):
             self.kill()
         if len(enemy_hit_list) > 0:
             for ennemy in enemy_hit_list:
-                ennemy.kill()
+                ennemy.bulletHit(1)
             pass
             self.kill()
