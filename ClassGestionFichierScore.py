@@ -90,6 +90,4 @@ class Score():
 
 
 sc = Score("score.txt")
-print(sc.recupèreLesScores())
 result = sc.recupèreLesScores()
-print(result)
