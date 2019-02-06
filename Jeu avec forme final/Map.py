@@ -12,6 +12,7 @@ class Level():
             platforms collide with the player. """
         self.platform_list = pygame.sprite.Group()
         self.bumper_list = pygame.sprite.Group()
+        self.platformRetourArriere_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
 
@@ -34,6 +35,7 @@ class Level():
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
+        self.platformRetourArriere_list.draw(screen)
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -45,6 +47,9 @@ class Level():
 
         # Go through all the sprite lists and shift
         for platform in self.platform_list:
+            platform.rect.x += shift_x
+
+        for platform in self.platformRetourArriere_list:
             platform.rect.x += shift_x
 
         for enemy in self.enemy_list:
@@ -69,6 +74,9 @@ class Level():
 
         # Go through all the sprite lists and shift
         for platform in self.platform_list:
+            platform.rect.y += shift_y
+
+        for platform in self.platformRetourArriere_list:
             platform.rect.y += shift_y
 
         for enemy in self.enemy_list:
@@ -104,7 +112,10 @@ class Level_01(Level):
                  [30, 30, 2000, 220],
                  [160, 30, 800, 500]]
 
-        levelBump = [[210, 70, 400, 300]
+        levelBump = [[210, 70, 600, 300]
+                 ]
+
+        levelPlatformRetourArriere = [[10, 10, 400, 300]
                  ]
 
         # Go through the array above and add platforms
@@ -121,6 +132,13 @@ class Level_01(Level):
             block.rect.y = platform[3]
             block.player = self.player
             self.bumper_list.add(block)
+
+        for PlatformRetourArr in levelPlatformRetourArriere:
+            block = PlatformRetourArriere(PlatformRetourArr[0], PlatformRetourArr[1])
+            block.rect.x = PlatformRetourArr[2]
+            block.rect.y = PlatformRetourArr[3]
+            block.player = self.player
+            self.platformRetourArriere_list.add(block)
 
 
 
