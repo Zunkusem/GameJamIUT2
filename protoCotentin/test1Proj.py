@@ -120,8 +120,6 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += 2
         platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
         self.rect.y -= 2
-
-        # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.change_y = -10
 
@@ -140,9 +138,6 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self,bullets, xSouris, ySouris):
         bullets.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
-
-#class Turret(pygame.sprite.Sprite):
-#    def
 
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
@@ -222,7 +217,7 @@ class Level_01(Level):
                  [210, 70, 800, 400],
                  [210, 70, 1000, 500],
                  [210, 70, 1120, 280],
-                 [200, 50, 1850, 600]]
+                 [200, 50, 1850, 700]]
 
         # Go through the array above and add platforms
         for platform in level:
@@ -287,12 +282,15 @@ class Bullet(pygame.sprite.Sprite):
         self.speedy = sy
         self.speedx = sx
 
-    def update(self):
+    def update(self,player):
         self.rect.y += self.speedy*20
         self.rect.x += self.speedx*20
-        if self.rect.bottom < 0:
+        self.rect.y += 2
+        platform_hit_list = pygame.sprite.spritecollide(self, player.level.platform_list, False)
+        self.rect.y -= 2
+        if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.kill()
-        if self.rect.top > 1100:
+        if self.rect.y >= SCREEN_HEIGHT or self.rect.x >= SCREEN_WIDTH or self.rect.y < 0 or self.rect.x < 0:
             self.kill()
 
 
@@ -316,7 +314,7 @@ def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) 
         return (vitesseX,vitesseY)
     else:
         return (-vitesseX,-vitesseY)
-    
+
 def main():
     """ Main Program """
     pygame.init()
@@ -357,6 +355,7 @@ def main():
 
     # -------- Main Program Loop -----------
     while not done:
+        print(len(bullets))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
@@ -421,7 +420,7 @@ def main():
         bullets.draw(screen)
 
         for i in bullets:
-            i.update()
+            i.update(player)
             pass
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
