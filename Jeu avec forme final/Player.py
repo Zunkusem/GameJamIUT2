@@ -1,6 +1,7 @@
 import pygame
 from Param import *
 from Map import *
+from Projectile import *
 
 class Player(pygame.sprite.Sprite):
     """
@@ -143,3 +144,6 @@ class Player(pygame.sprite.Sprite):
     def stop(self):
         """ Called when the user lets off the keyboard. """
         self.change_x = 0
+
+    def shoot(self,bullets, xSouris, ySouris):
+        bullets.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))

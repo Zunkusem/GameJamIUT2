@@ -49,6 +49,80 @@ class Level():
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
 
+    def shift_worldy(self, shift_y, player):
+        """ When the user moves left/right and we need to scroll
+        everything: """
+
+        # Keep track of the shift amount
+        camspeed = abs(shift_y);
+
+        # for platform in self.platform_list:
+        #     platform.rect.y -= shift_y
+        # for enemy in self.enemy_list:
+        #     enemy.rect.y -= shift_y
+        #
+        # player.rect.top = 400
+        # player.posP += shift_y
+
+        self.world_shiftx += shift_y
+
+        # Go through all the sprite lists and shift
+        for platform in self.platform_list:
+            platform.rect.y += shift_y
+
+        for enemy in self.enemy_list:
+            enemy.rect.y += shift_y
+
+        # player.BZone += shift_y
+        # player.TZone += shift_y
+
+
+
+        # if player.rect.top  < 100 :
+        #     self.world_shifty -= camspeed
+        #     player.BZone += camspeed
+        #     player.TZone += camspeed
+        #     # if player.change_y > 0:
+        #     #     player.change_y += camspeed
+        #
+        #     for platform in self.platform_list:
+        #         platform.rect.y += camspeed
+        #     for enemy in self.enemy_list:
+        #         enemy.rect.y += camspeed
+        #     player.rect.y += camspeed
+        #     player.posP += camspeed
+        #
+        #
+        # elif player.rect.bottom > 500:
+        #     self.world_shifty -= camspeed
+        #     player.BZone -= camspeed
+        #     player.TZone -= camspeed
+        #     # if player.change_y < 0:
+        #     #     player.change_y += camspeed
+        #
+        #     for platform in self.platform_list:
+        #         platform.rect.y -= camspeed
+        #     for enemy in self.enemy_list:
+        #         enemy.rect.y -= camspeed
+        #
+        #     player.posP -= camspeed
+        #     player.rect.y -= camspeed
+
+
+
+        # player.BZone += shift_y
+        # player.TZone += shift_y
+        #
+        # # Go through all the sprite lists and shift
+        # for platform in self.platform_list:
+        #     platform.rect.y += shift_y
+        #
+        # for enemy in self.enemy_list:
+        #     enemy.rect.y += shift_y
+
+
+# Create platforms for the level
+
 
 # Create platforms for the level
 class Level_01(Level):

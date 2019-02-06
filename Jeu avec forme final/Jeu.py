@@ -1,8 +1,30 @@
 import pygame
+from math import *
 from Player import *
 from Map import *
 from Param import *
 
+
+def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
+    x= x2-x1
+    y= y2-y1
+    if x!=0:
+        angle=atan(y/x)
+    else:
+        print("division par zero")
+
+    angleEnDegree=degrees(angle)
+    vitesseX=cos(angle)
+    vitesseY=sin(angle)
+    #print(vitesseX)
+    #print(vitesseY)
+    #print("norme")
+    #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
+    #print(degrees(angle))
+    if x>0:
+        return (vitesseX,vitesseY)
+    else:
+        return (-vitesseX,-vitesseY)
 
 def main():
     """ Main Program """
@@ -16,6 +38,8 @@ def main():
 
     # Create the player
     player = Player()
+
+    bullets = pygame.sprite.Group()
 
     # Create all the levels
     level_list = []
@@ -40,6 +64,7 @@ def main():
 
     # -------- Main Program Loop -----------
     while not done:
+        print(len(bullets))
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
         # print("posP:" + str(player.posP))
@@ -50,6 +75,17 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                print("x:",event.pos[0]," y:",event.pos[1])
+                xSouris=event.pos[0]
+                ySouris=event.pos[1]
+                #xTrajectoire,yTrajectoire=CalculTrajectoireProjectile(POSITIONCERCLE[0],POSITIONCERCLE[1],xSouris,ySouris)
+                #print("xTrajectoire",xTrajectoire," yTrajectoire",yTrajectoire)
+                #pro.add(Projectile(POSITIONCERCLE,[xTrajectoire,yTrajectoire],fenetre))
+                print("test")
+                vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
+                print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
+                player.shoot(bullets,vitesseX,vitesseY)
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -109,6 +145,11 @@ def main():
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
+        bullets.draw(screen)
+
+        for i in bullets:
+            i.update(player)
+            pass
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
