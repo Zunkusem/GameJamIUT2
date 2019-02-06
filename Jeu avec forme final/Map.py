@@ -2,6 +2,7 @@ import pygame
 from Bloc import *
 from Player import *
 from Ennemi import *
+from Projectile import *
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -59,6 +60,10 @@ class Level():
 
         for bump in self.bumper_list:
             bump.rect.x += shift_x
+
+        # Bullet.shiftx(shift_x)
+
+
 
     def shift_worldy(self, shift_y, player):
         """ When the user moves left/right and we need to scroll
@@ -138,7 +143,7 @@ class Level_01(Level):
         levelPlatformRetourArriere = [[1400, 40, 800, 758],
                                       [750, 40, 2750, -798],
                                       ]
-                                      
+
         Ennemy= [[10,200,200]
                 ]
 

@@ -28,3 +28,6 @@ class Bullet(pygame.sprite.Sprite):
                 ennemy.bulletHit(1)
             pass
             self.kill()
+
+    def shiftx(self,shift_x):
+        self.rect.x += shift_x
