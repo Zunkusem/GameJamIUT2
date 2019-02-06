@@ -4,14 +4,14 @@ class Score():
 
     def getNom(self):
         return self.nom
-    
+
     def recupèreLesScores(self):
         #return tupes de deux listes avec nom et score en string
         listeBrute=self.recupereLaListe(self.getNom())
         nom,score=self.separeScoreDuNom(listeBrute)
         return (nom,score)
 
-    def EnregistreScore(self, nomJoueur,scoreJoueur):#nomJoueur en string et score en int meme si le score n'est pas dans le top 10, faire cette methode, elle gerera ca 
+    def EnregistreScore(self, nomJoueur,scoreJoueur):#nomJoueur en string et score en int meme si le score n'est pas dans le top 10, faire cette methode, elle gerera ca
         nom,score=self.recupèreLesScores()
         score=self.transformeListeStringEnListeInteger(score)
         nom,score=self.ajouteScore(nomJoueur,scoreJoueur,nom,score)
@@ -20,7 +20,7 @@ class Score():
     def estPair(self, i):
         if i%2 == 0:
             return True
-        else:    
+        else:
             return False
 
     def separeScoreDuNom(self, liste):                #separe les noms des scores
@@ -63,15 +63,15 @@ class Score():
             nouvListeScore.pop()
             nouvListeNom.pop()
         return (nouvListeNom,nouvListeScore)
-        
+
     def enregistrerNouvelleListe(self, nom,score,nomFichier):     #ecrit le resultat dans le fichier desiré
         fichier=open(nomFichier,'w')#pour un fichier texte, sinon, mettre 'wb' au lieu de "w"
         #le fichier a été vidé ci-dessus
         for i in range(0,len(score)):
             fichier.write(nom[i]+":"+score[i]+",")#on peut maintenant écrire
-        
+
         fichier.close()#ne pas oublier pour libérer l'accès.
-        
+
 
     def recupereLaListe(self, fichier):   #recupere la liste brute des scores dans le ficher desire
         f = open(fichier,'r') #ouvre le fichier
@@ -87,12 +87,12 @@ class Score():
             a+=i
         f.close()
         return a
-            
-sc = Score("score.txt")
-print(sc.recupèreLesScores())
-sc.EnregistreScore("Pedro",1000000000000000000000)
-print(sc.recupèreLesScores())
 
-    
-    
-    
+    def ordonneScoreDecroissant(self):
+        return self.builtin()
+
+sc = Score("score.txt")
+#sc.EnregistreScore("Teston",10000000000000000000000)
+resultNonOrdonne = sc.recupèreLesScores()
+print(resultNonOrdonne)
+result = resultNonOrdonne.ordonneScoreDecroissant()
