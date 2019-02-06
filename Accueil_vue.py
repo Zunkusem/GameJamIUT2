@@ -4,16 +4,16 @@ from pygame import *
 
 pygame.init()
 
-screen=pygame.display.set_mode([1280, 720])
+screen=pygame.display.set_mode([1024, 768])
 screen.fill([255, 255, 255])
 background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1280, 720], 0)
 left=400
 top=100
-screen_width = (1280/2)-(left/2)
-screen_height = (720/2)+200
+screen_width = (1024/2)-(left/2)
+screen_height = (768/2)+200
 
-mid_x = pygame.draw.rect(score, [255, 0, 0], [1280/2, 0, 2, 720], 0)
-mid_y = pygame.draw.rect(score, [255, 0, 0], [0, 720/2, 1280, 2], 0)
+mid_x = pygame.draw.rect(screen, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+mid_y = pygame.draw.rect(screen, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
 start = pygame.draw.rect(screen, [255, 0, 0], [screen_width, screen_height, left, top], 0)
 score = pygame.draw.rect(screen, [255, 125, 0], [screen_width, screen_height-125, left, top], 0)

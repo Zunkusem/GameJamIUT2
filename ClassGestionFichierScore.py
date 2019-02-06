@@ -88,11 +88,8 @@ class Score():
         f.close()
         return a
 
-    def ordonneScoreDecroissant(self):
-        return self.builtin()
 
 sc = Score("score.txt")
-#sc.EnregistreScore("Teston",10000000000000000000000)
-resultNonOrdonne = sc.recupèreLesScores()
-print(resultNonOrdonne)
-result = resultNonOrdonne.ordonneScoreDecroissant()
+print(sc.recupèreLesScores())
+result = sc.recupèreLesScores()
+print(result)
