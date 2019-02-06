@@ -91,7 +91,7 @@ class Level():
 
         for platform in self.platformRetourAvant_list:
             platform.rect.y += shift_y
-            
+
         for enemy in self.enemy_list:
             enemy.rect.y += shift_y
 
@@ -125,11 +125,11 @@ class Level_01(Level):
                  [70, 30, 1900, 450],
                  [70, 30, 2100, 350],
                  [70, 30, 2000, 220],
-                 [50, 618, 2200, 150],
+                 [50, 620, 2200, 150],
                  [50, 1050, 2350, -50],
                  #blocs 2eme partie en haut
                  [150, 200, 1950, -768],
-                 [100, 30, 2500, -700],
+                 [100, 30, 2500, -690],
                  [100, 30, 2700, -650],
                  [10, 150, 2900, -680],
                  [100, 30, 3000, -650],
@@ -138,24 +138,57 @@ class Level_01(Level):
                  [200, 250, 3500, -758],
                  [50, 700, 3800, -778],
                  #blocs 3eme partie en bas et en haut
-                 [500,200,2900,568],
+                 [500, 200, 2900, 568],
+                 [50, 800, 4100, -800],
+                 [50, 1000, 4500, -200],
+                 [50, 1100, 5250, -778],
+                 [50, 900, 4900, -100],
+                 [50, 1000, 5950, -200],
+                 #blocs 4eme partie fin tuto
+                 [50, 100, 6200, -778],
+                 [50, 200, 6350, -778],
+                 [50, 300, 6500, -778],
+                 [50, 400, 6650, -778],
+                 [50, 500, 6800, -778],
+                 [50, 600, 6950, -778],
+                 [50, 600, 7100, 200],
+                 [600, 200, 7400, -778]
                  ]
 
 
-
-        Bump = [[100, 60, 2250, 718],
-                [100, 60, 3700, -808],
-                [100, 60, 4400, 757],
+        Bump = [[102, 60, 2249, 718],#bloc passage 2eme niveau
+                [102, 60, 3699, -808],#bloc passage 3eme niveau
+                [102, 41, 3850, -798],#rattrapage 1 niveau 3
+                [100, 60, 4050, 757],#1er bloc niveau 3
+                [102, 41, 4799, -798],#2eme bloc niveau 3
+                [102, 41, 4549, 757],#rattrapage 2 niveau 3
+                [100, 60, 5500, 757],#3eme bloc niveau 3
+                #blocs de rattage épisode 4
+                [102, 41, 6249, -798],#1
+                [102, 41, 6399, -798],#2
+                [102, 41, 6549, -798],#3
+                [102, 41, 6699, -798],#4
+                [102, 41, 6849, -798],#5
+                [48, 20, 6951, -197],#dernier bloc de saut
+                [102, 41, 5999, 757],#gestion de nullité 1 niveau 4
+                [102, 41, 7000, -798],#gestion de grugeur 2 niveau 4 A CORRIGER CA MARCHE PAS SA MERE CA ME CASSE LES COUILLES
                 ]
 
-        levelPlatformRetourArriere = [[1400, 40, 800, 758],
-                                      [750, 40, 2750, -798],
-                                      [500, 40, 3900, 758],
+        levelPlatformRetourArriere = [[1400, 40, 800, 758],#rattrapage niveau 1
+                                      [750, 40, 2750, -798],#rattrapage niveau 2
+                                      [150, 41, 3950, -798],#rattrapage 1 niveau 3
+                                      [250, 40, 4650, 758],#rattrapage 2 niveau 3
+                                      [700, 40, 6100, 758],#rattrapage 1 niveau 4
+                                      [300, 41, 7100, -797],#rattrapage 2 niveau 4  A CORRIGER CA MARCHE PAS SA MERE CA ME CASSE LES COUILLES
                                       ]
 
-        levelPlatformRetourAvant = [[100,100,100,100]]#exemple
-        
-        Ennemy= [[10,200,200]
+        levelPlatformRetourAvant =  [[150, 40, 3900, 758],#1er accélérateur niveau 3
+                                     [150, 40, 4650, -798],#2eme accélérateur niveau 3
+                                     [150, 40, 5350, 758],#3eme accélérateur niveau 3
+                                     [700, 40, 5300, -798],#aide accélérateur pour arriver niveau 4
+                                     ]
+
+        Ennemy= [[10,200,200],
                 ]
 
         # Go through the array above and add platforms

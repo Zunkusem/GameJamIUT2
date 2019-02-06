@@ -43,17 +43,17 @@ def main():
     player = Player()
     score = Score()
     time = Time()
-    
+
     bullets = pygame.sprite.Group()
 
     #pour l'affichage du score
-    
+
     font.init()
     font_a = pygame.font.SysFont('arial', 40)
     font_b = pygame.font.SysFont('arial', 70)
-    
-    
-    
+
+
+
     # Create all the levels
     level_list = []
     level_list.append(Level_01(player))
@@ -65,7 +65,7 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    player.rect.x = 100
+    player.rect.x = 3400
     player.rect.y = 758
     active_sprite_list.add(player)
 

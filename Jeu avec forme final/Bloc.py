@@ -25,7 +25,7 @@ class Bumper(pygame.sprite.Sprite):
         super().__init__()
 
         self.image = pygame.Surface([width, height])
-        self.image.fill(YELLOW)
+        self.image.fill(CYAN)
 
         self.rect = self.image.get_rect()
 
@@ -79,7 +79,3 @@ class PlatformRetourArriere(pygame.sprite.Sprite):
         self.image.fill(RED)
 
         self.rect = self.image.get_rect()
-
-
-
-
