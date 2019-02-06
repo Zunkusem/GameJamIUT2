@@ -18,7 +18,7 @@ http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
 http://programarcadegames.com/python_examples/sprite_sheets/
 
 """
-
+from math import *
 import pygame
 
 # Global constants
@@ -31,8 +31,8 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
 # Screen dimensions
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
 
 
 class Player(pygame.sprite.Sprite):
@@ -138,8 +138,8 @@ class Player(pygame.sprite.Sprite):
         """ Called when the user lets off the keyboard. """
         self.change_x = 0
 
-    def shoot(self,bullets):
-        bullets.add(Bullet(self.rect.centerx, self.rect.top,10,10))
+    def shoot(self,bullets, xSouris, ySouris):
+        bullets.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
 
 
 class Platform(pygame.sprite.Sprite):
@@ -286,10 +286,29 @@ class Bullet(pygame.sprite.Sprite):
         self.speedx = sx
 
     def update(self):
-        self.rect.y += self.speedy
-        self.rect.x += self.speedy
+        self.rect.y += self.speedy*20
+        self.rect.x += self.speedx*20
         if self.rect.bottom < 0:
             self.kill()
+
+
+def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
+    x= x2-x1
+    y= y2-y1
+    if x!=0:
+        angle=atan(y/x)
+    else:
+        print("division par zero")
+
+    angleEnDegree=degrees(angle)
+    vitesseX=cos(angle)
+    vitesseY=sin(angle)
+    #print(vitesseX)
+    #print(vitesseY)
+    #print("norme")
+    #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
+    #print(degrees(angle))
+    return (vitesseX,vitesseY)
 
 def main():
     """ Main Program """
@@ -334,6 +353,18 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                print("x:",event.pos[0]," y:",event.pos[1])
+                xSouris=event.pos[0]
+                ySouris=event.pos[1]
+                #xTrajectoire,yTrajectoire=CalculTrajectoireProjectile(POSITIONCERCLE[0],POSITIONCERCLE[1],xSouris,ySouris)
+                #print("xTrajectoire",xTrajectoire," yTrajectoire",yTrajectoire)
+                #pro.add(Projectile(POSITIONCERCLE,[xTrajectoire,yTrajectoire],fenetre))
+                print("test")
+                vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
+                print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
+                player.shoot(bullets,vitesseX,vitesseY)
+
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     player.go_left()
@@ -341,8 +372,6 @@ def main():
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
-                if event.key == pygame.K_SPACE:
-                    player.shoot(bullets)
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
