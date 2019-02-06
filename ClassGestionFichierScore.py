@@ -90,7 +90,7 @@ class Score():
             
 sc = Score("score.txt")
 print(sc.recupèreLesScores())
-sc.EnregistreScore("Pedro",1000000000000000000000)
+sc.EnregistreScore("Teston",10000000000000000000000)
 print(sc.recupèreLesScores())
 
     
