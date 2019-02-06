@@ -17,8 +17,8 @@ class Player(pygame.sprite.Sprite):
 
         # Create an image of the block, and fill it with a color.
         # This could also be an image loaded from the disk.
-        width = 30
-        height = 50
+        width = 40
+        height = 60
         self.image = pygame.Surface([width, height])
         self.image.fill(RED)
 
