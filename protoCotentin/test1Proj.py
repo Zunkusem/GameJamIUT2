@@ -210,14 +210,26 @@ class Level_01(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.level_limit = -2000
+        self.level_limit = -10000
 
         # Array with width, height, x, and y of platform
-        level = [[210, 70, 500, 500],
-                 [210, 70, 800, 400],
-                 [210, 70, 1000, 500],
-                 [210, 70, 1120, 280],
-                 [200, 50, 1850, 700]]
+        level = [#bords de la map
+                 [150, 768, -140, 0],
+                 [10000, 10, 0, 758],
+                 [150, 768, -140, -788],
+                 [10000, 10, 0, -758],
+                 #blocs
+                 [160, 30, 500, 630],
+                 [160, 30, 800, 500],
+                 [160, 30, 1900, 200],
+                 [160, 30, 600, 380],
+                 [160, 30, 800, 500],
+                 [160, 30, 500, 630],
+                 [160, 30, 800, 500],
+                 [160, 30, 500, 630],
+                 [160, 30, 800, 500],
+                 [160, 30, 500, 630],
+                 [160, 30, 800, 500]]
 
         # Go through the array above and add platforms
         for platform in level:
@@ -344,7 +356,7 @@ def main():
     player.level = current_level
 
     player.rect.x = 340
-    player.rect.y = SCREEN_HEIGHT - player.rect.height
+    player.rect.y = SCREEN_HEIGHT - player.rect.height -10
     active_sprite_list.add(player)
 
     # Loop until the user clicks the close button.
