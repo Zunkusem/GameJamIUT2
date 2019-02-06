@@ -73,57 +73,6 @@ class Level():
         for enemy in self.enemy_list:
             enemy.rect.y += shift_y
 
-        # player.BZone += shift_y
-        # player.TZone += shift_y
-
-
-
-        # if player.rect.top  < 100 :
-        #     self.world_shifty -= camspeed
-        #     player.BZone += camspeed
-        #     player.TZone += camspeed
-        #     # if player.change_y > 0:
-        #     #     player.change_y += camspeed
-        #
-        #     for platform in self.platform_list:
-        #         platform.rect.y += camspeed
-        #     for enemy in self.enemy_list:
-        #         enemy.rect.y += camspeed
-        #     player.rect.y += camspeed
-        #     player.posP += camspeed
-        #
-        #
-        # elif player.rect.bottom > 500:
-        #     self.world_shifty -= camspeed
-        #     player.BZone -= camspeed
-        #     player.TZone -= camspeed
-        #     # if player.change_y < 0:
-        #     #     player.change_y += camspeed
-        #
-        #     for platform in self.platform_list:
-        #         platform.rect.y -= camspeed
-        #     for enemy in self.enemy_list:
-        #         enemy.rect.y -= camspeed
-        #
-        #     player.posP -= camspeed
-        #     player.rect.y -= camspeed
-
-
-
-        # player.BZone += shift_y
-        # player.TZone += shift_y
-        #
-        # # Go through all the sprite lists and shift
-        # for platform in self.platform_list:
-        #     platform.rect.y += shift_y
-        #
-        # for enemy in self.enemy_list:
-        #     enemy.rect.y += shift_y
-
-
-# Create platforms for the level
-
-
 # Create platforms for the level
 class Level_01(Level):
     """ Definition for level 1. """
@@ -134,19 +83,26 @@ class Level_01(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.level_limit = -2000
+        self.level_limit = -10000
 
         # Array with width, height, x, and y of platform
-        level = [[210, 70, 500, 500],
-                 [210, 70, 800, 400],
-                 [210, 70, 1000, 500],
-                 [210, 70, 1120, 280],
-                 [210, 70, 500, 0],
-                 [210, 70, 400, 0],
-                 [210, 70, 0, -600],
-                 [210, 70, 0, 600],
-                 [210, 70, 400, 300]
-                 ]
+        level = [#bords de la map
+                 [150, 768, -140, 0],
+                 [10000, 10, 0, 758],
+                 [150, 768, -140, -788],
+                 [10000, 10, 0, -758],
+                 #blocs
+                 [160, 30, 500, 630],
+                 [160, 30, 800, 500],
+                 [50, 618, 2200, 150],
+                 [160, 30, 600, 380],
+                 [30, 30, 1000, 250],
+                 [30, 30, 1300, 250],
+                 [30, 30, 1600, 250],
+                 [30, 30, 1900, 450],
+                 [30, 30, 2100, 350],
+                 [30, 30, 2000, 220],
+                 [160, 30, 800, 500]]
 
         # Go through the array above and add platforms
         for platform in level:

@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite):
         self.Gstate = 1
         self.Gmult =1
         self.level = None
-        self.G = 0.2
+        self.G = 0.35
         self.Gstat = 1
         self.J1 = 2
         self.J2 = -10
