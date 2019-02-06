@@ -138,6 +138,9 @@ class Player(pygame.sprite.Sprite):
         """ Called when the user lets off the keyboard. """
         self.change_x = 0
 
+    def shoot(self,bullets):
+        bullets.add(Bullet(self.rect.centerx, self.rect.top,10,10))
+
 
 class Platform(pygame.sprite.Sprite):
     """ Platform the user can jump on """
@@ -270,6 +273,23 @@ class Level_03(Level):
             block.player = self.player
             self.platform_list.add(block)
 
+#classe des projectiles
+class Bullet(pygame.sprite.Sprite):
+    def __init__(self, x, y, sx, sy):
+        super().__init__()
+        self.image = pygame.Surface((10, 20))
+        self.image.fill(BLACK)
+        self.rect = self.image.get_rect()
+        self.rect.bottom = y
+        self.rect.centerx = x
+        self.speedy = sy
+        self.speedx = sx
+
+    def update(self):
+        self.rect.y += self.speedy
+        self.rect.x += self.speedy
+        if self.rect.bottom < 0:
+            self.kill()
 
 def main():
     """ Main Program """
@@ -283,6 +303,8 @@ def main():
 
     # Create the player
     player = Player()
+
+    bullets = pygame.sprite.Group()
 
     # Create all the levels
     level_list = []
@@ -312,20 +334,23 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-
-            if event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     player.go_left()
                 if event.key == pygame.K_RIGHT:
                     player.go_right()
                 if event.key == pygame.K_UP:
                     player.jump()
+                if event.key == pygame.K_SPACE:
+                    player.shoot(bullets)
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT and player.change_x < 0:
                     player.stop()
                 if event.key == pygame.K_RIGHT and player.change_x > 0:
                     player.stop()
+
+
 
         # Update the player.
         active_sprite_list.update()
@@ -357,6 +382,11 @@ def main():
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
+        bullets.draw(screen)
+
+        for i in bullets:
+            i.update()
+            pass
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
