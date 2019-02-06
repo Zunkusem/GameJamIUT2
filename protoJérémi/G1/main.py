@@ -11,6 +11,8 @@ def run_game():
     screen = pygame.display.set_mode((1270, 670))
     pygame.display.set_caption("Scrolling Camera")
     clock = pygame.time.Clock()
+    pygame.mixer.music.load('music.mp3')
+    pygame.mixer.music.play(1)
     running = True
     map = Map()
     players = pygame.sprite.Group(Player((600, 0), screen))
@@ -21,9 +23,14 @@ def run_game():
         pressed = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
+                return 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 players.add(Player(event.pos, screen))
+                #if pygame.mixer.get_busy == true:
+                   # pygame.mixer.music.paused()
+               # else:
+                   # pygame.mixer.music.unpaused()
+                
         pass
         if pressed[pygame.K_d]:
             for i in players:
