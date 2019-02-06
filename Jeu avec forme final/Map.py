@@ -123,7 +123,7 @@ class Level_01(Level):
                 [100, 70, 200, 400]
                 ]
         
-        levelPlatformRetourArriere = [[10, 10, 400, 300]
+        levelPlatformRetourArriere = [[100, 10, 800, 300]
                  ]
 
         # Go through the array above and add platforms
