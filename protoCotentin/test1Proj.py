@@ -215,14 +215,14 @@ class Level_01(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.level_limit = -1000
+        self.level_limit = -2000
 
         # Array with width, height, x, and y of platform
         level = [[210, 70, 500, 500],
                  [210, 70, 800, 400],
                  [210, 70, 1000, 500],
                  [210, 70, 1120, 280],
-                 ]
+                 [200, 50, 1850, 600]]
 
         # Go through the array above and add platforms
         for platform in level:
@@ -300,7 +300,6 @@ def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) 
     x= x2-x1
     y= y2-y1
     if x!=0:
-        #print(x," ",y)
         angle=atan(y/x)
     else:
         print("division par zero")
@@ -313,11 +312,7 @@ def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) 
     #print("norme")
     #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
     #print(degrees(angle))
-    if x>0:
-        return (vitesseX,vitesseY)
-    else :
-        return (-vitesseX,-vitesseY)
-    
+    return (vitesseX,vitesseY)
 
 def main():
     """ Main Program """
@@ -363,11 +358,15 @@ def main():
             if event.type == pygame.QUIT:
                 done = True
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                #print("x:",event.pos[0]," y:",event.pos[1])
+                print("x:",event.pos[0]," y:",event.pos[1])
                 xSouris=event.pos[0]
                 ySouris=event.pos[1]
+                #xTrajectoire,yTrajectoire=CalculTrajectoireProjectile(POSITIONCERCLE[0],POSITIONCERCLE[1],xSouris,ySouris)
+                #print("xTrajectoire",xTrajectoire," yTrajectoire",yTrajectoire)
+                #pro.add(Projectile(POSITIONCERCLE,[xTrajectoire,yTrajectoire],fenetre))
+                print("test")
                 vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
-                #print(vitesseX," ",vitesseY)
+                print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
                 player.shoot(bullets,vitesseX,vitesseY)
 
             elif event.type == pygame.KEYDOWN:

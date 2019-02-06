@@ -3,16 +3,16 @@ from pygame import *
 
 pygame.init()
 
-credit=pygame.display.set_mode([1280, 720])
+credit=pygame.display.set_mode([1024, 768])
 credit.fill([255, 255, 255])
 background = pygame.draw.rect(credit, [25, 6, 45], [0, 0, 1280, 720], 0)
 left=500
 top=600
-credit_width = (1280/2)-(left/2)
-credit_height = (720/2)+200
+credit_width = (1024/2)-(left/2)
+credit_height = (768/2)+200
 
-mid_x = pygame.draw.rect(score, [255, 0, 0], [1280/2, 0, 2, 720], 0)
-mid_y = pygame.draw.rect(score, [255, 0, 0], [0, 720/2, 1280, 2], 0)
+mid_x = pygame.draw.rect(credit, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+mid_y = pygame.draw.rect(credit, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
 retour = pygame.draw.rect(credit, [255, 0, 0], [0, 670, 125, 50], 0)
 
