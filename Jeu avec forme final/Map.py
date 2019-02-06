@@ -3,6 +3,7 @@ from Bloc import *
 from Player import *
 from Ennemi import *
 from Projectile import *
+from Jeu import *
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -16,17 +17,22 @@ class Level():
         self.bumper_list = pygame.sprite.Group()
         self.platformRetourArriere_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
+        self.ennemy_tourelle_liste = pygame.sprite.Group()
         self.player = player
+        self.bullets_liste = pygame.sprite.Group()
 
         # How far this world has been scrolled left/right
         self.world_shiftx = 0
         self.world_shifty = 0
 
     # Update everythign on this level
-    def update(self):
+    def update(self,player):
+        print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
         self.enemy_list.update()
+        self.bullets_liste.update(player)
+        self.ennemy_tourelle_liste.update(self.bullets_liste,player)
 
     def draw(self, screen):
         """ Draw everything on this level. """
@@ -39,6 +45,8 @@ class Level():
         self.enemy_list.draw(screen)
         self.bumper_list.draw(screen)
         self.platformRetourArriere_list.draw(screen)
+        self.ennemy_tourelle_liste.draw(screen)
+        self.bullets_liste.draw(screen)
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -61,11 +69,17 @@ class Level():
         for bump in self.bumper_list:
             bump.rect.x += shift_x
 
+        for enemy in self.ennemy_tourelle_liste:
+            enemy.rect.x += shift_x
+
+        for bullet in self.bullets_liste:
+            bullet.rect.x += shift_x
+
         # Bullet.shiftx(shift_x)
 
 
 
-    def shift_worldy(self, shift_y, player):
+    def shift_worldy(self, shift_y):
         """ When the user moves left/right and we need to scroll
         everything: """
 
@@ -94,6 +108,12 @@ class Level():
 
         for bump in self.bumper_list:
             bump.rect.y += shift_y
+
+        for enemy in self.ennemy_tourelle_liste:
+            enemy.rect.y += shift_y
+
+        for bullet in self.bullets_liste:
+            bullet.rect.y += shift_y
 
 class Level_01(Level):
     """ Definition for level 1. """
@@ -149,7 +169,8 @@ class Level_01(Level):
                                       [750, 40, 2750, -798],
                                       ]
 
-        Ennemy= [[10,200,200]
+        Ennemy= [[200,200,0],
+                [10,200,1]
                 ]
 
         # Go through the array above and add platforms
@@ -175,11 +196,21 @@ class Level_01(Level):
             self.platformRetourArriere_list.add(block)
 
         for ennemy in Ennemy:
-            block = Cible(ennemy[0])
-            block.rect.x = ennemy[1]
-            block.rect.y = ennemy[2]
-            block.player = self.player
-            self.enemy_list.add(block)
+
+            if ennemy[2] == 0:
+                block = Cible()
+                block.rect.x = ennemy[0]
+                block.rect.y = ennemy[1]
+                block.player = self.player
+                self.enemy_list.add(block)
+
+            elif ennemy[2] == 1:
+                block = Tourelle()
+                block.rect.x = ennemy[0]
+                block.rect.y = ennemy[1]
+                block.player = self.player
+                self.ennemy_tourelle_liste.add(block)
+
 
 
 

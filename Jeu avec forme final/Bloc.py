@@ -67,7 +67,3 @@ class PlatformRetourArriere(pygame.sprite.Sprite):
         self.image.fill(RED)
 
         self.rect = self.image.get_rect()
-
-
-
-

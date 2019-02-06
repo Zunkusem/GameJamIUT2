@@ -18,6 +18,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.y += 2
         platform_hit_list = pygame.sprite.spritecollide(self, player.level.platform_list, False)
         enemy_hit_list = pygame.sprite.spritecollide(self, player.level.enemy_list, False)
+        enemy2_hit_list = pygame.sprite.spritecollide(self, player.level.ennemy_tourelle_liste, False)
         self.rect.y -= 2
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.kill()
@@ -25,8 +26,12 @@ class Bullet(pygame.sprite.Sprite):
             self.kill()
         if len(enemy_hit_list) > 0:
             for ennemy in enemy_hit_list:
-                ennemy.bulletHit(1)
+                ennemy.bulletHit()
             pass
+        # if len(enemy2_hit_list) > 0:
+        #     for ennemy in enemy2_hit_list:
+        #         ennemy.bulletHit()
+        #     pass
             self.kill()
 
     def shiftx(self,shift_x):

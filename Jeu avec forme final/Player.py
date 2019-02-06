@@ -2,6 +2,7 @@ import pygame
 from Param import *
 from Map import *
 from Projectile import *
+from Ennemi import *
 
 class Player(pygame.sprite.Sprite):
     """
@@ -131,6 +132,9 @@ class Player(pygame.sprite.Sprite):
         self.posP += self.change_y
 
 
+
+
+
     def calc_grav(self):
         """ Calculate effect of gravity. """
         if self.change_y == 0:
@@ -166,5 +170,5 @@ class Player(pygame.sprite.Sprite):
         """ Called when the user lets off the keyboard. """
         self.change_x = 0
 
-    def shoot(self,bullets, xSouris, ySouris):
-        bullets.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
+    def shoot(self, xSouris, ySouris):
+        self.level.bullets_liste.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
