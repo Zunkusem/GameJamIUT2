@@ -14,6 +14,7 @@ class Level():
         self.platform_list = pygame.sprite.Group()
         self.bumper_list = pygame.sprite.Group()
         self.platformRetourArriere_list = pygame.sprite.Group()
+        self.platformRetourAvant_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
 
@@ -38,6 +39,7 @@ class Level():
         self.enemy_list.draw(screen)
         self.bumper_list.draw(screen)
         self.platformRetourArriere_list.draw(screen)
+        self.platformRetourAvant_list.draw(screen)
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -52,6 +54,9 @@ class Level():
             platform.rect.x += shift_x
 
         for platform in self.platformRetourArriere_list:
+            platform.rect.x += shift_x
+
+        for platform in self.platformRetourAvant_list:
             platform.rect.x += shift_x
 
         for enemy in self.enemy_list:
@@ -84,6 +89,9 @@ class Level():
         for platform in self.platformRetourArriere_list:
             platform.rect.y += shift_y
 
+        for platform in self.platformRetourAvant_list:
+            platform.rect.y += shift_y
+            
         for enemy in self.enemy_list:
             enemy.rect.y += shift_y
 
@@ -145,6 +153,8 @@ class Level_01(Level):
                                       [500, 40, 3900, 758],
                                       ]
 
+        levelPlatformRetourAvant = [[100,100,100,100]]#exemple
+        
         Ennemy= [[10,200,200]
                 ]
 
@@ -169,6 +179,13 @@ class Level_01(Level):
             block.rect.y = PlatformRetourArr[3]
             block.player = self.player
             self.platformRetourArriere_list.add(block)
+
+        for PlatformRetourAv in levelPlatformRetourAvant:
+            block = PlatformRetourAvant(PlatformRetourAv[0], PlatformRetourAv[1])
+            block.rect.x = PlatformRetourAv[2]
+            block.rect.y = PlatformRetourAv[3]
+            block.player = self.player
+            self.platformRetourAvant_list.add(block)
 
         for ennemy in Ennemy:
             block = Cible(ennemy[0])
