@@ -77,13 +77,14 @@ def main():
 
     # -------- Main Program Loop -----------
     while not done:
-        print(len(bullets))
+
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
         # print("posP:" + str(player.posP))
         # print("BZone:" + str(player.BZone))
         # print("TZone:" + str(player.TZone))
         # print("Gmult:" + str(player.Gmult))
+        print(len(player.level.enemy_list))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -98,7 +99,7 @@ def main():
                 print("test")
                 vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
                 print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
-                player.shoot(bullets,vitesseX,vitesseY)
+                player.shoot(vitesseX,vitesseY)
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
@@ -121,7 +122,7 @@ def main():
         active_sprite_list.update()
 
         # Update items in the level
-        current_level.update()
+        current_level.update(player)
         # current_level.shift_worldy(player.change_y,player)
 
         # If the player gets near the right side, shift the world left (-x)
@@ -133,12 +134,12 @@ def main():
         if player.rect.top < 100:
              diff = 100 - player.rect.top
              player.rect.top = 100
-             current_level.shift_worldy(diff,player)
+             current_level.shift_worldy(diff)
 
         if player.rect.bottom > 700 :
             diff = player.rect.bottom - 700
             player.rect.bottom = 700
-            current_level.shift_worldy(-diff,player)
+            current_level.shift_worldy(-diff)
 
         # If the player gets near the left side, shift the world right (+x)
         if player.rect.left <= 120:
@@ -158,11 +159,8 @@ def main():
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
         active_sprite_list.draw(screen)
-        bullets.draw(screen)
 
-        for i in bullets:
-            i.update(player)
-            pass
+
 
         # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
