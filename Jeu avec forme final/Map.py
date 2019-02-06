@@ -16,6 +16,7 @@ class Level():
         self.platform_list = pygame.sprite.Group()
         self.bumper_list = pygame.sprite.Group()
         self.platformRetourArriere_list = pygame.sprite.Group()
+        self.platformRetourAvant_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.ennemy_tourelle_liste = pygame.sprite.Group()
         self.player = player
@@ -47,6 +48,7 @@ class Level():
         self.platformRetourArriere_list.draw(screen)
         self.ennemy_tourelle_liste.draw(screen)
         self.bullets_liste.draw(screen)
+        self.platformRetourAvant_list.draw(screen)
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -61,6 +63,9 @@ class Level():
             platform.rect.x += shift_x
 
         for platform in self.platformRetourArriere_list:
+            platform.rect.x += shift_x
+
+        for platform in self.platformRetourAvant_list:
             platform.rect.x += shift_x
 
         for enemy in self.enemy_list:
@@ -103,6 +108,9 @@ class Level():
         for platform in self.platformRetourArriere_list:
             platform.rect.y += shift_y
 
+        for platform in self.platformRetourAvant_list:
+            platform.rect.y += shift_y
+
         for enemy in self.enemy_list:
             enemy.rect.y += shift_y
 
@@ -136,7 +144,7 @@ class Level_01(Level):
                  [160, 30, 500, 630],
                  [160, 30, 800, 500],
                  [160, 30, 600, 380],
-                 [70, 30, 1000, 250],
+                 [90, 30, 980, 300],
                  [70, 30, 1300, 250],
                  [70, 30, 1600, 320],
                  [70, 30, 1900, 450],
@@ -154,20 +162,23 @@ class Level_01(Level):
                  [100, 30, 3300, -650],
                  [200, 250, 3500, -758],
                  [50, 700, 3800, -778],
-                 #blocs 3eme partie en bas
+                 #blocs 3eme partie en bas et en haut
                  [500,200,2900,568],
-
                  ]
 
 
 
         Bump = [[100, 60, 2250, 718],
                 [100, 60, 3700, -808],
+                [100, 60, 4400, 757],
                 ]
 
         levelPlatformRetourArriere = [[1400, 40, 800, 758],
                                       [750, 40, 2750, -798],
+                                      [500, 40, 3900, 758],
                                       ]
+
+        levelPlatformRetourAvant = [[100,100,100,100]]#exemple
 
         Ennemy= [[200,200,0],
                 [10,200,1]
@@ -194,6 +205,13 @@ class Level_01(Level):
             block.rect.y = PlatformRetourArr[3]
             block.player = self.player
             self.platformRetourArriere_list.add(block)
+
+        for PlatformRetourAv in levelPlatformRetourAvant:
+            block = PlatformRetourAvant(PlatformRetourAv[0], PlatformRetourAv[1])
+            block.rect.x = PlatformRetourAv[2]
+            block.rect.y = PlatformRetourAv[3]
+            block.player = self.player
+            self.platformRetourAvant_list.add(block)
 
         for ennemy in Ennemy:
 
