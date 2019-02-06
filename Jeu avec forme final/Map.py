@@ -34,6 +34,7 @@ class Level():
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
+        self.bumper_list.draw(screen)
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -49,6 +50,9 @@ class Level():
 
         for enemy in self.enemy_list:
             enemy.rect.x += shift_x
+
+        for bump in self.bumper_list:
+            bump.rect.x += shift_x
 
     def shift_worldy(self, shift_y, player):
         """ When the user moves left/right and we need to scroll
@@ -73,6 +77,9 @@ class Level():
 
         for enemy in self.enemy_list:
             enemy.rect.y += shift_y
+
+        for bump in self.bumper_list:
+            bump.rect.y += shift_y
 
 class Level_01(Level):
     """ Definition for level 1. """
@@ -104,8 +111,9 @@ class Level_01(Level):
                  [30, 30, 2000, 220],
                  [160, 30, 800, 500]]
 
-        levelBump = [[210, 70, 400, 300]
-                 ]
+        Bump = [[100, 70, 400, 500],
+                [100, 70, 200, 400]
+                ]
 
         # Go through the array above and add platforms
         for platform in level:
@@ -115,10 +123,10 @@ class Level_01(Level):
             block.player = self.player
             self.platform_list.add(block)
 
-        for bumper in levelBump:
-            block = Bumper(platform[0], platform[1])
-            block.rect.x = platform[2]
-            block.rect.y = platform[3]
+        for bumper in Bump:
+            block = Bumper(bumper[0], bumper[1])
+            block.rect.x = bumper[2]
+            block.rect.y = bumper[3]
             block.player = self.player
             self.bumper_list.add(block)
 
