@@ -21,7 +21,7 @@ class Level():
         self.enemy_list = pygame.sprite.Group()
         self.ennemy_tourelle_liste = pygame.sprite.Group()
         self.score = Score()
-        self.player = player(score)
+        self.player = player
         self.bullets_liste = pygame.sprite.Group()
         font.init()
         self.font_a = pygame.font.SysFont('arial', 40)
