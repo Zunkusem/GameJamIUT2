@@ -6,6 +6,7 @@ from Player import *
 from Map import *
 from Param import *
 from Score import *
+from Fin import *
 
 def main():
     """ Main Program """
@@ -172,8 +173,8 @@ def main():
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
-    print("fin de jeu")
-    print('SCORE :',player.level.score.getScore())
+    score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
+    fin(score_final)
     #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
 
