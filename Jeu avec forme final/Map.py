@@ -43,7 +43,7 @@ class Level():
         #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
-        self.piece_list.update() #
+        self.piece_list.update() 
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
@@ -55,7 +55,7 @@ class Level():
     def draw(self, screen):
         """ Draw everything on this level. """
 
-        # Draw the background
+        # Draw the backgroundbg
         screen.fill(BLUE)
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)

@@ -54,7 +54,7 @@ def main():
     clock = pygame.time.Clock()
     
 
-    # -------- Main Program Loop -----------
+    # -------- Main Program Loop --ij---------
     while not time.estFini():
         
         # print("rectTop:" + str(player.rect.top))
