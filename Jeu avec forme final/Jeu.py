@@ -98,6 +98,8 @@ def main():
                     player.jump()
                 if event.key == pygame.K_SPACE:
                     player.invG()
+                if event.key == pygame.K_ESCAPE:
+                    launcher()
 
 
             if event.type == pygame.KEYUP:
@@ -110,7 +112,7 @@ def main():
         active_sprite_list.update(screen)
 
         # Update items in the level
-        current_level.update(player)
+        current_level.update(player,screen)
         # current_level.shift_worldy(player.change_y,player)
 
         # If the player gets near the right side, shift the world left (-x)
