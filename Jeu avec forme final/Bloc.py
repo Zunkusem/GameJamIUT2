@@ -9,8 +9,9 @@ class Platform(pygame.sprite.Sprite):
             an array of 5 numbers like what's defined at the top of this code.
             """
         super().__init__()
+        # GREY=
         self.image = pygame.Surface([width, height])
-        # self.image.fill(GREEN)
+        self.image.fill(GREEN)
         self.rect = self.image.get_rect()
         # self.texture = pygame.image.load("index.jpg")
 
