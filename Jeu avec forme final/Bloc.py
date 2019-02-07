@@ -30,9 +30,6 @@ class Bumper(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
 
-
-
-
 class PlatformRetourAvant(pygame.sprite.Sprite):
     """ Platform the user can jump on """
 
@@ -46,24 +43,6 @@ class PlatformRetourAvant(pygame.sprite.Sprite):
         self.image.fill(YELLOW)
 
         self.rect = self.image.get_rect()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class PlatformRetourArriere(pygame.sprite.Sprite):
