@@ -16,13 +16,10 @@ def launcher():
     font_b = pygame.font.SysFont('arial', 70)
     img_menu = pygame.image.load("start.jpg").convert()
     background_menu = pygame.transform.scale(img_menu, (1024,768))
-    #background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1024, 768], 0)
 
     #mid_x = pygame.draw.rect(screen, [255, 0, 0], [1024/2, 0, 2, 768], 0)
     #mid_y = pygame.draw.rect(screen, [255, 0, 0], [0, 768/2, 1024, 2], 0)
 
-
-    #font_titre = font_b.render("CybeRush180 by KotProd", 1, (0,0,0))
     font_start = font_a.render("START", 1, (255,255,255))
     font_score = font_a.render("SCORE", 1, (255,255,255))
     font_credit = font_a.render("CREDITS", 1, (255,255,255))
@@ -50,7 +47,6 @@ def launcher():
     silver = pygame.transform.scale(img_silver, (100,100))
     bronze = pygame.transform.scale(img_bronze, (100,100))
     score_background = pygame.transform.scale(img_background, (1024,768))
-    #background = pygame.draw.rect(score, [25, 6, 45], [0, 0, 1024, 768], 0)
 
     retour = pygame.draw.rect(screen, [255, 0, 0], [0, 720, 125, 50], 0)
 
@@ -99,10 +95,7 @@ def launcher():
     font_b_credit = pygame.font.SysFont('arial', 30)
     font_c_credit = pygame.font.SysFont('arial', 25)
 
-    retour = pygame.draw.rect(screen, [255, 0, 0], [0, 720, 125, 50], 0)
-
-    titre = font_a_credit.render("KOTPROD", 1, (255,255,255))
-    retour = font_b_credit.render("RETOUR", 1, (134,210,48))
+    img_credit = pygame.image.load("score.jpg").convert()
 
     credit_un= font_c_credit.render("GAME DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .KotProd", 1, (255,255,255))
     credit_deux = font_c_credit.render("ANIMATIONS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Jérémi Delaire", 1, (255,255,255))
@@ -133,35 +126,29 @@ def launcher():
     while run:
         screen.fill([0, 0, 0])
         screen.blit(background_menu, (0,0))
-        #screen.blit(font_titre, ((screen_width+screen_width-275)/2, screen_height-500))
-        screen.blit(font_start, (x, y))
+        screen.blit(font_start, (x+5, y))
         screen.blit(font_score, (x, y+100))
-        screen.blit(font_credit, (x, y+200))
-        screen.blit(font_quit, (x, y+300))
+        screen.blit(font_credit, (x-10, y+200))
+        screen.blit(font_quit, (x-10, y+300))
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 run=False
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+300+50 and event.pos[1] > y+300:
                 run=False
-                print("quit")
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+200+50 and event.pos[1] > y+200:
                 credit = True
                 accueil = False
-                print("credit")
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+100+50 and event.pos[1] > y+100:
                 score = True
                 accueil = False
-                print("score")
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+50 and event.pos[1] > y:
-                print("start")
                 score = main()
     #--------------------------------------------------------------------------------
     #affichage des crédits
         if accueil==False and credit==True:
             screen.fill([0, 0, 0])
-            background_credit = pygame.draw.rect(screen, [25, 6, 45], [0, 0, 1024, 768], 0)
-            
+            screen.blit(img_credit, (0,0))
         while accueil==False and credit==True:
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
@@ -170,8 +157,6 @@ def launcher():
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 770 and event.pos[1] > 720:
                     accueil = True
                     credit = False
-            screen.blit(retour, (10,725))
-            screen.blit(titre, (420, 0))
             screen.blit(credit_un, (100, 80))
             screen.blit(credit_deux, (100, 120))
             screen.blit(credit_trois, (100, 160))
@@ -182,14 +167,13 @@ def launcher():
             screen.blit(credit_huit, (100, 360))
             screen.blit(credit_neuf, (100, 400))
             screen.blit(credit_dix, (100, 440))
-            screen.blit(bravo, (250, 550))
+            screen.blit(bravo, (250, 500))
             pygame.display.flip()
     #--------------------------------------------------------------------------------
     #affichage des scores
         if accueil==False and score==True:
            screen.fill([0, 0, 0])
            screen.blit(score_background, (0,0))
-           #background_score = pygame.draw.rect(screen, [25, 6, 45], [0, 0, 1024, 768], 0)
         while accueil==False and score==True:
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
@@ -198,10 +182,6 @@ def launcher():
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
                     accueil = True
                     score = False                   
-            #screen.blit(gold, 400,400)
-            #screen.blit(silver, 262,198)
-            #screen.blit(bronze, 262,276)
-            screen.blit(font_return, (10,720))
             screen.blit(score_categorie,(160, 80))
             screen.blit(place_un, (190,160))
             screen.blit(nom_un, (490,160))
