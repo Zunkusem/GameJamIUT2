@@ -1,29 +1,63 @@
-class score: # Définition de notre classe Personne
+class Score():
 
-    def __init__(self): # Notre méthode constructeur
-        self.valeur = 0
-        self.multiplicateur = 0
+    def __init__(self):
+        self.nombre=0
+        self.multiplicateur=1
 
+    def incrementeScoreDeUn(self):
+        self.nombre=self.nombre+1*self.multiplicateur
+
+    def incrementemultiplicateurDeUn(self):
+        self.multiplicateur=self.multiplicateur+1
 
     def resetMultiplicateur(self):
-        self.multiplicateur =0
-
-    def incrementerMultiplicateur(self):
-        self.multiplicateur += 1
+        self.multiplicateur=1
 
     def getScore(self):
-        return self.valeur
+        return str(self.nombre)
 
     def getMultiplicateur(self):
-        return self.multiplicateur
+        return str(self.multiplicateur)
+    
+""" Exemple Code
+sc=Score()
+sc.incrementeScoreDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
 
-    def addScore(score, fichier):
-        f = open(fichier, 'a')
-        f.write(score + "\n")
-        f.close()
+sc.incrementeScoreDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
 
-    def getScoreFromTexte(fichier):
-         f = open(fichier,'r')
-             a = f.readline()
-         f.close()
-         return a
+sc.incrementeScoreDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.incrementeScoreDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.incrementemultiplicateurDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.incrementemultiplicateurDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.incrementemultiplicateurDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.incrementemultiplicateurDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.incrementeScoreDeUn()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+
+sc.resetMultiplicateur()
+print("score:",sc.getScore())
+print(sc.getMultiplicateur())
+"""

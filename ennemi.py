@@ -1,36 +1,77 @@
-class ennemi: # Définition de notre classe Personne
+import pygame
+from Param import *
+from Player import *
+from Projectile import *
+from math import *
 
-    def __init__(self, vie, poids, x, y): # Notre méthode constructeur
-        self.vie= vie
-        self.mort = False
-        self.poids = poids
-        self.positionX = x
-        self.positionY = y
-        self.largeur = 10
-        self.hauteur = 10
-        self.vecteurVitesse = array.array('b',[0,0])
-        self.frottement = 3
+def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
+    x= x2-x1
+    y= y2-y1
+    if x!=0:
+        angle=atan(y/x)
+    else:
+        print("division par zero")
 
-    def getEnVie(self):
-        return self.vie
+    angleEnDegree=degrees(angle)
+    vitesseX=cos(angle)
+    vitesseY=sin(angle)
+    #print(vitesseX)
+    #print(vitesseY)
+    #print("norme")
+    #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
+    #print(degrees(angle))
+    if x>0:
+        return (vitesseX,vitesseY)
+    else:
+        return (-vitesseX,-vitesseY)
 
-    def setPosition(self,x=0,y=0):
-		self.positionX=x
-        self.positionY=y
+class Cible(pygame.sprite.Sprite):
+    """ Platform the user can jump on """
 
-    def gauche(self):
-        self.vecteurVitesse -= 1
+    def __init__(self):
+        """ Platform constructor. Assumes constructed with user passing in
+            an array of 5 numbers like what's defined at the top of this code.
+            """
+        super().__init__()
+        width = 25
+        height = 25
+        self.hp = 2
+        self.image = pygame.Surface([width, height])
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
 
-    def droite(self):
-        self.vecteurVitesse += 1
+    def bulletHit(self):
+        self.hp -= 1
 
-    def sautRessort(int):
+        if self.hp <=0:
+            self.kill()
 
-    def tirer(posXTir, posYTir):
+class Tourelle(pygame.sprite.Sprite):
+    """ Platform the user can jump on """
 
-    def touche():
+    def __init__(self):
+        """ Platform constructor. Assumes constructed with user passing in
+            an array of 5 numbers like what's defined at the top of this code.
+            """
+        super().__init__()
+        width = 100
+        height = 100
+        self.hp = 5
+        self.image = pygame.Surface([width, height])
+        self.image.fill(RED)
+        self.rect = self.image.get_rect()
+        self.hitzone = [self.rect.x-width*2.5,self.rect.y-height*2.5,self.rect.y+height*2.5,self.rect.y+height*2.5]
+        self.countdonw = 60
 
-    def setVecVitesse(x,y):
-        self.vecteurVitesse= array.array('b',[x,y])
+    def bulletHit(self):
+        self.hp -= 1
 
-    def afficher():
+        if self.hp <0:
+            self.kill()
+
+    def update(self,bullets,player):
+        self.countdonw -= 1
+        if self.countdonw == 0:
+            vitesseX,vitesseY=calculDeLaVitesseProjectile(self.rect.right,self.rect.centery,player.rect.x,player.rect.y)
+            bullets.add(Bullet(self.rect.right, self.rect.centery, vitesseX, vitesseY))
+            self.countdonw = 60
