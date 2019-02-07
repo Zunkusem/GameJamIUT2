@@ -1,4 +1,4 @@
-class Score():
+class ScoreEnr():
     def __init__(self,nom):  #le mettre avec l'extension
         self.nom=nom
 
@@ -89,4 +89,7 @@ class Score():
         return a
 
 
-
+#sc = Score("score.txt")
+#print(sc.recupèreLesScores())
+#sc.enregistreScore("quentin", 35000)
+#print(sc.recupèreLesScores())
