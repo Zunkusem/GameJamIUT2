@@ -37,9 +37,9 @@ def main():
 
     # Create all the levels
     level_list = []
-    #level_list.append(Tuto(player))
+    level_list.append(Tuto(player))
     level_list.append(Level_01(player))
-#>>>>>>> 1cf801ee5a90345ba7475304bffb4f5af544f0d5
+
 
     # Set the current level
     current_level_no = 0
@@ -111,7 +111,7 @@ def main():
         active_sprite_list.update(screen)
 
         # Update items in the level
-        current_level.update(player)
+        current_level.update(player,screen)
         # current_level.shift_worldy(player.change_y,player)
 
         # If the player gets near the right side, shift the world left (-x)
@@ -176,8 +176,8 @@ def main():
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
-    #score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
-    score_final = 100
+    score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
+    #score_final = 100
     fin(score_final)
     #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
