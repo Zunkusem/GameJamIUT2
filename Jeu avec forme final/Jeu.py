@@ -36,8 +36,10 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
     level_list.append(Level_01(player))
+
+    level_list.append(Tuto(player))
+    
 
     # Set the current level
     current_level_no = 0
@@ -59,9 +61,6 @@ def main():
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
-    saveScore = 0
-
-    saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
 
@@ -149,8 +148,8 @@ def main():
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
-                player.level.score.setScore(saveScore)
-                player.level.score.setMultiplicateur(saveMultiplicateur)
+                player.level.score.setScore(int(saveScore))
+                player.level.score.setMultiplicateur(int(saveMultiplicateur))
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
