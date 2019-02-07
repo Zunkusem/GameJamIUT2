@@ -2,8 +2,8 @@ from math import *
 class Time():
 
     def __init__(self):
-        self.minutes=0
-        self.secondes=2
+        self.minutes=3
+        self.secondes=0
         self.milli=0
 
     def incremente(self):
