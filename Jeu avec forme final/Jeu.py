@@ -34,7 +34,7 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
+    level_list.append(Level_01(player))
 
     # Set the current level
     current_level_no = 0
@@ -43,7 +43,7 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    player.rect.x = 100
+    player.rect.x = 2300
     player.rect.y = 758
     active_sprite_list.add(player)
 
