@@ -34,7 +34,7 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
+    level_list.append(Tuto(player,screen))
 
     # Set the current level
     current_level_no = 0
@@ -97,7 +97,7 @@ def main():
                     player.stop()
 
         # Update the player.
-        active_sprite_list.update()
+        active_sprite_list.update(screen)
 
         # Update items in the level
         current_level.update(player)

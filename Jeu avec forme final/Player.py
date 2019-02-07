@@ -1,4 +1,5 @@
 import pygame
+import sys
 from Param import *
 from Map import *
 from Projectile import *
@@ -20,13 +21,54 @@ class Player(pygame.sprite.Sprite):
         # This could also be an image loaded from the disk.
         width = 40
         height = 60
-        self.image = pygame.Surface([width, height])
-        self.image.fill(RED)
+        self.imagesflipR = []
+        self.imagesflipL = []
+        self.imagesL = []
+        self.imagesR = []
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0000.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0001.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0002.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0003.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0004.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0005.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0006.png'))
+        self.imagesflipR.append( pygame.image.load('Playerpic/AnimationFlipR0007.png'))
+
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0000.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0001.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0002.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0003.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0004.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0005.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0006.png'))
+        self.imagesflipL.append( pygame.image.load('Playerpic/AnimationFlipL0007.png'))
+
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0000.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0001.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0002.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0003.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0004.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0005.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0006.png'))
+        self.imagesR.append( pygame.image.load('Playerpic/AnimationR0007.png'))
+
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0000.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0001.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0002.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0003.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0004.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0005.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0006.png'))
+        self.imagesL.append( pygame.image.load('Playerpic/AnimationL0007.png'))
+
+
+        self.index = 0
+        self.image = self.imagesflipR[self.index]
 
 
 
         # Set a referance to the image rect.
-        self.rect = self.image.get_rect()
+        self.rect = self.imagesR[0].get_rect()
 
 
         # Set speed vector of player
@@ -44,6 +86,7 @@ class Player(pygame.sprite.Sprite):
         # self.BZone = -150
         # self.TZone = -800
         self.posP = 0
+        self.countdonw = 10
 
     def invG(self):
         self.G = self.G*(-1)
@@ -51,10 +94,45 @@ class Player(pygame.sprite.Sprite):
         self.J1 = self.J1*(-1)
         self.J2 = self.J2*(-1)
 
-    def update(self):
+    def update(self,screen):
         """ Move the player. """
         # Gravity
         self.calc_grav()
+        BLACK = (0, 0, 0)
+        self.countdonw -= 1
+        if self.change_x > 0 :
+            if self.countdonw <=0 and self.Gstat==1:
+                self.index += 1
+                screen.fill(BLACK)
+                if self.index >= len(self.imagesR):
+                    self.index = 0
+                self.image = self.imagesR[self.index]
+                self.countdonw = 10
+
+            if self.countdonw <=0 and self.Gstat==-1:
+                self.index += 1
+                screen.fill(BLACK)
+                if self.index >= len(self.imagesflipR):
+                    self.index = 0
+                self.image = self.imagesflipR[self.index]
+                self.countdonw = 10
+
+        elif self.change_x < 0:
+            if self.countdonw <=0 and self.Gstat==1:
+                self.index += 1
+                screen.fill(BLACK)
+                if self.index >= len(self.imagesL):
+                    self.index = 0
+                self.image = self.imagesL[self.index]
+                self.countdonw = 10
+
+            if self.countdonw <=0 and self.Gstat==-1:
+                self.index += 1
+                screen.fill(BLACK)
+                if self.index >= len(self.imagesflipL):
+                    self.index = 0
+                self.image = self.imagesflipL[self.index]
+                self.countdonw = 10
 
 
         # Move left/right

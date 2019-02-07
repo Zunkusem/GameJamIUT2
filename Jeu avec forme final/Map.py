@@ -62,6 +62,9 @@ class Level():
         screen.blit(self.font_score, (750,10))
         screen.blit(self.font_multiplicateur, (900,10))
 
+        # for i in self.platform_list:
+        #     i.graph()
+
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -139,7 +142,7 @@ class Level():
 class Tuto(Level):
     """ Definition for level 1. """
 
-    def __init__(self, player):
+    def __init__(self, player, screen):
         """ Create level 1. """
 
         # Call the parent constructor
@@ -238,11 +241,12 @@ class Tuto(Level):
 
         # Go through the array above and add platforms
         for platform in level:
-            block = Platform(platform[0], platform[1])
+            block = Platform(platform[0], platform[1], platform[2], platform[3], screen)
             block.rect.x = platform[2]
             block.rect.y = platform[3]
             block.player = self.player
             self.platform_list.add(block)
+            # block.graph()
 
         for bumper in Bump:
             block = Bumper(bumper[0], bumper[1])
