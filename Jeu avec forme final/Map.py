@@ -34,6 +34,10 @@ class Level():
         self.world_shiftx = 0
         self.world_shifty = 0
 
+    def getScore():
+        return self.score.getScore()
+
+
     # Update everythign on this level
     def update(self,player):
         #print(len(self.bullets_liste))
@@ -241,13 +245,20 @@ class Tuto(Level):
                                      ]
 
 
-        pieces=[[40,40]]
+        pieces=[[100,600],[200,700],[240,700],[280,700],[320,700],[360,700],
+                [500,600],[540,600],
+                [850,450],
+                [1200,100],
+                [1400,50],
+                [2000,250]
+                ]
         
         
 
         i=25
         Ennemy= [[10,100,0],
                  [500,500,1],
+                 [1200,700,1],
                  [10+i*1,500,0],
 
                  [10+i*8,500,0],
