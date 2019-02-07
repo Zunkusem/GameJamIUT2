@@ -12,6 +12,7 @@ def fin(score_final):
 
     pygame.init()
     font.init()
+    sc = ScoreEnr("score.txt")
 
     screen=pygame.display.set_mode([1024, 768])
 
@@ -58,8 +59,7 @@ def fin(score_final):
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 410 and event.pos[0] < 410+200 and event.pos[1] < 600+50 and event.pos[1] > 600:
                     print("envoyer")
                     print(nom_input, score_final)
-                    sc = Score()
-                    sc.enregistreScore("quentin", 35000)
+                    sc.enregistreScore(nom_input, score_final)
                     launcher()
                 elif event.type == KEYDOWN and event.key == K_KP_ENTER:
                     print("entrée")

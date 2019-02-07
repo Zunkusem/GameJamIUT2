@@ -1,1 +1,1 @@
-jean:430000,yann:420000,quentin:410000,emile:39000,malo:30000,coco:27000,david:20000,remi:15000,Teston:10000,jeremy:6000,
+jean:430000,yann:420000,quentin:410000,emile:39000,quentin:35000,quentin:35000,quentin:35000,malo:30000,coco:27000,david:20000,
