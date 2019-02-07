@@ -194,10 +194,10 @@ class Tuto(Level):
                  ]
 
 
-        Bump = [[102, 60, 2249, 718],#bloc passage 2eme niveau
-                [102, 61, 3699, -808],#bloc passage 3eme niveau
+        Bump = [[102, 41, 2249, 757],#bloc passage 2eme niveau
+                [102, 41, 3699, -798],#bloc passage 3eme niveau
                 [102, 41, 3850, -798],#rattrapage 1 niveau 3
-                [100, 60, 4050, 757],#1er bloc niveau 3
+                [100, 41, 4050, 757],#1er bloc niveau 3
                 [102, 41, 4799, -798],#2eme bloc niveau 3
                 [102, 41, 4549, 757],#rattrapage 2 niveau 3
                 [100, 60, 5500, 757],#3eme bloc niveau 3
