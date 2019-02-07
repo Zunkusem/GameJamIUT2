@@ -34,6 +34,10 @@ class Level():
         self.world_shiftx = 0
         self.world_shifty = 0
 
+    def getScore():
+        return self.score.getScore()
+
+
     # Update everythign on this level
     def update(self,player):
         #print(len(self.bullets_liste))
