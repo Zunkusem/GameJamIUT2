@@ -43,8 +43,7 @@ class Tourelle(pygame.sprite.Sprite):
         width = 30
         height = 30
         self.hp = 5
-        self.image = pygame.Surface([width, height])
-        self.image.fill(RED)
+        self.image = pygame.transform.scale(pygame.image.load('Ennemypic/Tourelle.png'),[30,30])
         self.rect = self.image.get_rect()
         self.hitzone = [self.rect.x-width*2.5,self.rect.y-height*2.5,self.rect.y+height*2.5,self.rect.y+height*2.5]
         self.countdonw = 60
@@ -80,10 +79,10 @@ class Piece(pygame.sprite.Sprite):
         self.countdonw = 10
         self.index = 0
         self.images = []
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie1.png'),[30,30]))
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie2.png'),[30,30]))
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie3.png'),[30,30]))
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie4.png'),[30,30]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie1.png'),[25,25]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie2.png'),[25,25]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie3.png'),[25,25]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie4.png'),[25,25]))
 
         self.image = self.images[0]
         self.rect = self.image.get_rect()
