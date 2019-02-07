@@ -48,9 +48,9 @@ def main():
 
     #pour l'affichage du score
 
-    font.init()                                        
-    font_a = pygame.font.SysFont('arial', 40)          
-    
+    font.init()
+    font_a = pygame.font.SysFont('arial', 40)
+
 
 
 
