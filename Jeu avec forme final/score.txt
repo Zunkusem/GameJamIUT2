@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-quentin:34,quentin:10,quentin:10,quentin:0,jean:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,yann:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,emile:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,quentin:0,
-=======
 null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,
->>>>>>> 79b7e443ee99991e48ec015a81b9e34687b4d1a7
