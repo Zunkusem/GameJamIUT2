@@ -17,7 +17,7 @@ class Cible(pygame.sprite.Sprite):
         super().__init__()
         width = 25
         height = 25
-        self.hp = 2
+        self.hp = 1
         self.image = pygame.Surface([width, height])
         self.image.fill(RED)
         self.rect = self.image.get_rect()
