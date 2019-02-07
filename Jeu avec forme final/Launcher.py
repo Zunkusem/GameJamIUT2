@@ -118,9 +118,9 @@ def launcher():
 
     x = 450
     y = 250
-    pygame.mixer.music.load('music/menufi.ogg')
+    pygame.mixer.music.load('music/menufi.mp3')
     pygame.mixer.music.play(1)
-    
+
     #--------------------------------------------------------------------------------
     #affichage de l'accueil
     while run:
@@ -181,7 +181,7 @@ def launcher():
                     pygame.quit()
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
                     accueil = True
-                    score = False                   
+                    score = False
             screen.blit(score_categorie,(160, 80))
             screen.blit(place_un, (190,160))
             screen.blit(nom_un, (490,160))
