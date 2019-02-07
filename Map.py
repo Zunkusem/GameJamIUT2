@@ -4,7 +4,6 @@ from Player import *
 from Ennemi import *
 from Projectile import *
 from Jeu import *
-from Score import *
 
 class Level():
     """ This is a generic super-class used to define a level.
@@ -22,12 +21,6 @@ class Level():
         self.ennemy_tourelle_liste = pygame.sprite.Group()
         self.player = player
         self.bullets_liste = pygame.sprite.Group()
-        self.score = Score()
-        font.init()                                        
-        self.font_a = pygame.font.SysFont('arial', 40)         
-        self.font_b = pygame.font.SysFont('arial', 70)  
-           
-                
 
         # How far this world has been scrolled left/right
         self.world_shiftx = 0
@@ -41,10 +34,6 @@ class Level():
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
-        self.font_score = self.font_a.render(self.score.getScore(), 1, (YELLOW))              
-        self.font_multiplicateur = self.font_a.render("x "+self.score.getMultiplicateur(), 1, (ORANGE))
-        
-                       
 
     def draw(self, screen):
         """ Draw everything on this level. """
@@ -60,8 +49,6 @@ class Level():
         self.ennemy_tourelle_liste.draw(screen)
         self.bullets_liste.draw(screen)
         self.platformRetourAvant_list.draw(screen)
-        screen.blit(self.font_score, (750,10))                          
-        screen.blit(self.font_multiplicateur, (900,10))  
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -226,7 +213,7 @@ class Level_01(Level):
                                      [700, 40, 5300, -798],#aide accélérateur pour arriver niveau 4
                                      ]
 
-        Ennemy= [[200,200,0],
+        Ennemy= [[10,200,200],
                  [10,200,1],
                  ]
 
