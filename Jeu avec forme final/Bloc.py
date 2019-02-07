@@ -29,9 +29,9 @@ class Bumper(pygame.sprite.Sprite):
             an array of 5 numbers like what's defined at the top of this code.
             """
         super().__init__()
-
+        ORANGE = (255,102,66)
         self.image = pygame.Surface([width, height])
-        self.image.fill(CYAN)
+        self.image.fill(ORANGE)
 
         self.rect = self.image.get_rect()
 
@@ -45,8 +45,9 @@ class PlatformRetourAvant(pygame.sprite.Sprite):
             """
         super().__init__()
 
+        VERT = (17,158,82)
         self.image = pygame.Surface([width, height])
-        self.image.fill(YELLOW)
+        self.image.fill(VERT)
 
         self.rect = self.image.get_rect()
 
@@ -59,8 +60,8 @@ class PlatformRetourArriere(pygame.sprite.Sprite):
             an array of 5 numbers like what's defined at the top of this code.
             """
         super().__init__()
-
+        VERT = (17,158,82)
         self.image = pygame.Surface([width, height])
-        self.image.fill(RED)
+        self.image.fill(VERT)
 
         self.rect = self.image.get_rect()

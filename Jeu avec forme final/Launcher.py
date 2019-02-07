@@ -121,8 +121,13 @@ def launcher():
     score = False
     regle = False
     x = 450
+<<<<<<< HEAD
     y = 200
     pygame.mixer.music.load('music/menufi.mp3')
+=======
+    y = 250
+    pygame.mixer.music.load('music/menufi.ogg')
+>>>>>>> 7f43b28a3e5f59675350e20ebd21c58eea3993b8
     pygame.mixer.music.play(1)
     
     #--------------------------------------------------------------------------------
