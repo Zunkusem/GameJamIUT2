@@ -63,8 +63,7 @@ class EnnemyBullet(pygame.sprite.Sprite):
             self.kill()
         if len(hit_player) > 0:
             for ennemy in hit_player:
-                print("#")
-                # ennemy.bulletHit()
+                player.bulletHit()
             pass
 
             self.kill()

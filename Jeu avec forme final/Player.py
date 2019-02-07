@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
     """
 
     # -- Methods
-    def __init__(self):
+    def __init__(self,score):
         """ Constructor function """
 
         # Call the parent's constructor
@@ -22,6 +22,8 @@ class Player(pygame.sprite.Sprite):
         height = 60
         self.image = pygame.Surface([width, height])
         self.image.fill(RED)
+
+        self.score=score
 
 
 
@@ -193,7 +195,14 @@ class Player(pygame.sprite.Sprite):
         if len(ennemy_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.change_y = self.J2
 
+    def bulletHit(self):
+        self.hp -= 1
 
+        if self.hp <=0:
+            self.score.resetMultiplicateur()
+            
+            
+            
     def go_left(self):
         """ Called when the user hits the left arrow. """
         self.change_x = -6

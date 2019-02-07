@@ -19,7 +19,6 @@ def main():
 
     # Create the player
     player = Player()
-    score = Score()
     time = Time()
 
     bullets = pygame.sprite.Group()
