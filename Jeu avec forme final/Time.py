@@ -17,4 +17,8 @@ class Time():
 
     def get(self):
         #return(str(self.minutes)+":"+str(self.secondes)+":"+str(round(self.milli,-1)))
-        return(str(self.minutes)+":"+str(self.secondes)+":"+str(int(round(self.milli,-1))))
+        if self.secondes >9:
+            sec = str(self.secondes)
+        else :
+            sec="0"+str(self.secondes)
+        return(str(self.minutes)+":"+sec+":"+str(int(round(self.milli,-1))))
