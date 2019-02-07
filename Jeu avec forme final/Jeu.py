@@ -39,6 +39,7 @@ def main():
     level_list = []
     level_list.append(Tuto(player))
     level_list.append(Level_01(player))
+>>>>>>> 1cf801ee5a90345ba7475304bffb4f5af544f0d5
 
     # Set the current level
     current_level_no = 0
@@ -77,7 +78,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-                pyagme.quit()
+                pygame.quit()
+
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 print("x:",event.pos[0]," y:",event.pos[1])
                 xSouris=event.pos[0]
@@ -99,7 +101,8 @@ def main():
                     player.jump()
                 if event.key == pygame.K_SPACE:
                     player.invG()
-
+                if event.key == pygame.K_ESCAPE:
+                    launcher()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a and player.change_x < 0:
