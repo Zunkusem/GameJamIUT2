@@ -9,7 +9,6 @@ from Score import *
 from Fin import *
 import Fin
 
-
 def main():
     """ Main Program """
     pygame.init()
@@ -37,8 +36,9 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
     level_list.append(Level_01(player))
+    level_list.append(Tuto(player))
+    
 
     # Set the current level
     current_level_no = 0
@@ -77,7 +77,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-                pyagme.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 print("x:",event.pos[0]," y:",event.pos[1])
                 xSouris=event.pos[0]
@@ -176,8 +175,7 @@ def main():
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
-    #score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
-    score_final = 100
+    score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     fin(score_final)
     #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
