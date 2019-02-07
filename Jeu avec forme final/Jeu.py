@@ -8,27 +8,6 @@ from Param import *
 
 
 
-def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
-    x= x2-x1
-    y= y2-y1
-    if x!=0:
-        angle=atan(y/x)
-    else:
-        print("division par zero")
-
-    angleEnDegree=degrees(angle)
-    vitesseX=cos(angle)
-    vitesseY=sin(angle)
-    #print(vitesseX)
-    #print(vitesseY)
-    #print("norme")
-    #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
-    #print(degrees(angle))
-    if x>0:
-        return (vitesseX,vitesseY)
-    else:
-        return (-vitesseX,-vitesseY)
-
 def main():
     """ Main Program """
     pygame.init()
