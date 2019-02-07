@@ -1,79 +1,63 @@
-def estPair(i):
-    if i%2 == 0:
-        return True
-    else:
-        return False
 
-def separeScoreDuNom(liste):
-    nom=[]
-    score=[]
-    for i in range(0,len(liste)):
-        if(estPair(i)):
-            nom.append(liste[i])
-        else:
-            score.append(liste[i])
-    return (nom,score)
-
-def transformeListeStringEnListeInteger(liste):
-    nouvListe= []
-    for i in liste:
-        nouvListe.append(int(i))
-    return nouvListe
-
-def transformeListeIntEnListeString(liste):
-    nouvListe= []
-    for i in liste:
-        nouvListe.append(str(i))
-    return nouvListe
-
-def ajouteScore(nom,score,listeNom,listeScore):
-    nouvListeScore= []
-    nouvListeNom=[]
-    for i in range(0,len(listeScore)):
-        if(listeScore[i]>score):
-            nouvListeScore.append(listeScore[i])
-            nouvListeNom.append(listeNom[i])
-        else:
-            nouvListeScore.append(score)
-            nouvListeNom.append(nom)
-            score=0
-            nouvListeScore.append(listeScore[i])
-            nouvListeNom.append(listeNom[i])
-    if len(nouvListeScore)>10:
-        nouvListeScore.pop()
-        nouvListeNom.pop()
-    return (nouvListeNom,nouvListeScore)
-
-def enregistrerNouvelleListe(nom,score,nomFichier):
-    fichier=open(nomFichier,'w')#pour un fichier texte, sinon, mettre 'wb' au lieu de "w"
-    #le fichier a été vidé ci-dessus
-    for i in range(0,len(score)):
-        fichier.write(nom[i]+":"+score[i]+",")#on peut maintenant écrire
-
-    fichier.close()#ne pas oublier pour libérer l'accès.
+import pygame
+from pygame import *
 
 
-def recupereLaListe(fichier):
-    f = open(fichier,'r') #ouvre le fichier
-    text = str(f.readlines())      #recupere
-    text=text.replace("'","")       #eleve les caractere en trop
-    text=text.replace("[","")
-    text=text.replace("]","")
-    #text[2:(len(text)-2)]
-    textSplit=text.split(',')       #decoupe suivant les virugule
-    a=[]
-    for i in textSplit:
-        i=i.split(':')
-        a+=i
-    f.close()
-    return a
+pygame.init()
 
+screen=pygame.display.set_mode([1024, 768])
+#screen.fill([255, 255, 255])
+img = pygame.image.load("start.jpg").convert()
+background = pygame.transform.scale(img, (1024,768))
+#background = pygame.draw.rect(screen, [59, 55, 55], [0, 0, 1024, 768], 0)
+left=400
+top=100
+screen_width = (1024/2)-(left/2)
+screen_height = (768/2)+200
 
-listeBrute=recupereLaListe("score.txt")                                         #recupere la liste brute des scores dans le ficher desire
-nom,score=separeScoreDuNom(listeBrute)                                          #separe les noms des scores
-score=transformeListeStringEnListeInteger(score)                                #transforme la liste score en integer
-nom,score=ajouteScore("Premier",39888888888888,nom,score)                       #ajoute les scores si ils sont suffisants
-print("nouvelle liste:")
-print(nom)
-print(score)
-enregistrerNouvelleListe(nom,transformeListeIntEnListeString(score),"score.txt")#ecrit le resultat dans le fichier desiré
+#mid_x = pygame.draw.rect(screen, [255, 0, 0], [1024/2, 0, 2, 768], 0)
+#mid_y = pygame.draw.rect(screen, [255, 0, 0], [0, 768/2, 1024, 2], 0)
+
+start = pygame.draw.rect(screen, [255, 0, 0], [screen_width, screen_height, left, top], 0)
+score = pygame.draw.rect(screen, [255, 125, 0], [screen_width, screen_height-125, left, top], 0)
+credit = pygame.draw.rect(screen, [0, 255, 125], [screen_width, screen_height-250, left, top], 0)
+quit = pygame.draw.rect(screen, [125, 0, 255], [screen_width, screen_height-375, left, top], 0)
+
+font.init()
+font_a = pygame.font.SysFont('arial', 40)
+font_b = pygame.font.SysFont('arial', 70)
+#font_titre = font_b.render("CybeRush180 by KotProd", 1, (0,0,0))
+font_start = font_a.render("START", 1, (255,255,255))
+font_score = font_a.render("SCORE", 1, (255,255,255))
+font_credit = font_a.render("CREDITS", 1, (255,255,255))
+font_quit = font_a.render("QUITTER", 1, (255,255,255))
+
+run=True
+accueil = True
+credit = False
+score = False
+while run:
+    screen.blit(background, (0,0))
+    #screen.blit(font_titre, ((screen_width+screen_width-275)/2, screen_height-500))
+    screen.blit(font_start, ((screen_width+screen_width+left-120)/2, screen_height-350))
+    screen.blit(font_score, ((screen_width+screen_width+left-125)/2, screen_height-225))
+    screen.blit(font_credit, ((screen_width+screen_width+left-135)/2, screen_height-100))
+    screen.blit(font_quit, ((screen_width+screen_width+left-135)/2, screen_height+25))
+    pygame.display.flip()
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            run=False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top and event.pos[1] > screen_height:
+            run=False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-125 and event.pos[1] > screen_height-125:
+            credit = True
+            accueil = False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-250 and event.pos[1] > screen_height-250:
+            score = True
+            accueil = False
+        elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > screen_width and event.pos[0] < screen_width+left and event.pos[1] < screen_height+top-375 and event.pos[1] > screen_height-375:
+            import Jeu
+    if accueil==False and credit==True:
+        import credit
+    elif accueil==False and score==True:
+        import score            

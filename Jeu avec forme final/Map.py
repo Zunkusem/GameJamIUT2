@@ -20,9 +20,9 @@ class Level():
         self.platformRetourAvant_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.ennemy_tourelle_liste = pygame.sprite.Group()
+        self.score = Score()
         self.player = player
         self.bullets_liste = pygame.sprite.Group()
-        self.score = Score()
         font.init()
         self.font_a = pygame.font.SysFont('arial', 40)
         self.font_b = pygame.font.SysFont('arial', 70)
@@ -51,7 +51,8 @@ class Level():
 
         # Draw the background
         screen.fill(BLUE)
-
+        screen.blit(self.font_score, (750,10))
+        screen.blit(self.font_multiplicateur, (900,10))
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
@@ -60,8 +61,7 @@ class Level():
         self.ennemy_tourelle_liste.draw(screen)
         self.bullets_liste.draw(screen)
         self.platformRetourAvant_list.draw(screen)
-        screen.blit(self.font_score, (750,10))
-        screen.blit(self.font_multiplicateur, (900,10))
+
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -226,8 +226,33 @@ class Tuto(Level):
                                      [700, 40, 5300, -798],#aide accélérateur pour arriver niveau 4
                                      ]
 
-        Ennemy= [[200,200,0],
-                 [10,200,1],
+        i=25
+        Ennemy= [[10,100,0],
+                 [500,500,1],
+                 [10+i*1,500,0],
+
+                 [10+i*3,500,0],
+
+                 [10+i*5,500,0],
+
+                 [10+i*7,500,0],
+
+                 [10+i*9,500,0],
+
+                 [10+i*11,500,0],
+
+                 [10+i*13,500,0],
+
+                 [10+i*13,500+i*2,0],
+
+                 [10+i*13,500+i*4,0],
+
+                 [10+i*13,500+i*6,0],
+
+                 [10+i*13,500+i*8,0],
+
+                 [10+i*13,500+i*9+8,0]
+
                  ]
 
         # Go through the array above and add platforms

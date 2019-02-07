@@ -19,8 +19,8 @@ def main():
 
     # Create the player
     player = Player()
-    score = Score()
     time = Time()
+    score = Score()
 
     bullets = pygame.sprite.Group()
 
@@ -150,8 +150,6 @@ def main():
         font_score = font_a.render(score.getScore(), 1, (YELLOW))
         font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
         font_temps = font_a.render(time.get(), 1, (255,255,255))
-        screen.blit(font_score, (750,10))
-        screen.blit(font_multiplicateur, (900,10))
         screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
