@@ -55,8 +55,8 @@ class Level():
 
     def draw(self, screen):
         """ Draw everything on this level. """
-
-        screen.fill(BLUE)
+        GREY = (58, 54, 53)
+        screen.fill(GREY)
 
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
@@ -408,6 +408,7 @@ class Level_01(Level):
                  [20, 20, 4500, -575],
                  [20, 20, 4200, -575],
                  [50, 500, 5900, -758],#premier bras
+                 [150, 20, 5850, -748],
                  [150, 20, 5850, -638],
                  [150, 20, 5850, -518],
                  [150, 20, 5850, -398],
@@ -447,6 +448,7 @@ class Level_01(Level):
                 [4040, -720],
                 [4030, -720],
                 [4040, -730],
+                [5960,-650],
                 ]
 
         levelPlatformRetourAvant = []
@@ -463,6 +465,7 @@ class Level_01(Level):
                   [1100, 627, 0],
                   [1700, -100, 1],
                   [4100, -700, 1],
+                  [6500, 0, 1],
                   ]
 
 
