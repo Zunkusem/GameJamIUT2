@@ -269,7 +269,7 @@ class Tuto(Level):
 
         # Go through the array above and add platforms
         for platform in level:
-            block = Platform(platform[0], platform[1], platform[2], platform[3], screen)
+            block = Platform(platform[0], platform[1])
             block.rect.x = platform[2]
             block.rect.y = platform[3]
             block.player = self.player
