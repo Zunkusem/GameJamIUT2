@@ -28,6 +28,7 @@ class Bullet(pygame.sprite.Sprite):
             for ennemy in enemy_hit_list:
                 ennemy.bulletHit()
             pass
+            self.kill()
         if len(enemy2_hit_list) > 0:
             for ennemy in enemy2_hit_list:
                 ennemy.bulletHit()
@@ -49,8 +50,8 @@ class EnnemyBullet(pygame.sprite.Sprite):
         self.speedx = sx
 
     def update(self,player):
-        self.rect.y += self.speedy*20
-        self.rect.x += self.speedx*20
+        self.rect.y += self.speedy*10
+        self.rect.x += self.speedx*10
         self.rect.y += 2
         self.player_liste = pygame.sprite.Group(player)
         platform_hit_list = pygame.sprite.spritecollide(self, player.level.platform_list, False)
@@ -61,7 +62,8 @@ class EnnemyBullet(pygame.sprite.Sprite):
         if self.rect.y >= SCREEN_HEIGHT or self.rect.x >= SCREEN_WIDTH or self.rect.y < 0 or self.rect.x < 0:
             self.kill()
         if len(hit_player) > 0:
-            for ennemy in hit_player:
+            for player in hit_player:
+                player.bulletHit()
                 print("#")
                 # ennemy.bulletHit()
             pass

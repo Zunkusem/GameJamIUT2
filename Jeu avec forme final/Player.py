@@ -146,22 +146,34 @@ class Player(pygame.sprite.Sprite):
         for block in block_hit_list:
 
             if self.change_y > 0:
+                self.rect.bottom = block.rect.top+2
                 self.change_y = -10;
             elif self.change_y < 0:
+                self.rect.top = block.rect.bottom+2
                 self.change_y = 10;
             self.invG();
 
-        self.posP += self.change_y
+        # self.posP += self.change_y
 
-        Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
-        for ennemy in Ennemy_hit_list:
-            if self.change_y > 0:
-                self.rect.bottom = ennemy.rect.top
-            elif self.change_y < 0:
-                self.rect.top = ennemy.rect.bottom
-            self.change_y = 0
-
-
+        # Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
+        # for ennemy in Ennemy_hit_list:
+        #
+        #     # Reset our position based on the top/bottom of the object.
+        #     if self.change_y > 0 :
+        #         self.rect.bottom = ennemy.rect.top
+        #     elif self.change_y < 0 :
+        #         self.rect.top = ennemy.rect.bottom
+        #
+        #     # Stop our vertical movement
+        #     self.change_y = 0
+        #     print("BRUUUU")
+        #
+        # Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
+        # for ennemy in Ennemy_hit_list:
+        #     if self.change_x > 0 and self.rect.bottom != ennemy.rect.top and self.rect.top != ennemy.rect.bottom:
+        #         self.rect.right = ennemy.rect.left
+        #     elif self.change_x < 0 and self.rect.bottom != ennemy.rect.top and self.rect.top != ennemy.rect.bottom:
+        #         self.rect.left = ennemy.rect.right
 
 
     def calc_grav(self):
@@ -191,6 +203,7 @@ class Player(pygame.sprite.Sprite):
             self.change_y = self.J2
 
 
+
     def go_left(self):
         """ Called when the user hits the left arrow. """
         self.change_x = -6
@@ -205,3 +218,7 @@ class Player(pygame.sprite.Sprite):
 
     def shoot(self, xSouris, ySouris):
         self.level.bullets_liste.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
+
+    def bulletHit(self):
+        self.level.score.resetMultiplicateur()
+        print("GGGGGGGGGGGGGGGGGGG")

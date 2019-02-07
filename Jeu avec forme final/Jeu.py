@@ -5,8 +5,7 @@ from math import *
 from Player import *
 from Map import *
 from Param import *
-
-
+from Score import *
 
 def main():
     """ Main Program """
@@ -20,22 +19,22 @@ def main():
 
     # Create the player
     player = Player()
-    #score = Score()                                    ==>ajout dans map
     time = Time()
+    score = Score()
 
     bullets = pygame.sprite.Group()
 
     #pour l'affichage du score
 
-    font.init()                                        
-    font_a = pygame.font.SysFont('arial', 40)          
-    
+    font.init()
+    font_a = pygame.font.SysFont('arial', 40)
+    font_b = pygame.font.SysFont('arial', 70)
 
 
 
     # Create all the levels
     level_list = []
-    level_list.append(Level_01(player))
+    level_list.append(Tuto(player))
 
     # Set the current level
     current_level_no = 0
@@ -55,7 +54,7 @@ def main():
     clock = pygame.time.Clock()
 
     # -------- Main Program Loop -----------
-    while not done:
+    while not time.estFini():
 
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
@@ -63,7 +62,7 @@ def main():
         # print("BZone:" + str(player.BZone))
         # print("TZone:" + str(player.TZone))
         # print("Gmult:" + str(player.Gmult))
-        print(len(player.level.enemy_list))
+        #print(len(player.level.enemy_list))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -148,13 +147,17 @@ def main():
 
         #affichage score/mult/temps
         time.incremente()
+        font_score = font_a.render(score.getScore(), 1, (YELLOW))
+        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
         font_temps = font_a.render(time.get(), 1, (255,255,255))
         screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
+        #print("fin de bouble")
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
+    print("fin de jeu")
     pygame.quit()
 
 if __name__ == "__main__":
