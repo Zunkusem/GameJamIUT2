@@ -40,6 +40,7 @@ def main():
     level_list.append(Tuto(player))
     level_list.append(Level_01(player))
 
+
     # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
@@ -60,9 +61,6 @@ def main():
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
-    saveScore = 0
-
-    saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
 
