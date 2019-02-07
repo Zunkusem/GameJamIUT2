@@ -155,31 +155,25 @@ class Player(pygame.sprite.Sprite):
 
         # self.posP += self.change_y
 
-        Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
-        for ennemy in Ennemy_hit_list:
-
-            # Reset our position based on the top/bottom of the object.
-            if self.change_y > 0:
-                self.rect.bottom = ennemy.rect.top
-            elif self.change_y < 0:
-                self.rect.top = ennemy.rect.bottom
-
-            # Stop our vertical movement
-            self.change_y = 0
-            print("BRUUUU")
-
-        Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
-        for ennemy in Ennemy_hit_list:
-            if self.change_x > 0 and self.rect.bottom != ennemy.rect.top:
-                self.rect.right = ennemy.rect.left
-            elif self.change_x < 0 and self.rect.top != ennemy.rect.bottom:
-                # Otherwise if we are moving left, do the opposite.
-                self.rect.left = ennemy.rect.right
-
-
-
-
-
+        # Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
+        # for ennemy in Ennemy_hit_list:
+        #
+        #     # Reset our position based on the top/bottom of the object.
+        #     if self.change_y > 0 :
+        #         self.rect.bottom = ennemy.rect.top
+        #     elif self.change_y < 0 :
+        #         self.rect.top = ennemy.rect.bottom
+        #
+        #     # Stop our vertical movement
+        #     self.change_y = 0
+        #     print("BRUUUU")
+        #
+        # Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
+        # for ennemy in Ennemy_hit_list:
+        #     if self.change_x > 0 and self.rect.bottom != ennemy.rect.top and self.rect.top != ennemy.rect.bottom:
+        #         self.rect.right = ennemy.rect.left
+        #     elif self.change_x < 0 and self.rect.bottom != ennemy.rect.top and self.rect.top != ennemy.rect.bottom:
+        #         self.rect.left = ennemy.rect.right
 
 
     def calc_grav(self):
