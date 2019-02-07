@@ -82,9 +82,9 @@ def main():
                 #xTrajectoire,yTrajectoire=CalculTrajectoireProjectile(POSITIONCERCLE[0],POSITIONCERCLE[1],xSouris,ySouris)
                 #print("xTrajectoire",xTrajectoire," yTrajectoire",yTrajectoire)
                 #pro.add(Projectile(POSITIONCERCLE,[xTrajectoire,yTrajectoire],fenetre))
-                print("test")
+                #print("test")
                 vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
-                print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
+                #print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
                 player.shoot(vitesseX,vitesseY)
 
             if event.type == pygame.KEYDOWN:
