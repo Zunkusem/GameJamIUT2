@@ -146,10 +146,13 @@ class Player(pygame.sprite.Sprite):
         for block in block_hit_list:
 
             if self.change_y > 0:
+                self.rect.bottom = block.rect.top
                 self.change_y = -10;
             elif self.change_y < 0:
+                self.rect.top = block.rect.bottom
                 self.change_y = 10;
             self.invG();
+            self.change_y = 0
 
         self.posP += self.change_y
 
