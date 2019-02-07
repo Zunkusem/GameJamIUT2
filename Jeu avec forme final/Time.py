@@ -24,9 +24,13 @@ class Time():
         return(str(self.minutes)+":"+sec+":"+str(int(round(self.milli,-1))))
 
     def estFini(self):
-        if self.milli <=0 and self.secondes <= 0 and self.minutes <= 0:
+        #print(self.milli," ",self.secondes," ",self.minutes)
+        if self.minutes <0 :
+            print("True")
             return True
         else:
+            print("False")
             return False
+            
         
 

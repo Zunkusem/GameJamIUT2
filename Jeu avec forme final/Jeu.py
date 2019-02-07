@@ -62,7 +62,7 @@ def main():
         # print("BZone:" + str(player.BZone))
         # print("TZone:" + str(player.TZone))
         # print("Gmult:" + str(player.Gmult))
-        print(len(player.level.enemy_list))
+        #print(len(player.level.enemy_list))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -153,9 +153,11 @@ def main():
         screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
+        #print("fin de bouble")
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
+    print("fin de jeu")
     pygame.quit()
 
 if __name__ == "__main__":

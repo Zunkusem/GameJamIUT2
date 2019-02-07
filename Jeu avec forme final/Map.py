@@ -35,7 +35,7 @@ class Level():
 
     # Update everythign on this level
     def update(self,player):
-        print(len(self.bullets_liste))
+        #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
         self.enemy_list.update()
