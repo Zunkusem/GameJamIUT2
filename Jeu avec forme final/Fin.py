@@ -80,4 +80,4 @@ def fin(score_final):
     pygame.quit()
 
 if __name__ == "__main__":
-    fin(35000)
+    fin(score_final)
