@@ -153,7 +153,7 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.Gmult == 0
 
-        block_hit_list = pygame.sprite.spritecollide(self, self.level.platformRetourAvant_list, False)
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.platformRetourArriere_list, False)
         for block in block_hit_list:
             # If we are moving right,
             # set our right side to the left side of the item we hit
@@ -166,6 +166,11 @@ class Player(pygame.sprite.Sprite):
                 self.rect.left = block.rect.right
             else:
                 self.Gmult == 0
+
+        block_hit_list = pygame.sprite.spritecollide(self, self.level.piece_list, False)
+        for block in block_hit_list:
+            block.kill()
+            self.level.score.incrementeScoreDeUn()
 
         # See if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
@@ -224,10 +229,10 @@ class Player(pygame.sprite.Sprite):
         for block in block_hit_list:
 
             if self.change_y > 0:
-                self.rect.bottom = block.rect.top+2
+                self.rect.bottom = block.rect.top
                 self.change_y = -10;
             elif self.change_y < 0:
-                self.rect.top = block.rect.bottom+2
+                self.rect.top = block.rect.bottom
                 self.change_y = 10;
             self.invG();
 

@@ -11,6 +11,13 @@ CYAN = (0, 255, 255)
 ELEC_BLUE=(13, 13, 242)
 ORANGE=(249, 152, 6)
 VIOLET_FLASH=(204, 51, 255)
+FOND=(102, 102, 102)
+WALL=(128, 128, 128)
+PLATFORM=(140, 140, 140)
+CHARACTER=(132, 132, 225)
+COINS=(255, 224, 102)
+
+
 
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
@@ -30,10 +37,10 @@ def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x1,y1) position du tireur (x2,y2
     else:
         angle=0.7036137827794523
         print("div par zero")
-    
+
     angleEnDegree=degrees(angle)
-    vitesseX=cos(angle) 
-    vitesseY=sin(angle) 
+    vitesseX=cos(angle)
+    vitesseY=sin(angle)
     if x>0:
         return (vitesseX,vitesseY)
     else :
@@ -50,10 +57,10 @@ def calculDeLaVitesseProjectileAvecRamdom(x1,y1,x2,y2):# (x1,y1) position du tir
     else:
         angle=0.7036137827794523
         print("div par zero")
-    
+
     angleEnDegree=degrees(angle)
-    vitesseX=cos(angle) 
-    vitesseY=sin(angle) 
+    vitesseX=cos(angle)
+    vitesseY=sin(angle)
     if x>0:
         return (vitesseX,vitesseY)
     else :

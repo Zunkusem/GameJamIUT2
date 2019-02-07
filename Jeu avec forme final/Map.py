@@ -18,6 +18,7 @@ class Level():
         self.bumper_list = pygame.sprite.Group()
         self.platformRetourArriere_list = pygame.sprite.Group()
         self.platformRetourAvant_list = pygame.sprite.Group()
+        self.piece_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.ennemy_tourelle_liste = pygame.sprite.Group()
         self.score = Score()
@@ -26,18 +27,24 @@ class Level():
         font.init()
         self.font_a = pygame.font.SysFont('arial', 40)
         self.font_b = pygame.font.SysFont('arial', 70)
-
+        self.font_score = self.font_a.render(self.score.getScore(), 1, (YELLOW))
+        self.font_multiplicateur = self.font_a.render("x "+self.score.getMultiplicateur(), 1, (ORANGE))
 
 
         # How far this world has been scrolled left/right
         self.world_shiftx = 0
         self.world_shifty = 0
 
+    def getScore():
+        return self.score.getScore()
+
+
     # Update everythign on this level
     def update(self,player):
-        print(len(self.bullets_liste))
+        #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
+        self.piece_list.update() #
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
@@ -49,10 +56,11 @@ class Level():
     def draw(self, screen):
         """ Draw everything on this level. """
 
-        # Draw the background
         screen.fill(BLUE)
+
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
+        self.piece_list.draw(screen)
         self.enemy_list.draw(screen)
         self.bumper_list.draw(screen)
         self.platformRetourArriere_list.draw(screen)
@@ -61,10 +69,6 @@ class Level():
         self.platformRetourAvant_list.draw(screen)
         screen.blit(self.font_score, (750,10))
         screen.blit(self.font_multiplicateur, (900,10))
-
-        # for i in self.platform_list:
-        #     i.graph()
-
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -79,6 +83,9 @@ class Level():
             platform.rect.x += shift_x
 
         for platform in self.platformRetourArriere_list:
+            platform.rect.x += shift_x
+
+        for platform in self.piece_list:
             platform.rect.x += shift_x
 
         for platform in self.platformRetourAvant_list:
@@ -124,6 +131,9 @@ class Level():
         for platform in self.platformRetourArriere_list:
             platform.rect.y += shift_y
 
+        for platform in self.piece_list:
+            platform.rect.y += shift_y
+
         for platform in self.platformRetourAvant_list:
             platform.rect.y += shift_y
 
@@ -142,20 +152,20 @@ class Level():
 class Tuto(Level):
     """ Definition for level 1. """
 
-    def __init__(self, player, screen):
-        """ Create level 1. """
+    def __init__(self, player):
+        """ Create Tuto. """
 
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.level_limit = -10000
+        self.level_limit = -8000
 
         # Array with width, height, x, and y of platform
         level = [#bords de la map
                  [150, 968, -140, -100],
-                 [10000, 100, 0, 758],
+                 [8000, 100, 0, 758],
                  [150, 968, -140, -988],
-                 [10000, 100, 0, -858],
+                 [8000, 100, 0, -858],
                  #blocs 1ere partie en bas
                  [160, 30, 500, 630],
                  [160, 30, 800, 500],
@@ -229,15 +239,33 @@ class Tuto(Level):
                                      [700, 40, 5300, -798],#aide accélérateur pour arriver niveau 4
                                      ]
 
+
+        pieces=[[100,600],[200,700],[240,700],[280,700],[320,700],[360,700],
+                [500,600],[540,600],
+                [850,450],
+                [1200,100],
+                [1400,50],
+                [2000,250]
+                ]
+
+
+
         i=25
         Ennemy= [[10,100,0],
                  [500,500,1],
+                 [1200,700,1],
                  [10+i*1,500,0],
 
                  [10+i*8,500,0],
 
 
                  ]
+        for piece in pieces:
+            block = Piece()
+            block.rect.x = piece[0]
+            block.rect.y = piece[1]
+            block.player = self.player
+            self.piece_list.add(block)
 
         # Go through the array above and add platforms
         for platform in level:
@@ -346,73 +374,65 @@ class Level_01(Level):
                  [50, 50, 1600, 600],
                  [40, 500, 1800, -768],
                  [40, 700, 1800, 100],
-                 [1000, 100, 2000, -50],
+                 [1000, 100, 2000, -150],
                  [1000, 600, 2000, -650],
-                 [60, 800, 2900, 0],
-                 [40, 90, 2000, 677]
+                 [100, 700, 2900, 123],
+                 [40, 90, 2000, 677],
+                 [40, 40, 2100, 527],
+                 [40, 40, 2100, 377],
+                 [40, 40, 2100, 227],
+                 [40, 40, 2650, 527],
+                 [40, 40, 2650, 377],
+                 [40, 40, 2650, 227],
+                 [400, 40, 2700, 123],
+                 [500,820, 3100, -651],
+                 [600, 800, 3000, 162],
+                 [300, 600, 3700, -758],
+                 [100, 500, 4000, -658],
+                 [2000, 900, 3600, -58],
+                 [400, 600, 5200, -758],
+                 [150, 40 , 4200, -158],
+                 [150, 40 , 4500, -258],
+                 [150, 40, 4800, -358],
+                 [150, 40, 5100, -458],
+                 [20, 20, 4800, -575],
+                 [20, 20, 4500, -575],
+                 [20, 20, 4200, -575],
+                 [50, 500, 5900, -758],#premier bras
+                 [150, 20, 5850, -658],
+                 [150, 20, 5850, -558],
+                 [150, 20, 5850, -458],
+                 [150, 20, 5850, -358],
+
                  ]
 
         Bump = [[1300, 41, 500, 657],
                 [1300, 41, 500, -698],
                 [100, 41, 1840, -798],
-                [100, 41, 1840, 757]
+                [100, 41, 1840, 757],
+                [100, 41, 3000, 122],
+                [100, 41, 3600, -798],
+                [100, 41, 4500, -798],
+                [100, 41, 5500, -59]
                 ]
-        levelPlatformRetourArriere = []
+        levelPlatformRetourArriere = [[860, 40, 2040, 757]
+                                      ]
+
         levelPlatformRetourAvant = []
-        Ennemy = [[1100, -658,0],
-                  [1100, -633,0],
-                  [1100, -608,0],
-                  [1100, -583,0],
-                  [1100, -558,0],
-                  [1100, -533,0],
-                  [1100, -508,0],
-                  [1100, -483,0],
-                  [1100, -458,0],
-                  [1100, -433,0],
-                  [1100, -408,0],
-                  [1100, -383,0],
-                  [1100, -358,0],
-                  [1100, -333,0],
-                  [1100, -308,0],
-                  [1100, -283,0],
-                  [1100, -258,0],
-                  [1100, -233,0],
-                  [1100, -208,0],
-                  [1100, -183,0],
-                  [1100, -158,0],
-                  [1100, -133,0],
-                  [1100, -108,0],
-                  [1100, -83,0],
-                  [1100, -58,0],
-                  [1100, -33,0],
-                  [1100, -8,0],
-                  [1100, 17,0],
-                  [1100, 42,0],
-                  [1100, 67,0],
-                  [1100, 92,0],
-                  [1100, 117,0],
-                  [1100, 142,0],
-                  [1100, 167,0],
-                  [1100, 192,0],
-                  [1100, 217,0],
-                  [1100, 242,0],
-                  [1100, 267,0],
-                  [1100, 292,0],
-                  [1100, 317,0],
-                  [1100, 342,0],
-                  [1100, 367,0],
-                  [1100, 392,0],
-                  [1100, 417,0],
-                  [1100, 442,0],
-                  [1100, 467,0],
-                  [1100, 492,0],
-                  [1100, 517,0],
-                  [1100, 542,0],
-                  [1100, 567,0],
-                  [1100, 592,0],
-                  [1100, 617,0],
-                  [1100, 642,0],
-                  [1100, 667,0]
+        Ennemy = [[1100, -658, 0],
+                  [1100, -558, 0],
+                  [1100, -458, 0],
+                  [1100, -358, 0],
+                  [1100, -258, 0],
+                  [1100, -158, 0],
+                  [1100, -58, 0],
+                  [1100, 42, 0],
+                  [1100, 142, 0],
+                  [1100, 242, 0],
+                  [1100, 342, 0],
+                  [1100, 442, 0],
+                  [1100, 542, 0],
+                  [1100, 627, 0],
                   ]
 
 

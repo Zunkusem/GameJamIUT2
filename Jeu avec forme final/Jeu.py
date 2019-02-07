@@ -20,7 +20,7 @@ def main():
     # Create the player
     player = Player()
     time = Time()
-    score = Score()
+    #score = Score()
 
     bullets = pygame.sprite.Group()
 
@@ -34,7 +34,8 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player,screen))
+    level_list.append(Tuto(player))
+    level_list.append(Level_01(player))
 
     # Set the current level
     current_level_no = 0
@@ -42,6 +43,9 @@ def main():
 
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
+
+    #player.rect.x = 5200
+    #player.rect.y = -86
 
     player.rect.x = 100
     player.rect.y = 758
@@ -53,6 +57,9 @@ def main():
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
+    saveScore = 0
+
+    saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
 
@@ -62,7 +69,7 @@ def main():
         # print("BZone:" + str(player.BZone))
         # print("TZone:" + str(player.TZone))
         # print("Gmult:" + str(player.Gmult))
-        print(len(player.level.enemy_list))
+        #print(len(player.level.enemy_list))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -125,14 +132,21 @@ def main():
             player.rect.left = 120
             current_level.shift_worldx(diff)
 
+        #On essai de garder le score et le Multiplicateur
+
+
         # If the player gets to the end of the level, go to the next level
         current_position = player.rect.x + current_level.world_shiftx
+        saveScore = current_level.score.getScore()
+        saveMultiplicateur = current_level.score.getMultiplicateur()
         if current_position < current_level.level_limit:
             player.rect.x = 120
             if current_level_no < len(level_list)-1:
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
+                player.level.score.setScore(saveScore)
+                player.level.score.setMultiplicateur(saveMultiplicateur)
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -147,15 +161,20 @@ def main():
 
         #affichage score/mult/temps
         time.incremente()
-        font_score = font_a.render(score.getScore(), 1, (YELLOW))
-        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
+        #font_score = font_a.render(score.getScore(), 1, (YELLOW))
+        #font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
         font_temps = font_a.render(time.get(), 1, (255,255,255))
         screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
+        #print("fin de bouble")
+
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
+    print("fin de jeu")
+    print('SCORE :',player.level.score.getScore())
+    #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
 
 if __name__ == "__main__":
