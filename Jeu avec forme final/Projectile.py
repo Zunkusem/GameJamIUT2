@@ -49,8 +49,8 @@ class EnnemyBullet(pygame.sprite.Sprite):
         self.speedx = sx
 
     def update(self,player):
-        self.rect.y += self.speedy*20
-        self.rect.x += self.speedx*20
+        self.rect.y += self.speedy*10
+        self.rect.x += self.speedx*10
         self.rect.y += 2
         self.player_liste = pygame.sprite.Group(player)
         platform_hit_list = pygame.sprite.spritecollide(self, player.level.platform_list, False)
