@@ -40,11 +40,11 @@ class Level():
 
 
     # Update everythign on this level
-    def update(self,player,screen):
+    def update(self,player):
         #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
-        self.piece_list.update(screen) #
+        self.piece_list.update() #
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
@@ -247,6 +247,7 @@ class Tuto(Level):
                 [1400,50],
                 [2000,250],
                 [2000,-500],
+                [2010,-500],
                 [2900,-550]
                 ]
 
@@ -433,7 +434,11 @@ class Level_01(Level):
                 [1600,50],
                 [1500,150],
                 [1750,300],
-                
+                [3050, -200],
+                [4050, -730],
+                [4040, -720],
+                [4030, -720],
+                [4040, -730],
                 ]
 
         levelPlatformRetourAvant = []
@@ -449,6 +454,7 @@ class Level_01(Level):
                   [1100, 542, 1],
                   [1100, 627, 0],
                   [1700, -100, 1],
+                  [4100, -700, 1],
                   ]
 
 
@@ -459,7 +465,7 @@ class Level_01(Level):
             block.player = self.player
             self.piece_list.add(block)
 
-
+            
         for platform in level:
             block = Platform(platform[0], platform[1])
             block.rect.x = platform[2]
