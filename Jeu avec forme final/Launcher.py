@@ -121,15 +121,10 @@ def launcher():
     score = False
     regle = False
     x = 450
-<<<<<<< HEAD
     y = 200
     pygame.mixer.music.load('music/menufi.mp3')
-=======
-    y = 250
-    pygame.mixer.music.load('music/menufi.ogg')
->>>>>>> 7f43b28a3e5f59675350e20ebd21c58eea3993b8
     pygame.mixer.music.play(1)
-    
+
     #--------------------------------------------------------------------------------
     #affichage de l'accueil
     while run:
@@ -145,7 +140,7 @@ def launcher():
             if event.type==pygame.QUIT:
                 run=False
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-13 and event.pos[0] < x+100-13 and event.pos[1] < y+400+50 and event.pos[1] > y+400:
-                run=False    
+                run=False
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-8 and event.pos[0] < x+100-8 and event.pos[1] < y+300+50 and event.pos[1] > y+300:
                 regle = True
                 accueil = False
@@ -194,7 +189,7 @@ def launcher():
                     pygame.quit()
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
                     accueil = True
-                    score = False                   
+                    score = False
             screen.blit(score_categorie,(140, 80))
             screen.blit(place_un, (170,160))
             screen.blit(nom_un, (430,160))
@@ -228,7 +223,7 @@ def launcher():
             screen.blit(score_dix, (770,702))
             pygame.display.flip()
 #------------------------------------------------------------------------------
-#affichage des règles            
+#affichage des règles
         if accueil==False and regle==True:
             screen.fill([0, 0, 0])
             screen.blit(regle_background, (0,0))
@@ -239,9 +234,9 @@ def launcher():
                     pygame.quit()
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
                     accueil = True
-                    regle = False                   
+                    regle = False
             pygame.display.flip()
-#-------------------------------------------------------------             
+#-------------------------------------------------------------
     pygame.mixer.music.stop()
     pygame.quit()
 if __name__ == "__main__":
