@@ -7,10 +7,7 @@ from Map import *
 from Param import *
 from Score import *
 from Fin import *
-<<<<<<< HEAD
-=======
 import Fin
->>>>>>> 084a7857dc294910052ec892b872574148c20d05
 
 def main():
     """ Main Program """

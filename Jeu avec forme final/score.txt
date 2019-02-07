@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 quentin:10,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,
-=======
-null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,null:1,
->>>>>>> 084a7857dc294910052ec892b872574148c20d05
