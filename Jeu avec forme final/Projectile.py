@@ -62,8 +62,10 @@ class EnnemyBullet(pygame.sprite.Sprite):
         if self.rect.y >= SCREEN_HEIGHT or self.rect.x >= SCREEN_WIDTH or self.rect.y < 0 or self.rect.x < 0:
             self.kill()
         if len(hit_player) > 0:
-            for ennemy in hit_player:
+            for player in hit_player:
                 player.bulletHit()
+                print("#")
+                # ennemy.bulletHit()
             pass
 
             self.kill()

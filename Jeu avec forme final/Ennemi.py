@@ -36,8 +36,8 @@ class Tourelle(pygame.sprite.Sprite):
             an array of 5 numbers like what's defined at the top of this code.
             """
         super().__init__()
-        width = 100
-        height = 100
+        width = 30
+        height = 30
         self.hp = 5
         self.image = pygame.Surface([width, height])
         self.image.fill(RED)
