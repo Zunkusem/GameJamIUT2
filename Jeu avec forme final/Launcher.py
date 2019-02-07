@@ -41,7 +41,7 @@ def launcher():
     #police reste du classement
     font_e = pygame.font.SysFont('arial', 35)
 
-    img_background = pygame.image.load("score.png").convert()
+    img_background = pygame.image.load("score.jpg").convert()
     img_gold = pygame.image.load("or.png").convert()
     img_silver= pygame.image.load("argent.png").convert()
     img_bronze = pygame.image.load("bronze.png").convert()
@@ -54,7 +54,6 @@ def launcher():
 
     retour = pygame.draw.rect(screen, [255, 0, 0], [0, 720, 125, 50], 0)
 
-    score_titre = font_a.render("Meilleurs Scores", 1, (255,255,255))
     font_return = font_b.render("RETOUR", 1, (134,210,48))
 
     score_categorie = font_c.render("PLACE           NOM         SCORE", 1,(255, 0, 255))
@@ -200,7 +199,6 @@ def launcher():
             #screen.blit(silver, 262,198)
             #screen.blit(bronze, 262,276)
             screen.blit(font_return, (10,720))
-            screen.blit(score_titre, (312, 0))
             screen.blit(score_categorie,(160, 80))
             screen.blit(place_un, (190,160))
             screen.blit(nom_un, (490,160))

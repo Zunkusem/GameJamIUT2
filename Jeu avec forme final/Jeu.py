@@ -9,7 +9,6 @@ from Score import *
 from Fin import *
 import Fin
 
-
 def main():
     """ Main Program """
     pygame.init()
@@ -38,9 +37,8 @@ def main():
     # Create all the levels
     level_list = []
     level_list.append(Level_01(player))
-
     level_list.append(Tuto(player))
-    
+
 
     # Set the current level
     current_level_no = 0
@@ -99,8 +97,7 @@ def main():
                     player.jump()
                 if event.key == pygame.K_SPACE:
                     player.invG()
-                if event.key == pygame.K_ESCAPE:
-                    launcher()
+
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_a and player.change_x < 0:
@@ -150,8 +147,8 @@ def main():
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
-                player.level.score.setScore(saveScore)
-                player.level.score.setMultiplicateur(saveMultiplicateur)
+                player.level.score.setScore(int(saveScore))
+                player.level.score.setMultiplicateur(int(saveMultiplicateur))
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -178,7 +175,6 @@ def main():
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
-    #score_final = 100
     fin(score_final)
     #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
