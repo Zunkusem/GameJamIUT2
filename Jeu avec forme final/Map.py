@@ -213,7 +213,7 @@ class Level_01(Level):
                                      [700, 40, 5300, -798],#aide accélérateur pour arriver niveau 4
                                      ]
 
-        Ennemy= [[10,200,200],
+        Ennemy= [[200,200,0],
                  [10,200,1],
                  ]
 
