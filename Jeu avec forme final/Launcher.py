@@ -23,6 +23,7 @@ def launcher():
     font_start = font_a.render("START", 1, (255,255,255))
     font_score = font_a.render("SCORE", 1, (255,255,255))
     font_credit = font_a.render("CREDITS", 1, (255,255,255))
+    font_regle = font_a.render("REGLES", 1, (255,255,255))
     font_quit = font_a.render("QUITTER", 1, (255,255,255))
     #---------------------------------------------------------------------------------
     #création des objets scores
@@ -95,7 +96,7 @@ def launcher():
     font_b_credit = pygame.font.SysFont('arial', 30)
     font_c_credit = pygame.font.SysFont('arial', 25)
 
-    img_credit = pygame.image.load("score.jpg").convert()
+    img_credit = pygame.image.load("credit.jpg").convert()
 
     credit_un= font_c_credit.render("GAME DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .KotProd", 1, (255,255,255))
     credit_deux = font_c_credit.render("ANIMATIONS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Jérémi Delaire", 1, (255,255,255))
@@ -108,6 +109,9 @@ def launcher():
     credit_neuf = font_c_credit.render("POCHETTE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nicolas Fontal", 1, (255,255,255))
     credit_dix = font_c_credit.render("MENUS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Quentin Faure-Petraz", 1, (255,255,255))
     bravo = font_c_credit.render("Bravo à toute l'équipe du projet pour cette performance !", 1, (255,255,255))
+    #---------------------------------------------------------------------------
+    #Création des objet pour la vue règle
+    regle_background = pygame.image.load("regle.jpg").convert()
     #---------------------------------------------------------------------------------
     #------------------------------------------------------------------------------------
     #boucle affichage
@@ -115,9 +119,9 @@ def launcher():
     accueil = True
     credit = False
     score = False
-
+    regle = False
     x = 450
-    y = 250
+    y = 200
     pygame.mixer.music.load('music/menufi.mp3')
     pygame.mixer.music.play(1)
 
@@ -129,20 +133,24 @@ def launcher():
         screen.blit(font_start, (x+5, y))
         screen.blit(font_score, (x, y+100))
         screen.blit(font_credit, (x-10, y+200))
-        screen.blit(font_quit, (x-10, y+300))
+        screen.blit(font_regle, (x-8, y+300))
+        screen.blit(font_quit, (x-13, y+400))
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 run=False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+300+50 and event.pos[1] > y+300:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-13 and event.pos[0] < x+100-13 and event.pos[1] < y+400+50 and event.pos[1] > y+400:
                 run=False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+200+50 and event.pos[1] > y+200:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-8 and event.pos[0] < x+100-8 and event.pos[1] < y+300+50 and event.pos[1] > y+300:
+                regle = True
+                accueil = False
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-10 and event.pos[0] < x+100-10 and event.pos[1] < y+200+50 and event.pos[1] > y+200:
                 credit = True
                 accueil = False
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+100+50 and event.pos[1] > y+100:
                 score = True
                 accueil = False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+50 and event.pos[1] > y:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x+5 and event.pos[0] < x+100+5 and event.pos[1] < y+50 and event.pos[1] > y:
                 score = main()
     #--------------------------------------------------------------------------------
     #affichage des crédits
@@ -182,38 +190,53 @@ def launcher():
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
                     accueil = True
                     score = False
-            screen.blit(score_categorie,(160, 80))
-            screen.blit(place_un, (190,160))
-            screen.blit(nom_un, (490,160))
-            screen.blit(score_un, (730,160))
-            screen.blit(place_deux, (190,228))
-            screen.blit(nom_deux, (490,228))
-            screen.blit(score_deux, (730,228))
-            screen.blit(place_trois, (190,286))
-            screen.blit(nom_trois, (490,286))
-            screen.blit(score_trois, (730,286))
-            screen.blit(place_quatre, (190,354))
-            screen.blit(nom_quatre, (490,354))
-            screen.blit(score_quatre, (730,354))
-            screen.blit(place_cinque, (190,412))
-            screen.blit(nom_cinque, (490,412))
-            screen.blit(score_cinque, (730,412))
-            screen.blit(place_six, (190,470))
-            screen.blit(nom_six, (490,470))
-            screen.blit(score_six, (730,470))
-            screen.blit(place_sept, (190,528))
-            screen.blit(nom_sept, (490,528))
-            screen.blit(score_sept, (730,528))
-            screen.blit(place_huit, (190,586))
-            screen.blit(nom_huit, (490,586))
-            screen.blit(score_huit, (730,586))
-            screen.blit(place_neuf, (190,644))
-            screen.blit(nom_neuf, (490,644))
-            screen.blit(score_neuf, (730,644))
-            screen.blit(place_dix, (190,702))
-            screen.blit(nom_dix, (490,702))
-            screen.blit(score_dix, (730,702))
+            screen.blit(score_categorie,(140, 80))
+            screen.blit(place_un, (170,160))
+            screen.blit(nom_un, (430,160))
+            screen.blit(score_un, (750,160))
+            screen.blit(place_deux, (170,228))
+            screen.blit(nom_deux, (450,228))
+            screen.blit(score_deux, (760,228))
+            screen.blit(place_trois, (170,286))
+            screen.blit(nom_trois, (450,286))
+            screen.blit(score_trois, (760,286))
+            screen.blit(place_quatre, (170,354))
+            screen.blit(nom_quatre, (470,354))
+            screen.blit(score_quatre, (770,354))
+            screen.blit(place_cinque, (170,412))
+            screen.blit(nom_cinque, (470,412))
+            screen.blit(score_cinque, (770,412))
+            screen.blit(place_six, (170,470))
+            screen.blit(nom_six, (470,470))
+            screen.blit(score_six, (770,470))
+            screen.blit(place_sept, (170,528))
+            screen.blit(nom_sept, (470,528))
+            screen.blit(score_sept, (770,528))
+            screen.blit(place_huit, (170,586))
+            screen.blit(nom_huit, (470,586))
+            screen.blit(score_huit, (770,586))
+            screen.blit(place_neuf, (170,644))
+            screen.blit(nom_neuf, (470,644))
+            screen.blit(score_neuf, (770,644))
+            screen.blit(place_dix, (170,702))
+            screen.blit(nom_dix, (470,702))
+            screen.blit(score_dix, (770,702))
             pygame.display.flip()
+#------------------------------------------------------------------------------
+#affichage des règles
+        if accueil==False and regle==True:
+            screen.fill([0, 0, 0])
+            screen.blit(regle_background, (0,0))
+        while accueil==False and regle==True:
+            for event in pygame.event.get():
+                if event.type==pygame.QUIT:
+                    run = False
+                    pygame.quit()
+                elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
+                    accueil = True
+                    regle = False
+            pygame.display.flip()
+#-------------------------------------------------------------
     pygame.mixer.music.stop()
     pygame.quit()
 if __name__ == "__main__":

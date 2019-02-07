@@ -473,7 +473,7 @@ class Level_01(Level):
                 [6360,-580],
                 [6360,-460],
                 [6360,-340],
-                
+
 
                 ]
 
@@ -491,9 +491,9 @@ class Level_01(Level):
                   [1100, 627, 0],
                   [1700, -100, 1],
                   [4100, -700, 1],
-                  [6500, 0, 1],
-                  [6500, 100, 1],
                   [6500, -100, 1],
+                  [6300, -100, 1],
+                  [6600, -100, 1],
                   ]
 
 
@@ -549,5 +549,87 @@ class Level_01(Level):
                 block.player = self.player
                 self.ennemy_tourelle_liste.add(block)
 
+class Level_02(Level):
+
+    def __init__(self, player):
+        """ Create Level_02. """
+
+        # Call the parent constructor
+        Level.__init__(self, player)
+
+        self.level_limit = -8000
+
+        level = [#bords de la map
+                 [150, 968, -140, -100],
+                 [8000, 100, 0, 758],
+                 [150, 968, -140, -988],
+                 [7400, 100, 0, -858],
+                 ]
+
+        Bump = [[1300, 41, 500, 657],
+                ]
+
+        levelPlatformRetourArriere = [[0, 0, 0, 0]
+                                      ]
+
+        pieces = [[0, 0, 0, 0]
+                  ]
+
+        levelPlatformRetourAvant = [[0, 0, 0, 0]
+                                    ]
+        Ennemy = [[0, 0, 0, 0]
+                  ]
+
+        for piece in pieces:
+            block = Piece()
+            block.rect.x = piece[0]
+            block.rect.y = piece[1]
+            block.player = self.player
+            self.piece_list.add(block)
+
+
+        for platform in level:
+            block = Platform(platform[0], platform[1])
+            block.rect.x = platform[2]
+            block.rect.y = platform[3]
+            block.player = self.player
+            self.platform_list.add(block)
+
+        for bumper in Bump:
+            block = Bumper(bumper[0], bumper[1])
+            block.rect.x = bumper[2]
+            block.rect.y = bumper[3]
+            block.player = self.player
+            self.bumper_list.add(block)
+
+        for PlatformRetourArr in levelPlatformRetourArriere:
+            block = PlatformRetourArriere(PlatformRetourArr[0], PlatformRetourArr[1])
+            block.rect.x = PlatformRetourArr[2]
+            block.rect.y = PlatformRetourArr[3]
+            block.player = self.player
+            self.platformRetourArriere_list.add(block)
+
+        for PlatformRetourAv in levelPlatformRetourAvant:
+            block = PlatformRetourAvant(PlatformRetourAv[0], PlatformRetourAv[1])
+            block.rect.x = PlatformRetourAv[2]
+            block.rect.y = PlatformRetourAv[3]
+            block.player = self.player
+            self.platformRetourAvant_list.add(block)
+
+        for ennemy in Ennemy:
+
+            if ennemy[2] == 0:
+                block = Cible(self)
+                block.rect.x = ennemy[0]
+                block.rect.y = ennemy[1]
+                block.player = self.player
+                self.enemy_list.add(block)
+
+            elif ennemy[2] == 1:
+                block = Tourelle(self)
+                block.rect.x = ennemy[0]
+                block.rect.y = ennemy[1]
+                block.player = self.player
+                self.ennemy_tourelle_liste.add(block)
 # reate platforms for the level
 #"
