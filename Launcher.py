@@ -148,6 +148,7 @@ while run:
             print("score")
         elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+50 and event.pos[1] > y:
             print("start")
+            score = main()
 #--------------------------------------------------------------------------------
 #affichage des crédits
     if accueil==False and credit==True:
