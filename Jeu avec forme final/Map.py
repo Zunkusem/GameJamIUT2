@@ -23,11 +23,11 @@ class Level():
         self.player = player
         self.bullets_liste = pygame.sprite.Group()
         self.score = Score()
-        font.init()                                        
-        self.font_a = pygame.font.SysFont('arial', 40)         
-        self.font_b = pygame.font.SysFont('arial', 70)  
-           
-                
+        font.init()
+        self.font_a = pygame.font.SysFont('arial', 40)
+        self.font_b = pygame.font.SysFont('arial', 70)
+
+
 
         # How far this world has been scrolled left/right
         self.world_shiftx = 0
@@ -41,10 +41,10 @@ class Level():
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
-        self.font_score = self.font_a.render(self.score.getScore(), 1, (YELLOW))              
+        self.font_score = self.font_a.render(self.score.getScore(), 1, (YELLOW))
         self.font_multiplicateur = self.font_a.render("x "+self.score.getMultiplicateur(), 1, (ORANGE))
-        
-                       
+
+
 
     def draw(self, screen):
         """ Draw everything on this level. """
@@ -60,8 +60,8 @@ class Level():
         self.ennemy_tourelle_liste.draw(screen)
         self.bullets_liste.draw(screen)
         self.platformRetourAvant_list.draw(screen)
-        screen.blit(self.font_score, (750,10))                          
-        screen.blit(self.font_multiplicateur, (900,10))  
+        screen.blit(self.font_score, (750,10))
+        screen.blit(self.font_multiplicateur, (900,10))
 
     def shift_worldx(self, shift_x):
         """ When the user moves left/right and we need to scroll
@@ -136,7 +136,7 @@ class Level():
         for bullet in self.bullets_liste:
             bullet.rect.y += shift_y
 
-class Level_01(Level):
+class Tuto(Level):
     """ Definition for level 1. """
 
     def __init__(self, player):
@@ -275,8 +275,73 @@ class Level_01(Level):
                 block.player = self.player
                 self.ennemy_tourelle_liste.add(block)
 
+class Level_01(Level):
 
+    def __init__(self, player):
+        """ Create level 1. """
 
+        # Call the parent constructor
+        Level.__init__(self, player)
+
+        self.level_limit = -8000
+
+        level = [#bords de la map
+                 [150, 968, -140, -100],
+                 [8000, 100, 0, 758],
+                 [150, 968, -140, -988],
+                 [7400, 100, 0, -858],
+                 #1ere partie
+                 [1000, 100, 500, 658],
+                 ]
+
+        Bump = []
+        levelPlatformRetourArriere = []
+        levelPlatformRetourAvant = []
+        Ennemy = []
+
+        for platform in level:
+            block = Platform(platform[0], platform[1])
+            block.rect.x = platform[2]
+            block.rect.y = platform[3]
+            block.player = self.player
+            self.platform_list.add(block)
+
+        for bumper in Bump:
+            block = Bumper(bumper[0], bumper[1])
+            block.rect.x = bumper[2]
+            block.rect.y = bumper[3]
+            block.player = self.player
+            self.bumper_list.add(block)
+
+        for PlatformRetourArr in levelPlatformRetourArriere:
+            block = PlatformRetourArriere(PlatformRetourArr[0], PlatformRetourArr[1])
+            block.rect.x = PlatformRetourArr[2]
+            block.rect.y = PlatformRetourArr[3]
+            block.player = self.player
+            self.platformRetourArriere_list.add(block)
+
+        for PlatformRetourAv in levelPlatformRetourAvant:
+            block = PlatformRetourAvant(PlatformRetourAv[0], PlatformRetourAv[1])
+            block.rect.x = PlatformRetourAv[2]
+            block.rect.y = PlatformRetourAv[3]
+            block.player = self.player
+            self.platformRetourAvant_list.add(block)
+
+        for ennemy in Ennemy:
+
+            if ennemy[2] == 0:
+                block = Cible()
+                block.rect.x = ennemy[0]
+                block.rect.y = ennemy[1]
+                block.player = self.player
+                self.enemy_list.add(block)
+
+            elif ennemy[2] == 1:
+                block = Tourelle()
+                block.rect.x = ennemy[0]
+                block.rect.y = ennemy[1]
+                block.player = self.player
+                self.ennemy_tourelle_liste.add(block)
 
 # reate platforms for the level
 #"
