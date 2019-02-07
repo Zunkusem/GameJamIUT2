@@ -118,7 +118,7 @@ def launcher():
 
     x = 450
     y = 250
-    pygame.mixer.music.load('music/menufi.mp3')
+    pygame.mixer.music.load('music/menufi.ogg')
     pygame.mixer.music.play(1)
     
     #--------------------------------------------------------------------------------
