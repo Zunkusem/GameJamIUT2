@@ -10,7 +10,8 @@ class Platform(pygame.sprite.Sprite):
             """
         super().__init__()
         self.image = pygame.Surface([width, height])
-        # self.image.fill(GREEN)
+        BLUE = (3,50,68)
+        self.image.fill(BLUE)
         self.rect = self.image.get_rect()
         # self.texture = pygame.image.load("index.jpg")
 
