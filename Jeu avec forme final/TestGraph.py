@@ -5,7 +5,8 @@ from math import *
 from Player import *
 from Map import *
 from Param import *
-from Score import *
+
+
 
 def main():
     """ Main Program """
@@ -17,24 +18,26 @@ def main():
 
     pygame.display.set_caption("Side-scrolling Platformer")
 
+    bg = pygame.image.load('bg.jpg')
+
     # Create the player
     player = Player()
+    #score = Score()                                    ==>ajout dans map
     time = Time()
-    score = Score()
 
     bullets = pygame.sprite.Group()
 
     #pour l'affichage du score
 
-    font.init()
-    font_a = pygame.font.SysFont('arial', 40)
-    font_b = pygame.font.SysFont('arial', 70)
+    font.init()                                        
+    font_a = pygame.font.SysFont('arial', 40)          
+    
 
 
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
+    level_list.append(Level_01(player))
 
     # Set the current level
     current_level_no = 0
@@ -53,8 +56,19 @@ def main():
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
+
+    #fond
+    def redrawGameWindow():
+        screen.blit(bg, (0,-768))
+        pygame.draw.rect(screen, (255,0,0), (0, -768, SCREEN_WIDTH, SCREEN_HEIGHT))
+        time.incremente()
+        font_temps = font_a.render(time.get(), 1, (255,255,255))
+        screen.blit(font_temps, (400,10))
+        pygame.display.flip()
+    
+    redrawGameWindow()
     # -------- Main Program Loop -----------
-    while not time.estFini():
+    while not done:
 
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
@@ -62,8 +76,10 @@ def main():
         # print("BZone:" + str(player.BZone))
         # print("TZone:" + str(player.TZone))
         # print("Gmult:" + str(player.Gmult))
-        #print(len(player.level.enemy_list))
+        print(len(player.level.enemy_list))
 
+        
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
@@ -144,20 +160,18 @@ def main():
 
         # Limit to 60 frames per second
         clock.tick(60)
+        
+        
 
         #affichage score/mult/temps
-        time.incremente()
-        font_score = font_a.render(score.getScore(), 1, (YELLOW))
-        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
-        font_temps = font_a.render(time.get(), 1, (255,255,255))
-        screen.blit(font_temps, (400,10))
+        #time.incremente()
+        #font_temps = font_a.render(time.get(), 1, (255,255,255))
+        #screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
-        pygame.display.flip()
-        #print("fin de bouble")
-
+        #pygame.display.flip()
+        
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
-    print("fin de jeu")
     pygame.quit()
 
 if __name__ == "__main__":

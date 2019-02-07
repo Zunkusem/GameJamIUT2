@@ -35,7 +35,7 @@ class Level():
 
     # Update everythign on this level
     def update(self,player):
-        print(len(self.bullets_liste))
+        #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
         self.enemy_list.update()
@@ -231,27 +231,8 @@ class Tuto(Level):
                  [500,500,1],
                  [10+i*1,500,0],
 
-                 [10+i*3,500,0],
+                 [10+i*8,500,0],
 
-                 [10+i*5,500,0],
-
-                 [10+i*7,500,0],
-
-                 [10+i*9,500,0],
-
-                 [10+i*11,500,0],
-
-                 [10+i*13,500,0],
-
-                 [10+i*13,500+i*2,0],
-
-                 [10+i*13,500+i*4,0],
-
-                 [10+i*13,500+i*6,0],
-
-                 [10+i*13,500+i*8,0],
-
-                 [10+i*13,500+i*9+8,0]
 
                  ]
 
