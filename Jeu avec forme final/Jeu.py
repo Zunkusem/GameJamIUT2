@@ -20,7 +20,7 @@ def main():
     # Create the player
     player = Player()
     time = Time()
-    score = Score()
+    #score = Score()
 
     bullets = pygame.sprite.Group()
 
@@ -150,17 +150,20 @@ def main():
 
         #affichage score/mult/temps
         time.incremente()
-        font_score = font_a.render(score.getScore(), 1, (YELLOW))
-        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
+        #font_score = font_a.render(score.getScore(), 1, (YELLOW))
+        #font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
         font_temps = font_a.render(time.get(), 1, (255,255,255))
-        screen.blit(font_temps, (400,10))
+        screen.blit(font_temps, (400,10))        
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
         #print("fin de bouble")
+        
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     print("fin de jeu")
+    print('SCORE :',player.level.score.getScore())
+    #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
 
 if __name__ == "__main__":
