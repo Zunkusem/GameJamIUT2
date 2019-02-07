@@ -1,6 +1,6 @@
 class Score():
-    def __init__(self,nomDuFichier):  #le mettre avec l'extension
-        self.nom=nomDuFichier
+    def __init__(self,nom):  #le mettre avec l'extension
+        self.nom=nom
 
     def getNom(self):
         return self.nom
@@ -11,7 +11,7 @@ class Score():
         nom,score=self.separeScoreDuNom(listeBrute)
         return (nom,score)
 
-    def EnregistreScore(self, nomJoueur,scoreJoueur):#nomJoueur en string et score en int meme si le score n'est pas dans le top 10, faire cette methode, elle gerera ca
+    def enregistreScore(self, nomJoueur,scoreJoueur):#nomJoueur en string et score en int meme si le score n'est pas dans le top 10, faire cette methode, elle gerera ca
         nom,score=self.recupèreLesScores()
         score=self.transformeListeStringEnListeInteger(score)
         nom,score=self.ajouteScore(nomJoueur,scoreJoueur,nom,score)
@@ -89,5 +89,4 @@ class Score():
         return a
 
 
-sc = Score("score.txt")
-result = sc.recupèreLesScores()
+
