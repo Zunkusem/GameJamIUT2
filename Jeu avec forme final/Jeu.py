@@ -62,7 +62,7 @@ def main():
 
     saveScore = 0
 
-    pygame.mixer.music.load('music/InGame.mp3')
+    pygame.mixer.music.load('music/InGame.ogg')
     pygame.mixer.music.play(1)
 
     saveMultiplicateur = 0
