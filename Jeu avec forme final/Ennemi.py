@@ -59,7 +59,7 @@ class Tourelle(pygame.sprite.Sprite):
 
 
 
-            
+
 
 class EnnemiDetecteur(pygame.sprite.Sprite):
     """ Platform the user can jump on """
