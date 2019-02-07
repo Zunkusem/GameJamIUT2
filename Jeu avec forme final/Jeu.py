@@ -35,6 +35,7 @@ def main():
     # Create all the levels
     level_list = []
     level_list.append(Tuto(player))
+    level_list.append(Level_01(player))
 
     # Set the current level
     current_level_no = 0
@@ -42,6 +43,9 @@ def main():
 
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
+
+    #player.rect.x = 5200
+    #player.rect.y = -86
 
     player.rect.x = 100
     player.rect.y = 758
@@ -52,11 +56,10 @@ def main():
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
-    
 
-    # -------- Main Program Loop --ij---------
+    # -------- Main Program Loop -----------
     while not time.estFini():
-        
+
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
         # print("posP:" + str(player.posP))
@@ -151,11 +154,11 @@ def main():
         #font_score = font_a.render(score.getScore(), 1, (YELLOW))
         #font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
         font_temps = font_a.render(time.get(), 1, (255,255,255))
-        screen.blit(font_temps, (400,10))        
+        screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
-        
+        pygame.display.flip()
         #print("fin de bouble")
-        
+
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
