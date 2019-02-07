@@ -18,8 +18,7 @@ class Cible(pygame.sprite.Sprite):
         width = 25
         height = 25
         self.hp = 1
-        self.image = pygame.Surface([width, height])
-        self.image.fill(RED)
+        self.image = pygame.transform.scale(pygame.image.load('Ennemypic/Cible.png'),[30,30])
         self.rect = self.image.get_rect()
         self.map=carte
 
@@ -78,9 +77,28 @@ class Piece(pygame.sprite.Sprite):
         super().__init__()
         width = 25
         height = 25
-        self.image = pygame.Surface([width, height])
-        self.image.fill(YELLOW)
+        self.countdonw = 10
+        self.index = 0
+        self.images = []
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie1.png'),[30,30]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie2.png'),[30,30]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie3.png'),[30,30]))
+        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie4.png'),[30,30]))
+
+        self.image = self.images[0]
         self.rect = self.image.get_rect()
+        self.modindex = 1
+
+    def update(self,screen):
+        self.countdonw -= 1
+        BLACK = (0, 0, 0)
+        if self.countdonw == 0:
+            self.index += self.modindex
+            screen.fill(BLACK)
+            if self.index >= len(self.images)-1 or self.index == 0:
+                self.modindex = self.modindex*-1
+            self.image = self.images[self.index]
+            self.countdonw =10
 
 
 

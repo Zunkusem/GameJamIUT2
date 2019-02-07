@@ -63,7 +63,7 @@ class Player(pygame.sprite.Sprite):
 
 
         self.index = 0
-        self.image = self.imagesflipR[self.index]
+        self.image = self.imagesR[self.index]
 
 
 
