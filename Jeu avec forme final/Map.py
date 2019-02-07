@@ -40,11 +40,11 @@ class Level():
 
 
     # Update everythign on this level
-    def update(self,player):
+    def update(self,player,screen):
         #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
-        self.piece_list.update() #
+        self.piece_list.update(screen) #
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
@@ -55,8 +55,8 @@ class Level():
 
     def draw(self, screen):
         """ Draw everything on this level. """
-
-        screen.fill(BLUE)
+        GREY = (58, 54, 53)
+        screen.fill(GREY)
 
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
@@ -163,9 +163,11 @@ class Tuto(Level):
         # Array with width, height, x, and y of platform
         level = [#bords de la map
                  [150, 968, -140, -100],
-                 [8000, 100, 0, 758],
+                 [8050, 100, 0, 758],
                  [150, 968, -140, -988],
-                 [8000, 100, 0, -858],
+                 [8050, 100, 0, -858],
+                 [650, 1400, 7400, -768],
+
                  #blocs 1ere partie en bas
                  [160, 30, 500, 630],
                  [160, 30, 800, 500],
@@ -179,6 +181,7 @@ class Tuto(Level):
                  [50, 620, 2200, 150],
                  [50, 1050, 2350, -50],
                  #blocs 2eme partie en haut
+                 [500, 500, 1450, -768],
                  [150, 200, 1950, -768],
                  [100, 30, 2500, -680],
                  [100, 30, 2700, -650],
@@ -240,20 +243,23 @@ class Tuto(Level):
                                      ]
 
 
-        pieces=[[320,700],[360,700],
-                [500,600],[540,600],
-                [850,450],
+        pieces=[[360,700],
+                [690,500],
+                [850,300],
                 [1200,100],
+
                 [1400,50],
                 [2000,250],
-                [2000,-500]
+                [2000,-500],
+                [2010,-500],
+                [2900,-550]
                 ]
 
 
 
         i=25
         Ennemy= [[500,500,1],
-                 [1200,700,1],
+                 [1500,700,1],
                  [3100,-300,1],
                  [3400,-300,1],
 
@@ -402,10 +408,11 @@ class Level_01(Level):
                  [20, 20, 4500, -575],
                  [20, 20, 4200, -575],
                  [50, 500, 5900, -758],#premier bras
-                 [150, 20, 5850, -658],
-                 [150, 20, 5850, -558],
-                 [150, 20, 5850, -458],
-                 [150, 20, 5850, -358],
+                 [150, 20, 5850, -748],
+                 [150, 20, 5850, -638],
+                 [150, 20, 5850, -518],
+                 [150, 20, 5850, -398],
+                 [150, 20, 5850, -278],
                  ]
 
         Bump = [[1300, 41, 500, 657],
@@ -422,10 +429,26 @@ class Level_01(Level):
 
         pieces=[[450,-200],
                 [900,-100],
-                [750,0],
-                [800,100],
-                [600,200],
-                [1000,300]
+                [750,-400],
+                [800,50],
+                [600,150],
+                [1000,300],
+                [1250,-200],
+                [1700,-100],
+                [1550,-400],
+                [1600,50],
+                [1500,150],
+                [1750,300],
+                [3040, -550],
+                [3040, -500],
+                [3040, -450],
+                [3040, -400],
+                [3040, -350],
+                [4050, -730],
+                [4040, -720],
+                [4030, -720],
+                [4040, -730],
+                [5960,-650],
                 ]
 
         levelPlatformRetourAvant = []
@@ -440,6 +463,9 @@ class Level_01(Level):
                   [1100, 442, 0],
                   [1100, 542, 1],
                   [1100, 627, 0],
+                  [1700, -100, 1],
+                  [4100, -700, 1],
+                  [6500, 0, 1],
                   ]
 
 
@@ -450,7 +476,7 @@ class Level_01(Level):
             block.player = self.player
             self.piece_list.add(block)
 
-            
+
         for platform in level:
             block = Platform(platform[0], platform[1])
             block.rect.x = platform[2]

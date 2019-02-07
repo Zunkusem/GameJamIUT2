@@ -4,8 +4,7 @@ from Player import *
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y, sx, sy):
         super().__init__()
-        self.image = pygame.Surface((10, 10))
-        self.image.fill(YELLOW)
+        self.image = pygame.transform.scale(pygame.image.load('Ennemypic/bullet.png'),[10,10])
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x
@@ -41,8 +40,7 @@ class Bullet(pygame.sprite.Sprite):
 class EnnemyBullet(pygame.sprite.Sprite):
     def __init__(self, x, y, sx, sy):
         super().__init__()
-        self.image = pygame.Surface((10, 20))
-        self.image.fill(BLACK)
+        self.image = pygame.transform.scale(pygame.image.load('Ennemypic/Ennemybullet.png'),[10,10])
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x

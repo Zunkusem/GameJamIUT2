@@ -41,7 +41,7 @@ def launcher():
     #police reste du classement
     font_e = pygame.font.SysFont('arial', 35)
 
-    img_background = pygame.image.load("score.png").convert()
+    img_background = pygame.image.load("score.jpg").convert()
     img_gold = pygame.image.load("or.png").convert()
     img_silver= pygame.image.load("argent.png").convert()
     img_bronze = pygame.image.load("bronze.png").convert()
@@ -54,7 +54,6 @@ def launcher():
 
     retour = pygame.draw.rect(screen, [255, 0, 0], [0, 720, 125, 50], 0)
 
-    score_titre = font_a.render("Meilleurs Scores", 1, (255,255,255))
     font_return = font_b.render("RETOUR", 1, (134,210,48))
 
     score_categorie = font_c.render("PLACE           NOM         SCORE", 1,(255, 0, 255))
@@ -105,16 +104,16 @@ def launcher():
     titre = font_a_credit.render("KOTPROD", 1, (255,255,255))
     retour = font_b_credit.render("RETOUR", 1, (134,210,48))
 
-    credit_un= font_c_credit.render("GAME DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_deux = font_c_credit.render("ANIMATIONS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_trois = font_c_credit.render("LEVEL DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_quatre = font_c_credit.render("CARACTERE DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_cinque = font_c_credit.render("MUSIC. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_six = font_c_credit.render("CONTROL DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_sept = font_c_credit.render("TEXTURE ENVIRONEMENT. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_huit = font_c_credit.render("IMAGE MENU. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_neuf = font_c_credit.render("POCHETTE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
-    credit_dix = font_c_credit.render("MENUS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .", 1, (255,255,255))
+    credit_un= font_c_credit.render("GAME DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .KotProd", 1, (255,255,255))
+    credit_deux = font_c_credit.render("ANIMATIONS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Jérémi Delaire", 1, (255,255,255))
+    credit_trois = font_c_credit.render("LEVEL DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . .Corentin Bordes,Rémi Toston,Emile Bergin", 1, (255,255,255))
+    credit_quatre = font_c_credit.render("CARACTERE DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Jérémi Delaire,Nicolas Fontal", 1, (255,255,255))
+    credit_cinque = font_c_credit.render("MUSIC/BRUITAGE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Karpe(karpe.contact@gmail.com)", 1, (255,255,255))
+    credit_six = font_c_credit.render("CONTROL DESIGN. . . . . . . . . . . . . . . . . . . . Jérémi Delaire, Emile Bergin, Corentin Bordes", 1, (255,255,255))
+    credit_sept = font_c_credit.render("TEXTURE ENVIRONEMENT. . . . . . . . . . . . . . . . . . . . . . . . . . Jérémi Delaire,Nicolas Fontal", 1, (255,255,255))
+    credit_huit = font_c_credit.render("IMAGE MENU. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Quentin Faure-Petraz,Nicolas Fontal", 1, (255,255,255))
+    credit_neuf = font_c_credit.render("POCHETTE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nicolas Fontal", 1, (255,255,255))
+    credit_dix = font_c_credit.render("MENUS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Quentin Faure-Petraz", 1, (255,255,255))
     bravo = font_c_credit.render("Bravo à toute l'équipe du projet pour cette performance !", 1, (255,255,255))
     #---------------------------------------------------------------------------------
     #------------------------------------------------------------------------------------
@@ -203,7 +202,6 @@ def launcher():
             #screen.blit(silver, 262,198)
             #screen.blit(bronze, 262,276)
             screen.blit(font_return, (10,720))
-            screen.blit(score_titre, (312, 0))
             screen.blit(score_categorie,(160, 80))
             screen.blit(place_un, (190,160))
             screen.blit(nom_un, (490,160))
