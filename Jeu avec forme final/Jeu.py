@@ -6,7 +6,6 @@ from Player import *
 from Map import *
 from Param import *
 from Score import *
-from Fin import *
 
 def main():
     """ Main Program """
@@ -83,9 +82,9 @@ def main():
                 #xTrajectoire,yTrajectoire=CalculTrajectoireProjectile(POSITIONCERCLE[0],POSITIONCERCLE[1],xSouris,ySouris)
                 #print("xTrajectoire",xTrajectoire," yTrajectoire",yTrajectoire)
                 #pro.add(Projectile(POSITIONCERCLE,[xTrajectoire,yTrajectoire],fenetre))
-                print("test")
+                #print("test")
                 vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
-                print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
+                #print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
                 player.shoot(vitesseX,vitesseY)
 
             if event.type == pygame.KEYDOWN:
@@ -174,9 +173,14 @@ def main():
 
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
+<<<<<<< HEAD
     #score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     score_final = 10
     fin(score_final)
+=======
+    print("fin de jeu")
+    print('SCORE :',player.level.score.getScore())
+>>>>>>> 79b7e443ee99991e48ec015a81b9e34687b4d1a7
     #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
 

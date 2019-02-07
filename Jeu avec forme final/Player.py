@@ -300,8 +300,8 @@ class Player(pygame.sprite.Sprite):
         self.change_x = 0
 
     def shoot(self, xSouris, ySouris):
-        self.level.bullets_liste.add(Bullet(self.rect.centerx, self.rect.top, xSouris, ySouris))
+        self.level.bullets_liste.add(Bullet(self.rect.centerx, self.rect.centery, xSouris, ySouris))
 
     def bulletHit(self):
         self.level.score.resetMultiplicateur()
-        print("GGGGGGGGGGGGGGGGGGG")
+        #print("GGGGGGGGGGGGGGGGGGG")
