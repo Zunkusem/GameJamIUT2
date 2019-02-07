@@ -37,9 +37,10 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
     level_list.append(Level_01(player))
 
+    level_list.append(Tuto(player))
+    
 
     # Set the current level
     current_level_no = 0
