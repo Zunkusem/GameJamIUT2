@@ -4,26 +4,7 @@ from Player import *
 from Projectile import *
 from math import *
 
-def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
-    x= x2-x1
-    y= y2-y1
-    if x!=0:
-        angle=atan(y/x)
-    else:
-        print("division par zero")
 
-    angleEnDegree=degrees(angle)
-    vitesseX=cos(angle)
-    vitesseY=sin(angle)
-    #print(vitesseX)
-    #print(vitesseY)
-    #print("norme")
-    #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
-    #print(degrees(angle))
-    if x>0:
-        return (vitesseX,vitesseY)
-    else:
-        return (-vitesseX,-vitesseY)
 
 class Cible(pygame.sprite.Sprite):
     """ Platform the user can jump on """
@@ -66,19 +47,19 @@ class Tourelle(pygame.sprite.Sprite):
     def bulletHit(self):
         self.hp -= 1
 
-        if self.hp <0:
+        if self.hp <=0:
             self.kill()
 
     def update(self,bullets,player):
         self.countdonw -= 1
         if self.countdonw == 0:
-            vitesseX,vitesseY=calculDeLaVitesseProjectile(self.rect.right,self.rect.centery,player.rect.x,player.rect.y)
-            bullets.add(Bullet(self.rect.right, self.rect.centery, vitesseX, vitesseY))
+            vitesseX,vitesseY=calculDeLaVitesseProjectile(self.rect.right,self.rect.centery,player.rect.centerx,player.rect.centery)
+            bullets.add(EnnemyBullet(self.rect.right, self.rect.centery, vitesseX, vitesseY))
             self.countdonw = 60
 
 
 
-            
+
 
 class EnnemiDetecteur(pygame.sprite.Sprite):
     """ Platform the user can jump on """

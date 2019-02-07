@@ -95,11 +95,14 @@ class Player(pygame.sprite.Sprite):
             # If we are moving right,
             # set our right side to the left side of the item we hit
             if self.change_x > 0:
+                self.Gmult == 1
                 self.rect.right = block.rect.left
             elif self.change_x < 0:
                 # Otherwise if we are moving left, do the opposite.
+                self.Gmult == 1
                 self.rect.left = block.rect.right
-
+            else:
+                self.Gmult == 0
 
 
         # Move up/down
@@ -153,13 +156,6 @@ class Player(pygame.sprite.Sprite):
 
         self.posP += self.change_y
 
-        Ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
-        for ennemy in Ennemy_hit_list:
-            if self.change_y > 0:
-                self.rect.bottom = ennemy.rect.top
-            elif self.change_y < 0:
-                self.rect.top = ennemy.rect.bottom
-            self.change_y = 0
 
 
 
@@ -181,13 +177,9 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.y += self.J1
         platform_hit_list = pygame.sprite.spritecollide(self, self.level.platform_list, False)
-        ennemy_hit_list = pygame.sprite.spritecollide(self, self.level.enemy_list, False)
         self.rect.y -= self.J1
 
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
-            self.change_y = self.J2
-
-        if len(ennemy_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.change_y = self.J2
 
 

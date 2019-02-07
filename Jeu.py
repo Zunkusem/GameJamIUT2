@@ -5,8 +5,29 @@ from math import *
 from Player import *
 from Map import *
 from Param import *
+from Score import *
 
 
+def calculDeLaVitesseProjectile(x1,y1,x2,y2):# (x,y) position du tireur (x1,y1) position de la cible
+    x= x2-x1
+    y= y2-y1
+    if x!=0:
+        angle=atan(y/x)
+    else:
+        print("division par zero")
+
+    angleEnDegree=degrees(angle)
+    vitesseX=cos(angle)
+    vitesseY=sin(angle)
+    #print(vitesseX)
+    #print(vitesseY)
+    #print("norme")
+    #print(sqrt(vitesseX*vitesseX+vitesseY*vitesseY))
+    #print(degrees(angle))
+    if x>0:
+        return (vitesseX,vitesseY)
+    else:
+        return (-vitesseX,-vitesseY)
 
 def main():
     """ Main Program """
@@ -20,7 +41,7 @@ def main():
 
     # Create the player
     player = Player()
-    #score = Score()                                    ==>ajout dans map
+    score = Score()
     time = Time()
 
     bullets = pygame.sprite.Group()
@@ -29,7 +50,7 @@ def main():
 
     font.init()
     font_a = pygame.font.SysFont('arial', 40)
-
+    font_b = pygame.font.SysFont('arial', 70)
 
 
 
@@ -148,7 +169,11 @@ def main():
 
         #affichage score/mult/temps
         time.incremente()
+        font_score = font_a.render(score.getScore(), 1, (YELLOW))
+        font_multiplicateur = font_a.render("x "+score.getMultiplicateur(), 1, (ORANGE))
         font_temps = font_a.render(time.get(), 1, (255,255,255))
+        screen.blit(font_score, (750,10))
+        screen.blit(font_multiplicateur, (900,10))
         screen.blit(font_temps, (400,10))
         # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
