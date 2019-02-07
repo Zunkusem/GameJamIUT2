@@ -300,7 +300,7 @@ class Tuto(Level):
         for ennemy in Ennemy:
 
             if ennemy[2] == 0:
-                block = Cible()
+                block = Cible(self)
                 block.rect.x = ennemy[0]
                 block.rect.y = ennemy[1]
                 block.player = self.player
@@ -467,14 +467,14 @@ class Level_01(Level):
         for ennemy in Ennemy:
 
             if ennemy[2] == 0:
-                block = Cible()
+                block = Cible(self)
                 block.rect.x = ennemy[0]
                 block.rect.y = ennemy[1]
                 block.player = self.player
                 self.enemy_list.add(block)
 
             elif ennemy[2] == 1:
-                block = Tourelle()
+                block = Tourelle(self)
                 block.rect.x = ennemy[0]
                 block.rect.y = ennemy[1]
                 block.player = self.player
