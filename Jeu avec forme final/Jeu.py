@@ -77,7 +77,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-                pyagme.quit()
+                pygame.quit()
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 print("x:",event.pos[0]," y:",event.pos[1])
                 xSouris=event.pos[0]
