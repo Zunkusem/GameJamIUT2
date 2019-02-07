@@ -18,6 +18,12 @@ class Score():
 
     def getMultiplicateur(self):
         return str(self.multiplicateur)
+
+    def setScore(self, score):
+        self.nombre=score
+
+    def setMultiplicateur(self, multipli):
+        self.multiplicateur=multipli
     
 """ Exemple Code
 sc=Score()

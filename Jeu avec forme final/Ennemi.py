@@ -10,7 +10,7 @@ import Map
 class Cible(pygame.sprite.Sprite):
     """ Platform the user can jump on """
 
-    def __init__(self):
+    def __init__(self,carte):
         """ Platform constructor. Assumes constructed with user passing in
             an array of 5 numbers like what's defined at the top of this code.
             """
@@ -21,11 +21,14 @@ class Cible(pygame.sprite.Sprite):
         self.image = pygame.Surface([width, height])
         self.image.fill(RED)
         self.rect = self.image.get_rect()
+        self.map=carte
 
     def bulletHit(self):
         self.hp -= 1
 
         if self.hp <=0:
+            self.map.score.incrementeScoreDeUn()
+            self.map.score.incrementemultiplicateurDeUn()
             self.kill()
 
 
@@ -53,6 +56,7 @@ class Tourelle(pygame.sprite.Sprite):
 
         if self.hp <=0:
             self.map.score.incrementeScoreDeUn()
+            self.map.score.incrementeScoreDeUn()
             self.map.score.incrementemultiplicateurDeUn()
             self.kill()
 
@@ -78,7 +82,7 @@ class Piece(pygame.sprite.Sprite):
         self.image.fill(YELLOW)
         self.rect = self.image.get_rect()
 
-    
+
 
 
 class EnnemiDetecteur(pygame.sprite.Sprite):
