@@ -7,6 +7,7 @@ from Launcher import *
 import Launcher
 
 def fin(score_final):
+    score_final = int(score_final)
     score = str(score_final)
     
 
@@ -53,12 +54,10 @@ def fin(score_final):
                     pygame.quit()
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 410 and event.pos[0] < 410+400 and event.pos[1] < 400+75 and event.pos[1] > 400:
                     print("ok")
-                    nom_input = "quentin"
                     font_nominput = font_c.render(nom_input, 1, (200,0,255))
                     screen.blit(font_nominput, (410,600))
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 410 and event.pos[0] < 410+200 and event.pos[1] < 600+50 and event.pos[1] > 600:
                     print("envoyer")
-                    print(nom_input, score_final)
                     sc.enregistreScore(nom_input, score_final)
                     launcher()
                 elif event.type == KEYDOWN and event.key == K_KP_ENTER:
@@ -80,4 +79,4 @@ def fin(score_final):
     pygame.quit()
 
 if __name__ == "__main__":
-    fin(35000)
+    fin(score_final)

@@ -240,7 +240,7 @@ class Tuto(Level):
                                      ]
 
 
-        pieces=[[100,600],[200,700],[240,700],[280,700],[320,700],[360,700],
+        pieces=[[200,700],[240,700],[280,700],[320,700],[360,700],
                 [500,600],[540,600],
                 [850,450],
                 [1200,100],
@@ -251,12 +251,14 @@ class Tuto(Level):
 
 
         i=25
-        Ennemy= [[10,100,0],
+        Ennemy= [[10,100,1],
                  [500,500,1],
                  [1200,700,1],
                  [10+i*1,500,0],
+                 [3100,-300,1],
 
                  [10+i*8,500,0],
+                 [6700,-100,1],
 
 
                  ]
@@ -274,6 +276,7 @@ class Tuto(Level):
             block.rect.y = platform[3]
             block.player = self.player
             self.platform_list.add(block)
+            # block.graph()
 
         for bumper in Bump:
             block = Bumper(bumper[0], bumper[1])
@@ -299,7 +302,7 @@ class Tuto(Level):
         for ennemy in Ennemy:
 
             if ennemy[2] == 0:
-                block = Cible()
+                block = Cible(self)
                 block.rect.x = ennemy[0]
                 block.rect.y = ennemy[1]
                 block.player = self.player
@@ -402,7 +405,6 @@ class Level_01(Level):
                  [150, 20, 5850, -558],
                  [150, 20, 5850, -458],
                  [150, 20, 5850, -358],
-
                  ]
 
         Bump = [[1300, 41, 500, 657],
@@ -419,11 +421,8 @@ class Level_01(Level):
 
         levelPlatformRetourAvant = []
         Ennemy = [[1100, -658, 0],
-                  [1100, -558, 0],
                   [1100, -458, 0],
-                  [1100, -358, 0],
                   [1100, -258, 0],
-                  [1100, -158, 0],
                   [1100, -58, 0],
                   [1100, 42, 0],
                   [1100, 142, 0],
@@ -466,14 +465,14 @@ class Level_01(Level):
         for ennemy in Ennemy:
 
             if ennemy[2] == 0:
-                block = Cible()
+                block = Cible(self)
                 block.rect.x = ennemy[0]
                 block.rect.y = ennemy[1]
                 block.player = self.player
                 self.enemy_list.add(block)
 
             elif ennemy[2] == 1:
-                block = Tourelle()
+                block = Tourelle(self)
                 block.rect.x = ennemy[0]
                 block.rect.y = ennemy[1]
                 block.player = self.player

@@ -89,7 +89,8 @@ class ScoreEnr():
         return a
 
 
-#sc = Score("score.txt")
+sc = ScoreEnr("score.txt")
+result = sc.recupèreLesScores()
 #print(sc.recupèreLesScores())
 #sc.enregistreScore("quentin", 35000)
 #print(sc.recupèreLesScores())

@@ -7,6 +7,7 @@ from Map import *
 from Param import *
 from Score import *
 from Fin import *
+import Fin
 
 def main():
     """ Main Program """
@@ -58,6 +59,9 @@ def main():
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
+    saveScore = 0
+
+    saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
 
@@ -79,9 +83,9 @@ def main():
                 #xTrajectoire,yTrajectoire=CalculTrajectoireProjectile(POSITIONCERCLE[0],POSITIONCERCLE[1],xSouris,ySouris)
                 #print("xTrajectoire",xTrajectoire," yTrajectoire",yTrajectoire)
                 #pro.add(Projectile(POSITIONCERCLE,[xTrajectoire,yTrajectoire],fenetre))
-                print("test")
+                #print("test")
                 vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
-                print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
+                #print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
                 player.shoot(vitesseX,vitesseY)
 
             if event.type == pygame.KEYDOWN:
@@ -102,7 +106,7 @@ def main():
                     player.stop()
 
         # Update the player.
-        active_sprite_list.update()
+        active_sprite_list.update(screen)
 
         # Update items in the level
         current_level.update(player)
@@ -130,14 +134,21 @@ def main():
             player.rect.left = 120
             current_level.shift_worldx(diff)
 
+        #On essai de garder le score et le Multiplicateur
+
+
         # If the player gets to the end of the level, go to the next level
         current_position = player.rect.x + current_level.world_shiftx
+        saveScore = current_level.score.getScore()
+        saveMultiplicateur = current_level.score.getMultiplicateur()
         if current_position < current_level.level_limit:
             player.rect.x = 120
             if current_level_no < len(level_list)-1:
                 current_level_no += 1
                 current_level = level_list[current_level_no]
                 player.level = current_level
+                player.level.score.setScore(saveScore)
+                player.level.score.setMultiplicateur(saveMultiplicateur)
 
         # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
         current_level.draw(screen)
@@ -164,8 +175,8 @@ def main():
     # Be IDLE friendly. If you forget this line, the program will 'hang'
     # on exit.
     score_final = player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
-    print(score_final)
     fin(score_final)
+    #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
 
 if __name__ == "__main__":
