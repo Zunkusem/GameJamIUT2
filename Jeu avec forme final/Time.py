@@ -26,10 +26,10 @@ class Time():
     def estFini(self):
         #print(self.milli," ",self.secondes," ",self.minutes)
         if self.minutes <0 :
-            print("True")
+            #print("True")
             return True
         else:
-            print("False")
+            #print("False")
             return False
             
         

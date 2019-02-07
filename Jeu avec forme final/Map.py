@@ -18,6 +18,7 @@ class Level():
         self.bumper_list = pygame.sprite.Group()
         self.platformRetourArriere_list = pygame.sprite.Group()
         self.platformRetourAvant_list = pygame.sprite.Group()
+        self.piece_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.ennemy_tourelle_liste = pygame.sprite.Group()
         self.score = Score()
@@ -38,6 +39,7 @@ class Level():
         #print(len(self.bullets_liste))
         """ Update everything in this level."""
         self.platform_list.update()
+        self.piece_list.update() #
         self.enemy_list.update()
         self.bullets_liste.update(player)
         self.ennemy_tourelle_liste.update(self.bullets_liste,player)
@@ -53,6 +55,7 @@ class Level():
         screen.fill(BLUE)
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
+        self.piece_list.draw(screen)
         self.enemy_list.draw(screen)
         self.bumper_list.draw(screen)
         self.platformRetourArriere_list.draw(screen)
@@ -76,6 +79,9 @@ class Level():
             platform.rect.x += shift_x
 
         for platform in self.platformRetourArriere_list:
+            platform.rect.x += shift_x
+
+        for platform in self.piece_list:
             platform.rect.x += shift_x
 
         for platform in self.platformRetourAvant_list:
@@ -119,6 +125,9 @@ class Level():
             platform.rect.y += shift_y
 
         for platform in self.platformRetourArriere_list:
+            platform.rect.y += shift_y
+            
+        for platform in self.piece_list:
             platform.rect.y += shift_y
 
         for platform in self.platformRetourAvant_list:
@@ -226,6 +235,11 @@ class Tuto(Level):
                                      [700, 40, 5300, -798],#aide accélérateur pour arriver niveau 4
                                      ]
 
+
+        pieces=[[40,40]]
+        
+        
+
         i=25
         Ennemy= [[10,100,0],
                  [500,500,1],
@@ -235,7 +249,13 @@ class Tuto(Level):
 
 
                  ]
-
+        for piece in pieces:
+            block = Piece()
+            block.rect.x = piece[0]
+            block.rect.y = piece[1]
+            block.player = self.player
+            self.piece_list.add(block)
+                
         # Go through the array above and add platforms
         for platform in level:
             block = Platform(platform[0], platform[1])
