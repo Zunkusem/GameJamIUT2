@@ -564,17 +564,21 @@ class Level_02(Level):
                  [8000, 100, 0, 758],
                  [150, 968, -140, -988],
                  [7400, 100, 0, -858],
+                 ]
 
+        Bump = [[1300, 41, 500, 657],
+                ]
 
-        Bump = []
+        levelPlatformRetourArriere = [[0, 0, 0, 0]
+                                      ]
 
-        levelPlatformRetourArriere = []
+        pieces = [[0, 0, 0, 0]
+                  ]
 
-        pieces=[]
-
-        levelPlatformRetourAvant = []
-
-        Ennemy = []
+        levelPlatformRetourAvant = [[0, 0, 0, 0]
+                                    ]
+        Ennemy = [[0, 0, 0, 0]
+                  ]
 
         for piece in pieces:
             block = Piece()
