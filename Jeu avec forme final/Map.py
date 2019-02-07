@@ -55,8 +55,8 @@ class Level():
 
     def draw(self, screen):
         """ Draw everything on this level. """
-
-        screen.fill(BLUE)
+        GREY = (58, 54, 53)
+        screen.fill(GREY)
 
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)

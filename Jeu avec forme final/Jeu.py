@@ -39,7 +39,7 @@ def main():
     level_list.append(Level_01(player))
 
     level_list.append(Tuto(player))
-    
+
 
     # Set the current level
     current_level_no = 0
@@ -110,7 +110,7 @@ def main():
         active_sprite_list.update(screen)
 
         # Update items in the level
-        current_level.update(player)
+        current_level.update(player,screen)
         # current_level.shift_worldy(player.change_y,player)
 
         # If the player gets near the right side, shift the world left (-x)
