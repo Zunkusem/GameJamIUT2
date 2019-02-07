@@ -6,6 +6,7 @@ from Player import *
 from Map import *
 from Param import *
 from Score import *
+from Fin import *
 
 def main():
     """ Main Program """
