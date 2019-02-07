@@ -62,10 +62,13 @@ def main():
 
     saveScore = 0
 
+    pygame.mixer.music.load('music/InGame.mp3')
+    pygame.mixer.music.play(1)
+
     saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
-
+        
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
         # print("posP:" + str(player.posP))
@@ -181,6 +184,6 @@ def main():
     fin(score_final)
     #return player.level.score.getScore() #a decommenter lors du rassemblage avec forpec
     pygame.quit()
-
+    
 if __name__ == "__main__":
     main()

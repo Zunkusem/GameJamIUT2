@@ -126,6 +126,9 @@ def launcher():
 
     x = 450
     y = 250
+    pygame.mixer.music.load('music/menufi.mp3')
+    pygame.mixer.music.play(1)
+    
     #--------------------------------------------------------------------------------
     #affichage de l'accueil
     while run:
@@ -233,7 +236,7 @@ def launcher():
             screen.blit(nom_dix, (490,702))
             screen.blit(score_dix, (730,702))
             pygame.display.flip()
-
+    pygame.mixer.music.stop()
     pygame.quit()
 if __name__ == "__main__":
     launcher()
