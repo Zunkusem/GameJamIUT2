@@ -60,6 +60,12 @@ def main():
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
+    saveScore = 0
+
+    pygame.mixer.music.load('music/InGame.mp3')
+    pygame.mixer.music.play(1)
+
+    saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
 
@@ -97,6 +103,8 @@ def main():
                     player.jump()
                 if event.key == pygame.K_SPACE:
                     player.invG()
+                if event.key == pygame.K_ESCAPE:
+                    launcher()
 
 
             if event.type == pygame.KEYUP:

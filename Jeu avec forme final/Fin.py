@@ -76,6 +76,7 @@ def fin(score_final):
         screen.blit(font_envoyer, (430,600))
         screen.blit(font_kotprod, (410,730))
         pygame.display.flip()
+    pygame.mixer.music.stop()
     pygame.quit()
 
 if __name__ == "__main__":
