@@ -158,15 +158,14 @@ class Tuto(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.level_limit = -7800
+        self.level_limit = -8000
 
         # Array with width, height, x, and y of platform
         level = [#bords de la map
                  [150, 968, -140, -100],
-                 [8050, 100, 0, 758],
+                 [8000, 100, 0, 758],
                  [150, 968, -140, -988],
-                 [8050, 100, 0, -858],
-                 [650, 1400, 7400, -768],
+                 [8000, 100, 0, -858],
                  #blocs 1ere partie en bas
                  [160, 30, 500, 630],
                  [160, 30, 800, 500],
@@ -180,7 +179,6 @@ class Tuto(Level):
                  [50, 620, 2200, 150],
                  [50, 1050, 2350, -50],
                  #blocs 2eme partie en haut
-                 [500, 500, 1450, -768],
                  [150, 200, 1950, -768],
                  [100, 30, 2500, -680],
                  [100, 30, 2700, -650],
@@ -205,6 +203,7 @@ class Tuto(Level):
                  [50, 500, 6800, -778],
                  [50, 600, 6950, -778],
                  [50, 600, 7100, 200],
+                 [600, 200, 7400, -778]
                  ]
 
 
@@ -245,7 +244,6 @@ class Tuto(Level):
                 [690,500],
                 [850,300],
                 [1200,100],
-                
                 [1400,50],
                 [2000,250],
                 [2000,-500],
@@ -467,7 +465,7 @@ class Level_01(Level):
             block.player = self.player
             self.piece_list.add(block)
 
-
+            
         for platform in level:
             block = Platform(platform[0], platform[1])
             block.rect.x = platform[2]
