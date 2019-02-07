@@ -53,7 +53,7 @@ class Tourelle(pygame.sprite.Sprite):
     def update(self,bullets,player):
         self.countdonw -= 1
         if self.countdonw == 0:
-            vitesseX,vitesseY=calculDeLaVitesseProjectile(self.rect.right,self.rect.centery,player.rect.x,player.rect.y)
+            vitesseX,vitesseY=calculDeLaVitesseProjectile(self.rect.right,self.rect.centery,player.rect.centerx,player.rect.centery)
             bullets.add(EnnemyBullet(self.rect.right, self.rect.centery, vitesseX, vitesseY))
             self.countdonw = 60
 
