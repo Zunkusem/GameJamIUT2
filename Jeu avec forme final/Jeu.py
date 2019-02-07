@@ -43,9 +43,6 @@ def main():
     active_sprite_list = pygame.sprite.Group()
     player.level = current_level
 
-    #player.rect.x = 5200
-    #player.rect.y = -86
-
     player.rect.x = 100
     player.rect.y = 758
     active_sprite_list.add(player)
@@ -55,10 +52,11 @@ def main():
 
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
+    
 
     # -------- Main Program Loop -----------
     while not time.estFini():
-
+        
         # print("rectTop:" + str(player.rect.top))
         # print("rectBot:" + str(player.rect.bottom))
         # print("posP:" + str(player.posP))
@@ -155,7 +153,7 @@ def main():
         font_temps = font_a.render(time.get(), 1, (255,255,255))
         screen.blit(font_temps, (400,10))        
         # Go ahead and update the screen with what we've drawn.
-        pygame.display.flip()
+        
         #print("fin de bouble")
         
 

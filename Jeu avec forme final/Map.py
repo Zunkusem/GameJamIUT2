@@ -34,6 +34,10 @@ class Level():
         self.world_shiftx = 0
         self.world_shifty = 0
 
+    def getScore():
+        return self.score.getScore()
+
+
     # Update everythign on this level
     def update(self,player):
         #print(len(self.bullets_liste))
@@ -52,13 +56,7 @@ class Level():
         """ Draw everything on this level. """
 
         # Draw the background
-        #chargement image
-        #bg = pygame.image.load('images/bg1.jpg')
-        # Draw the background
         screen.fill(BLUE)
-        #screen.blit(bg, (0,-768))
-        #pygame.draw.rect(screen, (255,0,0), (0, -768, SCREEN_WIDTH, SCREEN_HEIGHT))
-
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.piece_list.draw(screen)
@@ -132,7 +130,7 @@ class Level():
 
         for platform in self.platformRetourArriere_list:
             platform.rect.y += shift_y
-
+            
         for platform in self.piece_list:
             platform.rect.y += shift_y
 
@@ -160,14 +158,14 @@ class Tuto(Level):
         # Call the parent constructor
         Level.__init__(self, player)
 
-        self.level_limit = -8000
+        self.level_limit = -10000
 
         # Array with width, height, x, and y of platform
         level = [#bords de la map
                  [150, 968, -140, -100],
-                 [8000, 100, 0, 758],
+                 [10000, 100, 0, 758],
                  [150, 968, -140, -988],
-                 [8000, 100, 0, -858],
+                 [10000, 100, 0, -858],
                  #blocs 1ere partie en bas
                  [160, 30, 500, 630],
                  [160, 30, 800, 500],
@@ -249,12 +247,13 @@ class Tuto(Level):
                 [1400,50],
                 [2000,250]
                 ]
-
-
+        
+        
 
         i=25
         Ennemy= [[10,100,0],
                  [500,500,1],
+                 [1200,700,1],
                  [10+i*1,500,0],
 
                  [10+i*8,500,0],
@@ -267,7 +266,7 @@ class Tuto(Level):
             block.rect.y = piece[1]
             block.player = self.player
             self.piece_list.add(block)
-
+                
         # Go through the array above and add platforms
         for platform in level:
             block = Platform(platform[0], platform[1])
@@ -385,25 +384,7 @@ class Level_01(Level):
                  [40, 40, 2650, 377],
                  [40, 40, 2650, 227],
                  [400, 40, 2700, 123],
-                 [500,820, 3100, -651],
-                 [600, 800, 3000, 162],
-                 [300, 600, 3700, -758],
-                 [100, 500, 4000, -658],
-                 [2000, 900, 3600, -58],
-                 [400, 600, 5200, -758],
-                 [150, 40 , 4200, -158],
-                 [150, 40 , 4500, -258],
-                 [150, 40, 4800, -358],
-                 [150, 40, 5100, -458],
-                 [20, 20, 4800, -575],
-                 [20, 20, 4500, -575],
-                 [20, 20, 4200, -575],
-                 [50, 500, 5900, -758],#premier bras
-                 [150, 20, 5850, -658],
-                 [150, 20, 5850, -558],
-                 [150, 20, 5850, -458],
-                 [150, 20, 5850, -358],
-
+                 [50, 300, 3100, -137]
                  ]
 
         Bump = [[1300, 41, 500, 657],
@@ -411,28 +392,63 @@ class Level_01(Level):
                 [100, 41, 1840, -798],
                 [100, 41, 1840, 757],
                 [100, 41, 3000, 122],
-                [100, 41, 3600, -798],
-                [100, 41, 4500, -798],
-                [100, 41, 5500, -59]
                 ]
-        levelPlatformRetourArriere = [[860, 40, 2040, 757]
-                                      ]
-
+        levelPlatformRetourArriere = []
         levelPlatformRetourAvant = []
-        Ennemy = [[1100, -658, 0],
-                  [1100, -558, 0],
-                  [1100, -458, 0],
-                  [1100, -358, 0],
-                  [1100, -258, 0],
-                  [1100, -158, 0],
-                  [1100, -58, 0],
-                  [1100, 42, 0],
-                  [1100, 142, 0],
-                  [1100, 242, 0],
-                  [1100, 342, 0],
-                  [1100, 442, 0],
-                  [1100, 542, 0],
-                  [1100, 627, 0],
+        Ennemy = [[1100, -658,0],
+                  [1100, -633,0],
+                  [1100, -608,0],
+                  [1100, -583,0],
+                  [1100, -558,0],
+                  [1100, -533,0],
+                  [1100, -508,0],
+                  [1100, -483,0],
+                  [1100, -458,0],
+                  [1100, -433,0],
+                  [1100, -408,0],
+                  [1100, -383,0],
+                  [1100, -358,0],
+                  [1100, -333,0],
+                  [1100, -308,0],
+                  [1100, -283,0],
+                  [1100, -258,0],
+                  [1100, -233,0],
+                  [1100, -208,0],
+                  [1100, -183,0],
+                  [1100, -158,0],
+                  [1100, -133,0],
+                  [1100, -108,0],
+                  [1100, -83,0],
+                  [1100, -58,0],
+                  [1100, -33,0],
+                  [1100, -8,0],
+                  [1100, 17,0],
+                  [1100, 42,0],
+                  [1100, 67,0],
+                  [1100, 92,0],
+                  [1100, 117,0],
+                  [1100, 142,0],
+                  [1100, 167,0],
+                  [1100, 192,0],
+                  [1100, 217,0],
+                  [1100, 242,0],
+                  [1100, 267,0],
+                  [1100, 292,0],
+                  [1100, 317,0],
+                  [1100, 342,0],
+                  [1100, 367,0],
+                  [1100, 392,0],
+                  [1100, 417,0],
+                  [1100, 442,0],
+                  [1100, 467,0],
+                  [1100, 492,0],
+                  [1100, 517,0],
+                  [1100, 542,0],
+                  [1100, 567,0],
+                  [1100, 592,0],
+                  [1100, 617,0],
+                  [1100, 642,0],
+                  [1100, 667,0]
                   ]
 
 
