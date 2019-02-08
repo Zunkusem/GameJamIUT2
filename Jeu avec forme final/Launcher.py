@@ -98,16 +98,17 @@ def launcher():
 
     img_credit = pygame.image.load("credit.jpg").convert()
 
-    credit_un= font_c_credit.render("GAME DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .KotProd", 1, (255,255,255))
+    credit_un= font_c_credit.render("GAME DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . KotProd", 1, (255,255,255))
     credit_deux = font_c_credit.render("ANIMATIONS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Jérémi Delaire", 1, (255,255,255))
     credit_trois = font_c_credit.render("LEVEL DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . .Corentin Bordes,Rémi Toston,Emile Bergin", 1, (255,255,255))
-    credit_quatre = font_c_credit.render("CARACTERE DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Jérémi Delaire,Nicolas Fontal", 1, (255,255,255))
-    credit_cinque = font_c_credit.render("MUSIC/BRUITAGE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Karpe(karpe.contact@gmail.com)", 1, (255,255,255))
+    credit_quatre = font_c_credit.render("CHARACTER DESIGN. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Jérémi Delaire,Nicolas Fontal", 1, (255,255,255))
+    credit_cinque = font_c_credit.render("MUSIQUE/BRUITAGE. . . . . . . . . . . . . . . . . . . . . . . . . . . .Karpe(karpe.contact@gmail.com)", 1, (255,255,255))
     credit_six = font_c_credit.render("CONTROL DESIGN. . . . . . . . . . . . . . . . . . . . Jérémi Delaire, Emile Bergin, Corentin Bordes", 1, (255,255,255))
-    credit_sept = font_c_credit.render("TEXTURE ENVIRONEMENT. . . . . . . . . . . . . . . . . . . . . . . . . . Jérémi Delaire,Nicolas Fontal", 1, (255,255,255))
+    credit_sept = font_c_credit.render("TEXTURE/ENVIRONNEMENT. . . . . . . . . . . . . . . . . . . . . . . . .Jérémi Delaire,Nicolas Fontal", 1, (255,255,255))
     credit_huit = font_c_credit.render("IMAGE MENU. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Quentin Faure-Petraz,Nicolas Fontal", 1, (255,255,255))
-    credit_neuf = font_c_credit.render("POCHETTE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .Nicolas Fontal", 1, (255,255,255))
+    credit_neuf = font_c_credit.render("POCHETTE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Nicolas Fontal", 1, (255,255,255))
     credit_dix = font_c_credit.render("MENUS. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Quentin Faure-Petraz", 1, (255,255,255))
+    credit_onze = font_c_credit.render("CHEF ARTISTIQUE. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Rémi Toston", 1, (255,255,255))
     bravo = font_c_credit.render("Bravo à toute l'équipe du projet pour cette performance !", 1, (255,255,255))
     #---------------------------------------------------------------------------
     #Création des objet pour la vue règle
@@ -175,7 +176,8 @@ def launcher():
             screen.blit(credit_huit, (100, 360))
             screen.blit(credit_neuf, (100, 400))
             screen.blit(credit_dix, (100, 440))
-            screen.blit(bravo, (250, 500))
+            screen.blit(credit_onze, (100, 480))
+            screen.blit(bravo, (250, 550))
             pygame.display.flip()
     #--------------------------------------------------------------------------------
     #affichage des scores
