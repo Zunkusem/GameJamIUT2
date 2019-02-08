@@ -421,6 +421,9 @@ class Level_01(Level):
                  [150, 20, 6350, -518],
                  [150, 20, 6350, -398],
                  [150, 20, 6350, -278],
+                 # fin Map
+                 [150, 1400, 7100, -798],
+                 [1300, 100, 7100, 502],
                  ]
 
 
@@ -431,7 +434,8 @@ class Level_01(Level):
                 [100, 41, 3000, 122],
                 [100, 41, 3600, -798],
                 [100, 41, 4500, -798],
-                [100, 41, 5500, -59]
+                [100, 41, 5500, -59],
+                [100, 41, 7000, -798],
                 ]
         levelPlatformRetourArriere = [[860, 40, 2040, 757]
                                       ]
@@ -548,6 +552,7 @@ class Level_01(Level):
                 block.rect.y = ennemy[1]
                 block.player = self.player
                 self.ennemy_tourelle_liste.add(block)
+
 
 # reate platforms for the level
 #"
