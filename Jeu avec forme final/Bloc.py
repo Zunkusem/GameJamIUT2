@@ -21,6 +21,7 @@ class Platform(pygame.sprite.Sprite):
 
 
 
+
 class Bumper(pygame.sprite.Sprite):
     """ Platform the user can jump on """
 
