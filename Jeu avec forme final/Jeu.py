@@ -40,6 +40,8 @@ def main():
     #level_list.append(Level_02(player))
     level_list.append(Level_01(player))
     level_list.append(Level_01(player))
+    level_list.append(Level_01(player))
+    level_list.append(Level_01(player))
     
 
 
