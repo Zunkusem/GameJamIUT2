@@ -304,4 +304,5 @@ class Player(pygame.sprite.Sprite):
 
     def bulletHit(self):
         self.level.score.resetMultiplicateur()
+        self.change_x= -10
         #print("GGGGGGGGGGGGGGGGGGG")
