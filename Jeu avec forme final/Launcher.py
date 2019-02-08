@@ -140,18 +140,18 @@ def launcher():
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 run=False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-13 and event.pos[0] < x+100-13 and event.pos[1] < y+400+50 and event.pos[1] > y+400:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-13 and event.pos[0] < x+130 and event.pos[1] < y+400+50 and event.pos[1] > y+400:
                 run=False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-8 and event.pos[0] < x+100-8 and event.pos[1] < y+300+50 and event.pos[1] > y+300:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-8 and event.pos[0] < x+130 and event.pos[1] < y+300+50 and event.pos[1] > y+300:
                 regle = True
                 accueil = False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-10 and event.pos[0] < x+100-10 and event.pos[1] < y+200+50 and event.pos[1] > y+200:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x-10 and event.pos[0] < x+130 and event.pos[1] < y+200+50 and event.pos[1] > y+200:
                 credit = True
                 accueil = False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+100 and event.pos[1] < y+100+50 and event.pos[1] > y+100:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x and event.pos[0] < x+110 and event.pos[1] < y+100+50 and event.pos[1] > y+100:
                 score = True
                 accueil = False
-            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x+5 and event.pos[0] < x+100+5 and event.pos[1] < y+50 and event.pos[1] > y:
+            elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x+5 and event.pos[0] < x+110 and event.pos[1] < y+50 and event.pos[1] > y:
                 Jeu.main()
     #--------------------------------------------------------------------------------
     #affichage des crédits
