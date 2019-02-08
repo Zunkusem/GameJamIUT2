@@ -26,6 +26,8 @@ class Cible(pygame.sprite.Sprite):
         self.hp -= 1
 
         if self.hp <=0:
+            mobs = pygame.mixer.Sound('music/mobs.wav')
+            pygame.mixer.Sound.play(mobs)
             self.map.score.incrementeScoreDeUn()
             self.map.score.incrementemultiplicateurDeUn()
             self.kill()
@@ -53,6 +55,8 @@ class Tourelle(pygame.sprite.Sprite):
         self.hp -= 1
 
         if self.hp <=0:
+            mobs = pygame.mixer.Sound('music/mobs.wav')
+            pygame.mixer.Sound.play(mobs)
             self.map.score.incrementeScoreDeUn()
             self.map.score.incrementeScoreDeUn()
             self.map.score.incrementemultiplicateurDeUn()
