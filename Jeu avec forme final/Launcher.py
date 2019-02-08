@@ -113,6 +113,19 @@ def launcher():
     #---------------------------------------------------------------------------
     #Création des objet pour la vue règle
     regle_background = pygame.image.load("regle.jpg").convert()
+    font_regletxt_un= font_c_credit.render("Règle du jeu: Le but est de faire le meilleur score en gagnant le maximum de points possible. Pour cela,", 1, (255,255,255))
+    font_regletxt_deux= font_c_credit.render("il faut éviter les balles ennemis, riposter, et avancer en récupérant des orbes au passage. Pendant" , 1, (255,255,255))
+    font_regletxt_trois= font_c_credit.render("3 minutes, tuez le plus d'ennemis possibles et amassez un maximum d'orbe sans vous faire toucher, un" , 1, (255,255,255))
+    font_regletxt_quatre= font_c_credit.render("multiplicateur augmentera au fur et à mesure vous permettant d'amasser encore plus de points." , 1, (255,255,255))
+    font_regletxt_cinque= font_c_credit.render("Cependant, si vous vous faites toucher, votre multiplicateur retombe à 1. Attention! Un bumper vous", 1, (255,255,255))
+    font_regletxt_six= font_c_credit.render("permettra d'aller dans les airs et de changer de gravité afin de vous déplacer au plafond. Regardez où", 1, (255,255,255))
+    font_regletxt_sept= font_c_credit.render("vous marchez: des plateformes vous expulse en arrière. Rassurez-vous, des plateformes vous aident à", 1, (255,255,255))
+    font_regletxt_huit= font_c_credit.render("avancer en vous propulsant vers l'avant. 2 types d'ennemis se confrontent à vous: des tourelles et des", 1, (255,255,255))
+    font_regletxt_neuf= font_c_credit.render("cibles aériennes.", 1, (255,255,255))
+    font_regletxt_dix= font_a_credit.render("Commandes:", 1, (255,255,255))
+    font_regletxt_onze= font_b_credit.render("Saut: Z; Déplcacement à gauche et à droite: Q et D; Tir: clic droit; Viser: Souris", 1, (255,255,255))
+
+
     #---------------------------------------------------------------------------------
     #------------------------------------------------------------------------------------
     #boucle affichage
@@ -229,7 +242,19 @@ def launcher():
         if accueil==False and regle==True:
             screen.fill([0, 0, 0])
             screen.blit(regle_background, (0,0))
+            screen.blit(font_regletxt_un, (50,100))
+            screen.blit(font_regletxt_deux, (50,140))
+            screen.blit(font_regletxt_trois, (50,180))
+            screen.blit(font_regletxt_quatre, (50,220))
+            screen.blit(font_regletxt_cinque, (50,260))
+            screen.blit(font_regletxt_six, (50,300))
+            screen.blit(font_regletxt_sept, (50,340))
+            screen.blit(font_regletxt_huit, (50,380))
+            screen.blit(font_regletxt_neuf, (50,420))
+            screen.blit(font_regletxt_dix, (50,500))
+            screen.blit(font_regletxt_onze, (50,560))
         while accueil==False and regle==True:
+            pygame.display.flip()
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
                     run = False
@@ -237,7 +262,6 @@ def launcher():
                 elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > 0 and event.pos[0] < 125 and event.pos[1] < 768 and event.pos[1] > 720:
                     accueil = True
                     regle = False
-            pygame.display.flip()
 #-------------------------------------------------------------
     pygame.mixer.music.stop()
     pygame.quit()
