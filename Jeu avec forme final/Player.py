@@ -83,6 +83,7 @@ class Player(pygame.sprite.Sprite):
         self.Gstat = 1
         self.J1 = 2
         self.J2 = -10
+        self.J3 = -5
         # self.BZone = -150
         # self.TZone = -800
         self.posP = 0
@@ -93,6 +94,7 @@ class Player(pygame.sprite.Sprite):
         self.Gstat = self.Gstat*(-1)
         self.J1 = self.J1*(-1)
         self.J2 = self.J2*(-1)
+        self.J3 = self.J3*(-1)
 
     def update(self,screen):
         """ Move the player. """
@@ -169,6 +171,8 @@ class Player(pygame.sprite.Sprite):
 
         block_hit_list = pygame.sprite.spritecollide(self, self.level.piece_list, False)
         for block in block_hit_list:
+            orbe = pygame.mixer.Sound('music/orbe.wav')
+            pygame.mixer.Sound.play(orbe)
             block.kill()
             self.level.score.incrementeScoreDeUn()
 
@@ -303,5 +307,9 @@ class Player(pygame.sprite.Sprite):
         self.level.bullets_liste.add(Bullet(self.rect.centerx, self.rect.centery, xSouris, ySouris))
 
     def bulletHit(self):
+        hit = pygame.mixer.Sound('music/hit.wav')
+        pygame.mixer.Sound.play(hit)
         self.level.score.resetMultiplicateur()
+        self.change_y = self.J3
+        self.change_x = 0
         #print("GGGGGGGGGGGGGGGGGGG")
