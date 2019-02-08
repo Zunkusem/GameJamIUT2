@@ -152,7 +152,7 @@ def launcher():
                 score = True
                 accueil = False
             elif event.type==pygame.MOUSEBUTTONDOWN and event.button == 1 and event.pos[0] > x+5 and event.pos[0] < x+100+5 and event.pos[1] < y+50 and event.pos[1] > y:
-                score = main()
+                Jeu.main()
     #--------------------------------------------------------------------------------
     #affichage des crédits
         if accueil==False and credit==True:

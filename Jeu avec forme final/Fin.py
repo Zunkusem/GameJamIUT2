@@ -33,7 +33,7 @@ def fin(score_final):
     font_scoreFintxt = font_b.render("SCORE: " + score, 1, (200,0,255))
 
     font_nom = font_c.render("NOM : ", 1, (200,0,255))
-    nom_surface = pygame.draw.rect(screen, [255,0,0], [410, 400, 400, 75], 1)
+    
     
     font_envoyer = font_c.render("ENVOYER", 1, (200,255,255))
 
@@ -132,9 +132,10 @@ def fin(score_final):
 
         screen.blit(background_fin, (0,0))            
         screen.blit(font_titreFin, (310,10))
-        screen.blit(font_scoreFintxt, (320,250))
+        screen.blit(font_scoreFintxt, (360,250))
         font_nom = font_c.render(nom_input, 1, (200,0,255))
-        screen.blit(font_nom, (410,400))
+        nom_surface = pygame.draw.rect(screen, [200,0,255], [320, 390, 400, 75], 1)
+        screen.blit(font_nom, (400,400))
         screen.blit(font_envoyer, (430,600))
         screen.blit(font_kotprod, (410,730))
         pygame.display.flip()
@@ -142,5 +143,4 @@ def fin(score_final):
     pygame.quit()
 
 if __name__ == "__main__":
-    #fin(score_final)
-    fin(100)
+    fin(score_final)
