@@ -64,7 +64,7 @@ def fin(score_final):
 #--------------------------------------------------------------------------------------------
 #ecriture du nom                    
                 if event.type == KEYDOWN:
-                    i = int(0)
+                    i = 0
                     if event.key == K_SPACE:
                         nom_input = nom_input + " "
                     if event.key == K_RETURN:
