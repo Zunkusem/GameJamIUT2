@@ -3,7 +3,7 @@ class Time():
 
     def __init__(self):
         self.minutes=0
-        self.secondes=10
+        self.secondes=2
         self.milli=0
 
     def incremente(self):
