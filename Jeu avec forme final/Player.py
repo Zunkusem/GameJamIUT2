@@ -305,6 +305,8 @@ class Player(pygame.sprite.Sprite):
         self.level.bullets_liste.add(Bullet(self.rect.centerx, self.rect.centery, xSouris, ySouris))
 
     def bulletHit(self):
+        hit = pygame.mixer.Sound('music/hit.wav')
+        pygame.mixer.Sound.play(hit)
         self.level.score.resetMultiplicateur()
         self.change_y = self.J3
         self.change_x = 0
