@@ -170,8 +170,8 @@ class Player(pygame.sprite.Sprite):
                 self.Gmult == 0
 
         block_hit_list = pygame.sprite.spritecollide(self, self.level.piece_list, False)
-        mobs = pygame.mixer.Sound('music/orbe.wav')
         for block in block_hit_list:
+            orbe = pygame.mixer.Sound('music/orbe.wav')
             pygame.mixer.Sound.play(orbe)
             block.kill()
             self.level.score.incrementeScoreDeUn()
