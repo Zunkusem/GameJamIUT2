@@ -249,7 +249,7 @@ class Tuto(Level):
                 [1200,100],
 
                 [1400,50],
-                [2000,250],
+                [2000,255], #1ere corrigée
                 [2000,-500],
                 [2010,-500],
                 [2900,-550]
@@ -421,6 +421,9 @@ class Level_01(Level):
                  [150, 20, 6350, -518],
                  [150, 20, 6350, -398],
                  [150, 20, 6350, -278],
+                 # fin Map
+                 [150, 1400, 7100, -798],
+                 [1300, 100, 7100, 502],
                  ]
 
 
@@ -431,7 +434,8 @@ class Level_01(Level):
                 [100, 41, 3000, 122],
                 [100, 41, 3600, -798],
                 [100, 41, 4500, -798],
-                [100, 41, 5500, -59]
+                [100, 41, 5500, -59],
+                [100, 41, 7000, -798],
                 ]
         levelPlatformRetourArriere = [[860, 40, 2040, 757]
                                       ]
@@ -442,11 +446,11 @@ class Level_01(Level):
                 [800,50],
                 [600,150],
                 [1000,300],
-                [1250,-200],
-                [1700,-100],
+                [1255,-200],
+                [1700,-140],
                 [1550,-400],
-                [1600,50],
-                [1500,150],
+                [1600,75],
+                [1500,155],
                 [1750,300],
                 [3040, -550],
                 [3040, -500],
@@ -549,87 +553,6 @@ class Level_01(Level):
                 block.player = self.player
                 self.ennemy_tourelle_liste.add(block)
 
-class Level_02(Level):
 
-    def __init__(self, player):
-        """ Create Level_02. """
-
-        # Call the parent constructor
-        Level.__init__(self, player)
-
-        self.level_limit = -8000
-
-        level = [#bords de la map
-                 [150, 968, -140, -100],
-                 [8000, 100, 0, 758],
-                 [150, 968, -140, -988],
-                 [7400, 100, 0, -858],
-                 ]
-
-        Bump = [[1300, 41, 500, 657],
-                ]
-
-        levelPlatformRetourArriere = [[0, 0, 0, 0]
-                                      ]
-
-        pieces = [[0, 0, 0, 0]
-                  ]
-
-        levelPlatformRetourAvant = [[0, 0, 0, 0]
-                                    ]
-        Ennemy = [[0, 0, 0, 0]
-                  ]
-
-        for piece in pieces:
-            block = Piece()
-            block.rect.x = piece[0]
-            block.rect.y = piece[1]
-            block.player = self.player
-            self.piece_list.add(block)
-
-
-        for platform in level:
-            block = Platform(platform[0], platform[1])
-            block.rect.x = platform[2]
-            block.rect.y = platform[3]
-            block.player = self.player
-            self.platform_list.add(block)
-
-        for bumper in Bump:
-            block = Bumper(bumper[0], bumper[1])
-            block.rect.x = bumper[2]
-            block.rect.y = bumper[3]
-            block.player = self.player
-            self.bumper_list.add(block)
-
-        for PlatformRetourArr in levelPlatformRetourArriere:
-            block = PlatformRetourArriere(PlatformRetourArr[0], PlatformRetourArr[1])
-            block.rect.x = PlatformRetourArr[2]
-            block.rect.y = PlatformRetourArr[3]
-            block.player = self.player
-            self.platformRetourArriere_list.add(block)
-
-        for PlatformRetourAv in levelPlatformRetourAvant:
-            block = PlatformRetourAvant(PlatformRetourAv[0], PlatformRetourAv[1])
-            block.rect.x = PlatformRetourAv[2]
-            block.rect.y = PlatformRetourAv[3]
-            block.player = self.player
-            self.platformRetourAvant_list.add(block)
-
-        for ennemy in Ennemy:
-
-            if ennemy[2] == 0:
-                block = Cible(self)
-                block.rect.x = ennemy[0]
-                block.rect.y = ennemy[1]
-                block.player = self.player
-                self.enemy_list.add(block)
-
-            elif ennemy[2] == 1:
-                block = Tourelle(self)
-                block.rect.x = ennemy[0]
-                block.rect.y = ennemy[1]
-                block.player = self.player
-                self.ennemy_tourelle_liste.add(block)
 # reate platforms for the level
 #"

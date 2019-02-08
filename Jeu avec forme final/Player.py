@@ -83,6 +83,7 @@ class Player(pygame.sprite.Sprite):
         self.Gstat = 1
         self.J1 = 2
         self.J2 = -10
+        self.J3 = -5
         # self.BZone = -150
         # self.TZone = -800
         self.posP = 0
@@ -93,6 +94,7 @@ class Player(pygame.sprite.Sprite):
         self.Gstat = self.Gstat*(-1)
         self.J1 = self.J1*(-1)
         self.J2 = self.J2*(-1)
+        self.J3 = self.J3*(-1)
 
     def update(self,screen):
         """ Move the player. """
@@ -304,4 +306,6 @@ class Player(pygame.sprite.Sprite):
 
     def bulletHit(self):
         self.level.score.resetMultiplicateur()
+        self.change_y = self.J3
+        self.change_x = 0
         #print("GGGGGGGGGGGGGGGGGGG")
