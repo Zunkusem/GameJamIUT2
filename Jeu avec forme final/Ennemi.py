@@ -79,10 +79,10 @@ class Piece(pygame.sprite.Sprite):
         self.countdonw = 10
         self.index = 0
         self.images = []
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie1.png'),[25,25]))
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie2.png'),[25,25]))
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie3.png'),[25,25]))
-        self.images.append(pygame.transform.scale(pygame.image.load('Ennemypic/energie4.png'),[25,25]))
+        self.images.append(pygame.image.load('Ennemypic/energy0000.png'))
+        self.images.append(pygame.image.load('Ennemypic/energy0001.png'))
+        self.images.append(pygame.image.load('Ennemypic/energy0002.png'))
+        self.images.append(pygame.image.load('Ennemypic/energy0003.png'))
 
         self.image = self.images[0]
         self.rect = self.image.get_rect()
