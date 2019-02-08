@@ -66,7 +66,7 @@ def main():
 
     pygame.mixer.music.load('music/InGame.mp3')
     pygame.mixer.music.play(1)
-
+    
     saveMultiplicateur = 0
     # -------- Main Program Loop -----------
     while not time.estFini():
@@ -85,6 +85,8 @@ def main():
                 pygame.quit()
 
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                tir = pygame.mixer.Sound('music/tir.wav')
+                pygame.mixer.Sound.play(tir)
                 print("x:",event.pos[0]," y:",event.pos[1])
                 xSouris=event.pos[0]
                 ySouris=event.pos[1]
@@ -95,7 +97,7 @@ def main():
                 vitesseX,vitesseY=calculDeLaVitesseProjectile(player.rect.x,player.rect.y,xSouris,ySouris)
                 #print("vitesseX=",vitesseX,"vitesseY=",vitesseY)
                 player.shoot(vitesseX,vitesseY)
-
+                
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
                     player.go_left()
