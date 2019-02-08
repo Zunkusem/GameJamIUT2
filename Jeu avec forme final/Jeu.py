@@ -36,10 +36,9 @@ def main():
 
     # Create all the levels
     level_list = []
-    level_list.append(Tuto(player))
-    level_list.append(Level_01(player))
     level_list.append(Level_02(player))
-
+    level_list.append(Level_01(player))
+    level_list.append(Tuto(player))
 
 
     # Set the current level
@@ -64,7 +63,7 @@ def main():
 
     saveScore = 0
 
-    pygame.mixer.music.load('music/InGame.ogg')
+    pygame.mixer.music.load('music/InGame.mp3')
     pygame.mixer.music.play(1)
 
     saveMultiplicateur = 0

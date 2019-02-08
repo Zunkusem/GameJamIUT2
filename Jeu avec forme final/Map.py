@@ -564,9 +564,14 @@ class Level_02(Level):
                  [8000, 100, 0, 758],
                  [150, 968, -140, -988],
                  [7400, 100, 0, -858],
+                 [700, 20, 200, 700],
+                 [700, 20, 300, 600],
+                 [700, 20, 400, 500],
+                 [700, 20, 500, 400],
+                 
                  ]
 
-        Bump = [[1300, 41, 500, 657],
+        Bump = [[70, 20, 540, 395],
                 ]
 
         levelPlatformRetourArriere = [[0, 0, 0, 0]
@@ -577,7 +582,15 @@ class Level_02(Level):
 
         levelPlatformRetourAvant = [[0, 0, 0, 0]
                                     ]
-        Ennemy = [[0, 0, 0, 0]
+        Ennemy = [[700, 730, 1],
+                  [700, 650, 1],
+                  [700, 680, 1],
+                  [700, 620, 1],
+                  [700, 520, 1],
+                  [700, 560, 1],
+                  [700, 430, 1],
+                  [700, 460, 1],
+                  [700, 300, 1],
                   ]
 
         for piece in pieces:
@@ -631,5 +644,7 @@ class Level_02(Level):
                 block.rect.y = ennemy[1]
                 block.player = self.player
                 self.ennemy_tourelle_liste.add(block)
+                
+    
 # reate platforms for the level
 #"
